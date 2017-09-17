@@ -18,6 +18,7 @@ body {
 #startcontainer {
     height: 100vh;
     background: url("atlantablur.png") no-repeat fixed;
+    background-color: darkblue;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
