@@ -37,6 +37,39 @@ body {
     text-shadow: 0.04em 0 #191919, 0 0.04em #191919, -0.04em 0 #191919, 0 -0.04em #191919;
 }
 
+.bash {
+    width: 40vw;
+    height: 22.5vh;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #343A40;
+    box-shadow: 0 0 20px #414141;
+}
+
+.bash #bashheader {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 40vw;
+    height: 2.5vh;
+    background-color: #DDDDDD;
+    color: black;
+    font-family: 'Open Sans', serif;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.bash #bashtext {
+    margin-top: 0;
+    width: 40vw;
+    height: 20vh;
+    padding-left: 10px;
+    color: #CED4DA;
+    font-family: 'Open Sans', serif;
+    font-size: 18px;
+}
+
 #profileimg {
     width: 400px;
     height: 400px;
