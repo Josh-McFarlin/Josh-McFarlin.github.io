@@ -26,20 +26,30 @@ body {
 
 #intro {
     font-family: 'Dosis', serif;
-    font-size: 70px;
+    font-size: 6vw;
     color: white;
 }
 
 .aboutme {
     font-family: 'Dosis', serif;
-    font-size: 30px;
+    font-size: 2vw;
     color: white;
     text-shadow: 0.04em 0 #191919, 0 0.04em #191919, -0.04em 0 #191919, 0 -0.04em #191919;
 }
 
+@media (orientation:portrait) {
+    #intro {
+        font-size: 7vw;
+    }
+
+    .aboutme {
+        font-size: 4vw;
+    }
+}
+
 .bash {
     width: 40vw;
-    height: 22.5vh;
+    height: 23vh;
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -51,11 +61,11 @@ body {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     width: 40vw;
-    height: 2.5vh;
+    height: 3vh;
     background-color: #DDDDDD;
     color: black;
     font-family: 'Open Sans', serif;
-    font-size: 18px;
+    font-size: 2vh;
     text-align: center;
     margin-bottom: 0;
 }
@@ -64,18 +74,51 @@ body {
     margin-top: 0;
     width: 40vw;
     height: 20vh;
-    padding-left: 10px;
+    padding-left: 1vw;
     color: #CED4DA;
     font-family: 'Open Sans', serif;
-    font-size: 18px;
+    font-size: 2vh;
+}
+
+@media (orientation:portrait) {
+    .bash {
+        width: 60vw;
+        height: 23vh;
+        border-radius: 1vw;
+    }
+
+    .bash #bashheader {
+        border-top-left-radius: 1vw;
+        border-top-right-radius: 1vw;
+        width: 60vw;
+        height: 3vh;
+        font-size: 3vw;
+    }
+
+    .bash #bashtext {
+        margin-top: 0;
+        width: 60vw;
+        height: 20vh;
+        font-size: 3vw;
+    }
 }
 
 #profileimg {
-    width: 400px;
-    height: 400px;
+    width: 40vh;
+    height: 40vh;
     object-position: 0 0;
     object-fit: cover;
     border-radius: 50%;
+}
+
+@media (orientation:portrait) {
+    #profileimg {
+        width: 40vw;
+        height: 40vw;
+        object-position: 0 0;
+        object-fit: cover;
+        border-radius: 50%;
+    }
 }
 
 #skillsauto {
