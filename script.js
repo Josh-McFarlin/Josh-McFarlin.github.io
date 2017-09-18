@@ -1,8 +1,6 @@
 var fancyText = document.getElementById('fancy');
-var skillText = document.getElementById('skill');
 var intervalTime = 225;
 var callbackPause = 100;
-var skills = ['Python', 'Java', 'HTML'];
 
 function addContent(element, contentToAdd, callback) {
     var pos = 0;
@@ -39,3 +37,13 @@ function deleteContent(element, callback) {
 }
 
 window.onload = addContent(fancyText, "Josh McFarlin.");
+
+var typed = new Typed('#typed-strings', {
+    strings: ["Python", "Java", "Circuit Design", "CAD Modeling", "Photogrammetry"],
+    typeSpeed: 100,
+    backSpeed: 60,
+    backDelay: 2000,
+    loop: true,
+    loopCount: Infinity,
+    showCursor: true
+});

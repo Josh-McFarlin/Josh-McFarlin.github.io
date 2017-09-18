@@ -2,10 +2,12 @@
 <html>
     <head>
         <title>Josh McFarlin</title>
+        <script type="text/javascript">
+            (new Image()).src="images/atlantablur.jpg";
+        </script>
         <link rel="stylesheet" href="style.css"/>
         <script src="jquery-3.2.1.min.js"></script>
         <script src="typed.min.js" type="text/javascript"></script>
-        <img src="atlantablur.jpg" style="display:none;" alt="">
     </head>
 
     <body>
@@ -15,7 +17,6 @@
                     <li>
                         <a href="mailto:jmcfarlin6@gatech.edu" class="nav-link">Contact</a>
                     </li>
-
                     <li>
                         <a href="https://www.dropbox.com/s/8ppqhfdfvedmx8d/JoshuaMcFarlin_Resume.pdf?dl=0" class="nav-link">Resume</a>
                     </li>
@@ -26,11 +27,8 @@
 
             <div id="about">
                 <h1 id="intro">Hi, I'm <span id="fancy"></span></h1>
-
-                <img src="me.png" id="profileimg">
-
+                <img src="images/me.jpg" id="profileimg">
                 <p class="aboutme">I'm a Computer Science major at the Georgia Institute of Technology.</p>
-
                 <p class="aboutme">My interests include programming, circuit design, and CAD modeling.</p>
             </div>
         </div>
@@ -39,20 +37,8 @@
             <p id="bashheader">Josh-McFarlin.github.io -bash ― 60×20 </p>
             <p id="bashtext">skills$ <span id="typed-strings"></span></p>
         </div>
-        <script>
-            var typed = new Typed('#typed-strings', {
-                strings: ["Python", "Java", "Circuit Design", "CAD Modeling", "Photogrammetry"],
-                typeSpeed: 100,
-                backSpeed: 60,
-                backDelay: 2000,
-                loop: true,
-                loopCount: Infinity,
-                showCursor: true
 
-            });
-        </script>
-
-        <div id="links" style="text-align: center;">
+        <div id="links">
             <p>Check out my <a href="http://github.com/Josh-McFarlin">GitHub</a> and <a href="https://www.linkedin.com/in/josh-mcfarlin-0776a914b/">LinkedIn</a>.</p>
         </div>
         <script src="script.js"></script>
