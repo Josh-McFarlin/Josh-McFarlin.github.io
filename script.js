@@ -39,7 +39,7 @@ function deleteContent(element, callback) {
 window.onload = addContent(fancyText, "Josh McFarlin.");
 
 var typed = new Typed('#typed-strings', {
-    strings: ["Python", "Java", "Circuit Design", "CAD Modeling", "Photogrammetry"],
+    strings: ["Python", "Java", "Swift", "Ionic", "Circuit Design", "CAD Modeling", "Photogrammetry"],
     typeSpeed: 100,
     backSpeed: 60,
     backDelay: 2000,

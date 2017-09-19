@@ -25,13 +25,13 @@ body {
 
 #intro {
     font-family: 'Dosis', serif;
-    font-size: 6vw;
+    font-size: 10vh;
     color: white;
 }
 
 .aboutme {
     font-family: 'Dosis', serif;
-    font-size: 2vw;
+    font-size: 3.5vh;
     color: white;
     text-shadow: 0.04em 0 #191919, 0 0.04em #191919, -0.04em 0 #191919, 0 -0.04em #191919;
 }
@@ -87,7 +87,7 @@ body {
 @media (orientation:portrait) {
     .bash {
         width: 60vw;
-        height: 23vh;
+        height: 15vh;
         border-radius: 1vw;
     }
 
@@ -95,14 +95,15 @@ body {
         border-top-left-radius: 1vw;
         border-top-right-radius: 1vw;
         width: 60vw;
-        height: 3vh;
+        height: 2vh;
+        line-height: 2vh;
         font-size: 3vw;
     }
 
     .bash #bashtext {
         margin-top: 0;
         width: 60vw;
-        height: 20vh;
+        height: 15vh;
         font-size: 3vw;
     }
 }
@@ -132,6 +133,11 @@ body {
     width: 50vw;
 }
 
+#projecttitle {
+    font-size: 3vh;
+    text-align: center;
+}
+
 .project {
     margin-left: auto;
     margin-right: auto;
@@ -140,6 +146,18 @@ body {
     padding-bottom: 1vw;
     width: 40vw;
     background: lightgrey;
+}
+
+@media (orientation:portrait) {
+    #projecttitle {
+        font-size: 6vw;
+    }
+
+    .project {
+        width: 70vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
 }
 
 .project img {
@@ -157,8 +175,25 @@ body {
     text-align: center;
 }
 
+.project h2 {
+    font-size: 3.5vh;
+}
+
+.project h3 {
+    font-size: 3vh;
+}
+
+.project h4 {
+    font-size: 2.5vh;
+}
+
+.project h5 {
+    font-size: 2vh;
+}
+
 .project p {
     color: black;
+    font-size: 2vh;
 }
 
 .project a {
@@ -166,16 +201,39 @@ body {
     text-align: center;
 }
 
+
+@media (orientation:portrait) {
+    .project img {
+        width: 65vw;
+    }
+
+    .project h2 {
+        font-size: 5vw;
+    }
+
+    .project h3 {
+        font-size: 4vw;
+    }
+
+    .project h4 {
+        font-size: 3.5vw;
+    }
+
+    .project h5 {
+        font-size: 3vw;
+    }
+
+    .project p {
+        font-size: 3vw;
+    }
+
+}
+
 h1, h2, h4, h5 {
     font-family: 'Open Sans', sans-serif;
 }
 
 #about {
-    text-align: center;
-}
-
-#projecttitle {
-    font-size: 3vw;
     text-align: center;
 }
 
