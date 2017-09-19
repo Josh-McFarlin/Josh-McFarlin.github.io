@@ -49,7 +49,7 @@ body {
 .bash {
     width: 40vw;
     height: 23vh;
-    border-radius: .75vw;
+    border-radius: .5vw;
     margin-left: auto;
     margin-right: auto;
     background-color: #343A40;
@@ -57,8 +57,8 @@ body {
 }
 
 .bash #bashheader {
-    border-top-left-radius: .75vw;
-    border-top-right-radius: .75vw;
+    border-top-left-radius: .5vw;
+    border-top-right-radius: .5vw;
     width: 40vw;
     height: 3vh;
     line-height: 3vh;
@@ -125,15 +125,45 @@ body {
     }
 }
 
-#skillsauto {
+#projectslist {
     margin-left: auto;
     margin-right: auto;
-    text-align: left;
-    text-indent: 10px;
-    background-color: white;
-    border: 1px solid #909090;
-    border-radius: 5px;
-    width: 90vw;
+    text-align: center;
+    width: 50vw;
+}
+
+.project {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-bottom: 1vw;
+    width: 40vw;
+    background: lightgrey;
+}
+
+.project img {
+    width: 30vw;
+    object-position: 0 0;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 1vh;
+}
+
+.project h2, h3, h4, h5 {
+    color: black;
+    text-align: center;
+}
+
+.project p {
+    color: black;
+}
+
+.project a {
+    display: block;
+    text-align: center;
 }
 
 h1, h2, h4, h5 {
@@ -141,6 +171,11 @@ h1, h2, h4, h5 {
 }
 
 #about {
+    text-align: center;
+}
+
+#projecttitle {
+    font-size: 3vw;
     text-align: center;
 }
 
