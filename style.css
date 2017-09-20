@@ -321,8 +321,21 @@ a {
 
 .close {
     position: absolute;
-    top: 15px;
-    right: 35px;
+    top: 3vh;
+    right: 3vw;
+    width: 50px;
+    height: 50px;
     color: #f1f1f1;
     font-size: 50px;
+    text-align: center;
+}
+
+.close:hover {
+    color: #9b9b9b;
+    -webkit-transition: color 1s;
+    -moz-transition:    color 1s;
+    -ms-transition:     color 1s;
+    -o-transition:      color 1s;
+    transition:         color 1s;
+    cursor: pointer;
 }

@@ -22,12 +22,15 @@ function addContent(element, contentToAdd, callback) {
 }
 
 function expand(img) {
+    var modalClass = document.getElementsByClassName('modal')[0];
     var modal = document.getElementById('myModal');
     var modalImg = document.getElementById("modalImg");
     var captionText = document.getElementById("caption");
 
     modal.style.display = "block";
     modalImg.src = img.src;
+    modalClass.style.paddingTop = ((window.innerHeight - modalImg.clientHeight)/2).toString() + "px";
+    modalImg.border = "3px";
     captionText.innerHTML = img.alt;
 
     var span = document.getElementsByClassName("close")[0];
