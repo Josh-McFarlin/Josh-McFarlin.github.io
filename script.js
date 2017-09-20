@@ -21,19 +21,20 @@ function addContent(element, contentToAdd, callback) {
     }, intervalTime);
 }
 
-function deleteContent(element, callback) {
-    var intervalId = setInterval(function() {
-        if (element.innerHTML.length === 0) {
-            clearInterval(intervalId);
+function expand(img) {
+    var modal = document.getElementById('myModal');
+    var modalImg = document.getElementById("modalImg");
+    var captionText = document.getElementById("caption");
 
-            if (callback) {
-                setTimeout(callback, callbackPause);
-            }
-        }
+    modal.style.display = "block";
+    modalImg.src = img.src;
+    captionText.innerHTML = img.alt;
 
-        element.innerHTML = element.innerHTML.substring(0, element.innerHTML.length - 1);
-    }, intervalTime);
+    var span = document.getElementsByClassName("close")[0];
 
+    span.onclick = function() {
+        modal.style.display = "none";
+    };
 }
 
 window.onload = addContent(fancyText, "Josh McFarlin.");

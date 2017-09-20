@@ -17,7 +17,7 @@ body {
 
 #startcontainer {
     height: 100vh;
-    background: #0f183c url("images/atlantablur.jpg") no-repeat fixed center bottom;
+    background: #0f183c url("images/atlantablur.jpg") no-repeat fixed center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -275,4 +275,54 @@ h1, h2, h4, h5 {
 
 a {
     color: #7f8c8d;
+}
+
+.expandable:hover {
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 10vh;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90vw;
+    max-height: 80vh;
+    padding: auto;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    max-width: 90vw;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    font-size: 3vh;
+}
+@media (orientation:portrait) {
+    #caption {
+        font-size: 2.75vw;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 50px;
 }
