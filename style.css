@@ -23,6 +23,31 @@ body {
     -moz-background-size: cover;
 }
 
+#startcontainer #downarrow {
+    font-size: 5vw;
+    text-align: center;
+    /*width: 100vw;*/
+    display: block;
+    margin: auto;
+    opacity: 0.2;
+    font-weight: 200;
+
+    color: #9b9b9b;
+    animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.15;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 0.15;
+    }
+}
+
 #intro {
     font-family: 'Dosis', serif;
     font-size: 10vh;
@@ -176,15 +201,15 @@ body {
 }
 
 .project h2 {
-    font-size: 3.5vh;
-}
-
-.project h3 {
     font-size: 3vh;
 }
 
+.project h3 {
+    font-size: 2.25vh;
+}
+
 .project h4 {
-    font-size: 2.5vh;
+    font-size: 1.8vh;
 }
 
 .project h5 {
@@ -193,7 +218,7 @@ body {
 
 .project p {
     color: black;
-    font-size: 2vh;
+    font-size: 1.6vh;
 }
 
 .project a {
@@ -212,19 +237,19 @@ body {
     }
 
     .project h3 {
-        font-size: 4vw;
+        font-size: 3.75vw;
     }
 
     .project h4 {
-        font-size: 3.5vw;
+        font-size: 3vw;
     }
 
     .project h5 {
-        font-size: 3vw;
+        font-size: 2.85vw;
     }
 
     .project p {
-        font-size: 3vw;
+        font-size: 2.75vw;
     }
 
 }
@@ -333,9 +358,9 @@ a {
 .close:hover {
     color: #9b9b9b;
     -webkit-transition: color 1s;
-    -moz-transition:    color 1s;
-    -ms-transition:     color 1s;
-    -o-transition:      color 1s;
-    transition:         color 1s;
+    -moz-transition: color 1s;
+    -ms-transition: color 1s;
+    -o-transition: color 1s;
+    transition: color 1s;
     cursor: pointer;
 }
