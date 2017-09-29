@@ -40,6 +40,22 @@ function expand(img) {
     };
 }
 
+function contactMe() {
+    var links = document.getElementsByClassName("nav-link");
+    var i;
+    if (document.getElementById("contactButton").style.display === 'block') {
+        document.getElementById("contactButton").style.display = 'none';
+        for (i = 0; i < links.length; i++) {
+            links[i].style.display = "inherit";
+        }
+    } else {
+        document.getElementById("contactButton").style.display = 'block';
+        for (i = 0; i < links.length; i++) {
+            links[i].style.display = "none";
+        }
+    }
+}
+
 window.onload = addContent(fancyText, "Josh McFarlin.");
 
 var typed = new Typed('#typed-strings', {
