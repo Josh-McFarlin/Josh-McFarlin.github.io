@@ -23,6 +23,12 @@ body {
     -moz-background-size: cover;
 }
 
+@media (orientation:portrait) {
+    #startcontainer {
+        background-attachment: initial;
+    }
+}
+
 #startcontainer #downarrow {
     font-size: 5vw;
     text-align: center;
@@ -183,11 +189,34 @@ body {
     }
 }
 
+.sidebyside {
+    display: flex !important;
+    align-items: center;
+    max-width: 40vw !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (orientation:portrait) {
+    .sidebyside {
+        flex-direction: column;
+    }
+}
+
+.sideimg {
+    flex: 1 1 auto;
+    margin: 5px;
+}
+
+.sideimg img {
+    width: 100% !important;
+}
+
 .project img {
     width: 30vw;
     object-position: 0 0;
     object-fit: cover;
-    display: block;
+    display: inherit;
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 1vh;
@@ -302,16 +331,19 @@ a {
 }
 
 .expandable:hover {
-    animation: sizing 3s 1 forwards;
+    animation: fade 2s 1 forwards;
     cursor: pointer;
 }
 
-@keyframes sizing {
+@keyframes fade {
     0% {
-        transform: scale(1);
+        filter: grayscale(0%);
+    }
+    50% {
+        filter: grayscale(65%);
     }
     100% {
-        transform: scale(1.03);
+        filter: grayscale(0%);
     }
 }
 
@@ -324,7 +356,7 @@ a {
     left: 0;
     top: 0;
     width: 100vw;
-    background-color: rgba(97, 97, 97, 0.5);
+    background-color: rgb(97, 97, 97);
 }
 
 .contactDropdown .close {
@@ -350,6 +382,7 @@ a {
 
 .modal {
     display: none;
+    text-align: center;
     position: fixed;
     z-index: 1;
     padding-top: 10vh;
@@ -367,33 +400,30 @@ a {
     display: block;
     max-width: 90vw;
     max-height: 80vh;
-    padding: auto;
+    padding: 0;
 }
 
-#caption {
-    margin: auto;
-    display: block;
-    max-width: 90vw;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    font-size: 3vh;
+#imgHolder {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }
-@media (orientation:portrait) {
-    #caption {
-        font-size: 2.75vw;
-    }
+
+.modalimg {
+    border: lightgrey solid 2px;
+    vertical-align: middle;
 }
 
 .close {
     position: absolute;
-    top: 3vh;
-    right: 3vw;
+    top: 20px;
+    right: 20px;
     width: 50px;
     height: 50px;
     color: #f1f1f1;
     font-size: 50px;
-    text-align: center;
+    font-family: 'Times New Roman', serif;
+    line-height: 50px;
 }
 
 .close:hover {

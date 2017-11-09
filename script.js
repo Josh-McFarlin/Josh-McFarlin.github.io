@@ -1,65 +1,59 @@
-var fancyText = document.getElementById('fancy');
-var intervalTime = 225;
-var callbackPause = 100;
-
 function addContent(element, contentToAdd, callback) {
-    var pos = 0;
-    var origLength = element.innerHTML.length;
-    var addLength = contentToAdd.length;
-    var endLength = origLength + addLength;
-    var intervalId = setInterval(function() {
+    let pos = 0;
+    let origLength = element.innerHTML.length;
+    let addLength = contentToAdd.length;
+    let endLength = origLength + addLength;
+    let intervalId = setInterval(function() {
         if (element.innerHTML.length === endLength) {
             clearInterval(intervalId);
 
             if (callback) {
-                setTimeout(callback, callbackPause);
+                setTimeout(callback, 100);
             }
         }
 
         element.innerHTML += contentToAdd.charAt(pos);
         pos++;
-    }, intervalTime);
+    }, 225);
 }
 
 function expand(img) {
-    var modalClass = document.getElementsByClassName('modal')[0];
-    var modal = document.getElementById('myModal');
-    var modalImg = document.getElementById("modalImg");
-    var captionText = document.getElementById("caption");
+    let modalClass = document.getElementsByClassName('modal')[0];
+    let modal = document.getElementById('myModal');
+    let modalImg = document.getElementById("modalImg");
 
     modal.style.display = "block";
     modalImg.src = img.src;
-    modalClass.style.paddingTop = ((window.innerHeight - modalImg.clientHeight)/2).toString() + "px";
-    modalImg.border = "3px";
-    captionText.innerHTML = img.alt;
+    //modalClass.style.paddingTop = ((window.innerHeight - modalImg.clientHeight)/2).toString() + "px";
 
-    var span = document.getElementsByClassName("close")[0];
-
+    let span = document.getElementsByClassName("close")[0];
     span.onclick = function() {
         modal.style.display = "none";
     };
 }
 
 function contactMe() {
-    var links = document.getElementsByClassName("nav-link");
-    var i;
+    let links = document.getElementsByClassName("nav-link");
     if (document.getElementById("contactButton").style.display === 'block') {
         document.getElementById("contactButton").style.display = 'none';
-        for (i = 0; i < links.length; i++) {
+        for (let i = 0; i < links.length; i++) {
             links[i].style.display = "inherit";
         }
     } else {
         document.getElementById("contactButton").style.display = 'block';
-        for (i = 0; i < links.length; i++) {
+        for (let i = 0; i < links.length; i++) {
             links[i].style.display = "none";
         }
     }
 }
 
-window.onload = addContent(fancyText, "Josh McFarlin.");
+window.onload = function(){
+    let myName = document.getElementById('myName');
+    addContent(myName, "Josh McFarlin.");
+};
 
-var typed = new Typed('#typed-strings', {
-    strings: ["Python", "Java", "Swift", "Ionic", "Circuit Design", "CAD Modeling", "Photogrammetry"],
+let typed = new Typed('#typed-strings', {
+    strings: ["Python", "Java", "Swift", "Ionic", "Web Design", "Circuit Design", "CAD Modeling", "Photogrammetry"],
     typeSpeed: 100,
     backSpeed: 60,
     backDelay: 2000,
