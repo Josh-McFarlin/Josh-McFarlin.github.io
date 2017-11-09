@@ -20,14 +20,8 @@ function addContent(element, contentToAdd, callback) {
 function expand(img) {
     let modal = document.getElementById('myModal');
     let modalImg = document.getElementById("modalImg");
-
     modal.style.display = "flex";
     modalImg.src = img.src;
-
-    let span = document.getElementsByClassName("close")[0];
-    span.onclick = function() {
-        modal.style.display = "none";
-    };
 }
 
 function contactMe() {
