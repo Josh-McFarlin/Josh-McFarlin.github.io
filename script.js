@@ -18,13 +18,11 @@ function addContent(element, contentToAdd, callback) {
 }
 
 function expand(img) {
-    let modalClass = document.getElementsByClassName('modal')[0];
     let modal = document.getElementById('myModal');
     let modalImg = document.getElementById("modalImg");
 
-    modal.style.display = "block";
+    modal.style.display = "flex";
     modalImg.src = img.src;
-    //modalClass.style.paddingTop = ((window.innerHeight - modalImg.clientHeight)/2).toString() + "px";
 
     let span = document.getElementsByClassName("close")[0];
     span.onclick = function() {
