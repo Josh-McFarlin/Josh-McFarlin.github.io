@@ -103,4 +103,9 @@
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+}
+
+#content::-webkit-scrollbar {
+    display: none;
 }
