@@ -38,6 +38,24 @@ html, body {
     margin-top: 3vw;
 }
 
+@media (orientation:portrait) {
+    #aboutMe {
+        flex-direction: column;
+    }
+
+    #myPicture {
+        max-height: 25%;
+    }
+
+    #mySkills {
+        max-height: 50%;
+    }
+    
+    .skillList {
+        padding-left: 6vw;
+    }
+}
+
 #myPicture {
     flex: 1;
     display: flex;
