@@ -1,127 +1,83 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Josh McFarlin</title>
-        <meta charset="utf-8">
-        <script type="text/javascript">(new Image()).src="images/atlantablur.jpg";</script>
-        <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-        <link rel="manifest" href="favicons/manifest.json">
-        <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="theme-color" content="#ffffff">
-        <link rel="stylesheet" href="style.css"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script>if (!window.jQuery) document.write('<script src="scripts/jquery-3.2.1.min.js"><\/script>');</script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js"></script>
-        <script>if (!window.jQuery) document.write('<script src="scripts/typed.min.js"><\/script>');</script>
-        <link href="scripts/prism.css" rel="stylesheet" />
-        <script src="scripts/prism.js"></script>
-    </head>
-
-    <body>
-        <div id="startcontainer">
-            <div id="navbar">
-                <ul>
-                    <li>
-                        <h1 onclick="contactMe()" class="nav-link">Contact</h1>
-                        <div id="contactButton" class="contactDropdown">
-                            <h2>jmcfarlin6@gatech.edu</h2>
-                            <span class="close" onclick="contactMe()">&times;</span>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="https://www.dropbox.com/s/8ppqhfdfvedmx8d/JoshuaMcFarlin_Resume.pdf?dl=0" target="_blank" class="nav-link">Resume</a>
-                    </li>
-                </ul>
-            </div>
-
-            <br/>
-
-            <div id="about">
-                <h1 id="intro">Hi, I'm <span id="myName"></span></h1>
-                <img src="images/me.jpg" id="profileimg">
-                <p class="aboutme">I'm a Computer Science major at the Georgia Institute of Technology.</p>
-                <p class="aboutme">My interests include programming, circuit design, and CAD modeling.</p>
-            </div>
-
-            <span id="downarrow">&#8964;</span>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Josh McFarlin</title>
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="static/css/menu.css">
+</head>
+<body>
+<div id="container">
+    <div id="menu">
+        <div id="myInitials">JM</div>
+        <div id="pageButtonContainer">
+            <a href="./index.html"><p class="pageButton">Home</p></a>
+            <a href="./aboutme.html"><p class="pageButton">About Me</p></a>
+            <a href="./portfolio.html"><p class="pageButton">Portfolio</p></a>
+            <a href="./blog.html"><p class="pageButton">Blog</p></a>
+            <a href="https://www.dropbox.com/s/8ppqhfdfvedmx8d/JoshuaMcFarlin_Resume.pdf?dl=0"><p class="pageButton">Resume</p></a>
+            <a href="./contactme.html"><p class="pageButton">Contact Me</p></a>
         </div>
-        <br>
-        <div class="bash">
-            <p id="bashheader">Josh-McFarlin.github.io -bash ― 60×20</p>
-            <p id="bashtext">skills$ <span id="typed-strings"></span></p>
-        </div>
-        <br>
 
-        <h1 id="projecttitle">Projects</h1>
-        <div id="projectlist">
-            <div class="project">
-                <h2>Programming Based 3D Modeling iOS App</h2>
-                <div class="sidebyside">
-                    <div class="sideimg">
-                        <img class="expandable" src="images/ProgrammingAppEditor.png" onclick="expand(this)">
-                    </div>
-                    <div class="sideimg">
-                        <img class="expandable" src="images/ProgrammingAppViewer.png" onclick="expand(this)">
-                    </div>
-                    <div class="sideimg">
-                        <img class="expandable" src="images/ProgrammingAppViewer.png" onclick="expand(this)">
-                    </div>
+        <div id="socialButtonContainer">
+            <div class="socialButton">
+                <a href="https://www.linkedin.com/in/joshmcfarlin/"><img src="static/images/linkedin.png"></a>
+            </div>
+            <div class="socialButton">
+                <a href="http://github.com/Josh-McFarlin/"><img src="static/images/github.png"></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="myName">
+            <h1>Hi, I'm Josh McFarlin</h1>
+            <p>I'm a computer science major at the Georgia Institute of Technology in Atlanta, Georgia.</p>
+        </div>
+        <div id="aboutMe">
+            <div id="myPicture">
+                <img id="pictureOfMe" src="static/images/me.JPG">
+            </div>
+            <div id="mySkills">
+                <h1 id="title" class="centerText">Skills</h1>
+                <div class="category">
+                    <h3>Programming Languages</h3>
+                    <ul class="skillList">
+                        <li>Python (2 & 3)</li>
+                        <li>Java</li>
+                        <li>JavaScript</li>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>Swift</li>
+                    </ul>
                 </div>
-                <h4>Written in WebStorm, hosted on Github Pages.</h4>
-                <h4><a href="https://github.com/Josh-McFarlin/Geometry-Code-App">View project on GitHub</a></h4>
-            </div>
-
-            <div class="project">
-                <h2>This Website</h2>
-                <pre data-src="index.html" style="height: 600px;"></pre>
-                <h4>Created in Swift using XCode, this app uses programming syntax to create 3D models from geometry.</h4>
-                <h4><a href="https://github.com/Josh-McFarlin/Josh-McFarlin.github.io">View full source on GitHub</a></h4>
-            </div>
-
-            <div class="project">
-                <h2>Multi-use Hexacopter</h2>
-                <img class="expandable" src="images/hex1.jpg" onclick="expand(this)">
-                <img class="expandable" src="images/hex2.jpg" onclick="expand(this)">
-                <h4>Designed and built a 32 inch hexacopter with a long-range flight capability while utilizing heavy accessories and expansion platforms.</h4>
-                <p>Intended uses once development is complete include:</p>
-                <ul>
-                    <li>
-                        <p>Search and rescue operations by first responders</p>
-                    </li>
-                    <li>
-                        <p>3D imaging of structures and landscapes for structural analysis</p>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="project">
-                <h2>3D Scanning of Brains and Soft Tissue</h2>
-                <img class="expandable" src="images/brain1.jpg" onclick="expand(this)">
-                <img class="expandable" src="images/brain2.jpg" onclick="expand(this)">
-                <img class="expandable" src="images/brain3.jpg" onclick="expand(this)">
-                <img class="expandable" src="images/brain4.jpg" onclick="expand(this)">
-                <img class="expandable" src="images/brain5.jpg" onclick="expand(this)">
-                <img class="expandable" src="images/brain6.jpg" onclick="expand(this)">
-                <h3>Conducted at the Evolutionary Neuroscience Laboratory at George Washington University</h3>
-                <h4>Developed a procedure for creating 3D models of brains and soft tissue using photogrammetry.</h4>
-                <h4>Documented findings in a research paper now used by graduate and post-graduate students to aid in the preservation of specimen and research.</h4>
-                <h4><a href="https://www.dropbox.com/s/rsf52b8uqxovtaw/Joshua%20T%20McFarlin_GW%20Internship%20Research%20Paper.pdf?dl=0" target="_blank">View research paper</a></h4>
+                <div class="category">
+                    <h3>Frameworks</h3>
+                    <ul class="skillList">
+                        <li>Ionic</li>
+                        <li>Django</li>
+                        <li>Flask</li>
+                    </ul>
+                </div>
+                <div class="category">
+                    <h3>Tools</h3>
+                    <ul class="skillList">
+                        <li>Firebase</li>
+                        <li>Git</li>
+                        <li>Github</li>
+                    </ul>
+                </div>
+                <div class="category">
+                    <h3>IDEs</h3>
+                    <ul class="skillList">
+                        <li>Intellij</li>
+                        <li>PyCharm</li>
+                        <li>WebStorm</li>
+                    </ul>
+                </div>
             </div>
         </div>
-
-        <div id="links">
-            <p>Check out my <a href="http://github.com/Josh-McFarlin">GitHub</a> and <a href="https://www.linkedin.com/in/josh-mcfarlin-0776a914b/">LinkedIn</a>.</p>
-        </div>
-
-        <div id="myModal" class="modal">
-            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-            <div id="imgHolder">
-                <img class="modal-content" src="" id="modalImg">
-            </div>
-        </div>
-
-        <script src="script.js"></script>
-    </body>
+    </div>
+</div>
+</body>
 </html>

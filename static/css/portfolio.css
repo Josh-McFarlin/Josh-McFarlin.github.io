@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Work+Sans:100,200,300,400,500,600,700,800,900');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #0f3443;
+    background: linear-gradient(120deg, #0f3443 0%, #82d7c7 100%) no-repeat fixed;
+    font-family: 'Work Sans', sans-serif;
+    color: white;
+    font-weight: 200 !important;
+}
+
+#projectHolder {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.projectRow {
+    display: flex;
+    flex-direction: column;
+}
+
+.projectRowProjects {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    -webkit-flex-flow: row;
+    justify-content: space-around;
+}
+
+.projectRowProjects .project {
+    margin: 5px 5px 5px 0;
+    text-align: center;
+    flex: 1 0 0;
+    min-width: 1.5em;
+    cursor: pointer;
+    position: relative;
+    border-radius: 0.5vw;
+}
+
+.projectRowProjects .project:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+    float: left;
+}
+
+.projectRowProjects .project:after {
+    content:'';
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    border-bottom: solid 2.75vw #999B81;
+    border-left: solid 2.5vw transparent;
+    border-right: solid 2.5vw transparent;
+    z-index: 1;
+}
+
+.hide-before:before, .hide-after:after {
+    display: none;
+}
+
+.projectRowProjects .project:hover .titleDiv {
+    background-color: rgba(0, 0, 0, 0.5);
+    font-weight: 300;
+}
+
+.projectRowProjects .project .titleDiv {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 0.5vw 0.5vw 0 0;
+    height: calc(2.5vw + 3.5vh);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.projectRowProjects .project .titleDiv p {
+    font-size: calc(0.25vw + 2vh);
+    margin: 0;
+    display: inline;
+    flex: 1;
+    line-height: calc(0.5vw + 2vh);
+}
+
+.expandingDiv {
+    display: none;
+    flex-direction: column;
+    padding: 0 1vw;
+    margin-top: 2.5vw;
+    align-items: flex-start;
+    background: #999B81;
+    z-index: 2;
+    border-radius: 0.5vw;
+    height: calc(15vw + 20vh);
+}
+
+.expandingDiv .title {
+    color: white;
+    flex: 1;
+}
+
+.expandingDiv .descImg {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-evenly;
+    margin: 1vw 0;
+    width: 100%;
+}
+
+@media (orientation:portrait) {
+    .expandingDiv .descImg {
+        flex-direction: column;
+    }
+}
+
+.expandingDiv .descImg .description {
+    color: white;
+    flex: 1;
+    margin: 0;
+}
+
+.expandingDiv .descImg .image {
+    color: white;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.expandingDiv .descImg .image img {
+    min-height: 100%;
+    height: 0;
+}
+
+.titleCloseDiv {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.closeElem {
+  margin: 0;
+  font-size: calc(2vw + 1vh);
+  color: white;
+  font-weight: 300;
+}
+
+.expandingDivTitle {
+  margin: 0;
+  font-size: calc(2vw + 1vh);
+  font-weight: 400;
+}
+
+.closeDiv {
+    cursor: pointer;
+}
+
+.closeDiv:hover {
+    align-self: flex-end;
+    animation: 3s infinite hoverOpacity;
+}
+
+@keyframes hoverOpacity {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.expandingDivDesc {
+  font-size: calc(1.125vw + 0.75vh);
+  margin: 0;
+}

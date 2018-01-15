@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Work+Sans:100,200,300,400,500,600,700,800,900');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #0f3443;
+    background: linear-gradient(120deg, #0f3443 0%, #82d7c7 100%) no-repeat fixed;
+    font-family: 'Work Sans', sans-serif;
+    color: white;
+}
+
+#myName h1 {
+    font-size: 6.5vw;
+    font-weight: 300;
+    margin: 0;
+}
+
+#myName p {
+    font-size: 1.8vw;
+    font-weight: 200;
+    margin: 0;
+}
+
+@media (orientation:portrait) {
+    #myName h1 {
+        font-size: 7vw;
+    }
+
+    #myName p {
+        font-size: 3vw;
+    }
+}
+
+#aboutMe {
+    display: flex;
+    align-items: stretch;
+    margin-top: 3vw;
+}
+
+#myPicture {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+#myPicture img {
+    margin: auto;
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+#mySkills {
+    flex: 1;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2vw;
+}
+
+#mySkills h1, #mySkills h2, #mySkills h3, #mySkills p {
+    margin: 0;
+}
+
+#mySkills h1 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 3.5vw;
+}
+
+#mySkills h3 {
+    font-weight: 300;
+    font-size: 2vw;
+}
+
+.skillList {
+    margin: 0;
+}
+
+#mySkills li {
+    font-weight: 200;
+    font-size: 1.5vw;
+}
+
+@media (orientation:portrait) {
+    #mySkills h1 {
+        font-size: 4vw !important;
+    }
+
+    #mySkills h3 {
+        font-size: 3vw !important;
+    }
+
+    #mySkills li {
+        font-size: 3vw !important;
+    }
+}

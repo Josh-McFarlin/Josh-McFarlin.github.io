@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Work+Sans:100,200,300,400,500,600,700,800,900');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #0f3443;
+    background: linear-gradient(120deg, #0f3443 0%, #82d7c7 100%) no-repeat fixed;
+    font-family: 'Work Sans', sans-serif;
+    color: white;
+    font-weight: 200 !important;
+}
+
+#content h1 {
+    font-size: calc(3vw + 3vh);
+    font-weight: 200;
+    margin: 1vh 0 3vh 0;
+    border-bottom: 2px solid;
+}
+
+#content a {
+    color: white;
+    text-decoration: none;
+}
+
+.method .title {
+    font-size: calc(2vw + 2vh);
+}
+
+.method .info {
+    font-size: calc(1.5vw + 1.5vh);
+    text-indent: 5vw;
+}
+
+.method {
+    margin-bottom: 5vh;
+}
