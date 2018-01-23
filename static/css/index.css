@@ -10,6 +10,39 @@ html, body {
     color: white;
 }
 
+.outer-flex {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:0;
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+}
+
+.flex {
+    display: flex;
+    flex: 9;
+    flex-direction: column;
+    height: 100%;
+    margin-left: 1vw;
+}
+
+#imageName {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    height: 100%;
+    justify-content: stretch;
+}
+
+@media (orientation:portrait) {
+    #imageName {
+        flex-direction: column;
+    }
+}
+
 #myName h1 {
     font-size: 6.5vw;
     font-weight: 300;
@@ -22,59 +55,37 @@ html, body {
     margin: 0;
 }
 
-@media (orientation:portrait) {
-    #myName h1 {
-        font-size: 7vw;
-    }
-
-    #myName p {
-        font-size: 3vw;
-    }
-}
-
-#aboutMe {
+#myPicture {
+    flex: 2;
     display: flex;
-    align-items: stretch;
-    margin-top: 3vw;
+    justify-content: center;
+}
+
+#pictureOfMe {
+    max-width: 25vw;
+    border-radius: 50%;
+    width: 100%;
+    margin: auto;
 }
 
 @media (orientation:portrait) {
-    #aboutMe {
-        flex-direction: column;
-    }
-
-    #myPicture {
-        max-height: 25%;
+    #pictureOfMe {
+        max-width: none;
+        max-height: 30vh;
+        width: inherit;
+        height: 100%;
     }
 
     #mySkills {
-        max-height: 50%;
+        justify-content: flex-start !important;
     }
-    
-    .skillList {
-        padding-left: 6vw;
-    }
-}
-
-#myPicture {
-    flex: 1;
-    display: flex;
-    overflow: hidden;
-}
-
-#myPicture img {
-    margin: auto;
-    max-height: 100%;
-    max-width: 100%;
-    border-radius: 50%;
 }
 
 #mySkills {
-    flex: 1;
+    flex: 3;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    margin-left: 2vw;
 }
 
 #mySkills h1, #mySkills h2, #mySkills h3, #mySkills p {
@@ -92,13 +103,13 @@ html, body {
     font-size: 2vw;
 }
 
-.skillList {
-    margin: 0;
-}
-
 #mySkills li {
     font-weight: 200;
     font-size: 1.5vw;
+}
+
+.skillList {
+    margin: 0;
 }
 
 @media (orientation:portrait) {
