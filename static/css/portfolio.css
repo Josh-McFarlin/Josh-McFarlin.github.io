@@ -34,13 +34,14 @@ html, body {
 }
 
 .projectRowProjects .project {
-    margin: 5px 5px 5px 0;
+    margin: 5px 0 5px 0;
     text-align: center;
     flex: 1 0 0;
     min-width: 1.5em;
     cursor: pointer;
     position: relative;
     border-radius: 0.5vw;
+    max-width: 25%;
 }
 
 .projectRowProjects .project:before {
@@ -63,6 +64,10 @@ html, body {
     border-left: solid 2.5vw transparent;
     border-right: solid 2.5vw transparent;
     z-index: 1;
+}
+
+.projectRowProjects .project:not(:last-child) {
+    margin-right: 5px;
 }
 
 .hide-before:before, .hide-after:after {
@@ -152,16 +157,16 @@ html, body {
 }
 
 .closeElem {
-  margin: 0;
-  font-size: calc(2vw + 1vh);
-  color: white;
-  font-weight: 300;
+    margin: 0;
+    font-size: calc(2vw + 1vh);
+    color: white;
+    font-weight: 300;
 }
 
 .expandingDivTitle {
-  margin: 0;
-  font-size: calc(2vw + 1vh);
-  font-weight: 400;
+    margin: 0;
+    font-size: calc(2vw + 1vh);
+    font-weight: 400;
 }
 
 .closeDiv {
@@ -186,6 +191,6 @@ html, body {
 }
 
 .expandingDivDesc {
-  font-size: calc(1.125vw + 0.75vh);
-  margin: 0;
+    font-size: calc(1.125vw + 0.75vh);
+    margin: 0;
 }
