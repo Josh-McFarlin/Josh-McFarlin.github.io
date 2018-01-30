@@ -77,11 +77,16 @@ class ProjectHolder {
 
         expandingDiv.appendChild(descImg);
 
+        let linkElem = document.createElement('a');
+        linkElem.setAttribute("class", "expandingDivLink");
+        linkElem.appendChild(document.createTextNode("Link"));
+        descDiv.appendChild(linkElem);
+
         this.htmlSelf.appendChild(row);
         this.rows++;
     }
 
-    makeProject(title, description, imageSource) {
+    makeProject(title, description, imageSource, linkText, link) {
         if (this.lastRowProjects >= this.projectPerRow) {
             this.makeRow();
             this.lastRowProjects = 0;
@@ -112,6 +117,9 @@ class ProjectHolder {
             document.getElementsByClassName('expandingDivTitle').item(projectDiv.dataset.row).innerHTML = title;
             document.getElementsByClassName('expandingDivDesc').item(projectDiv.dataset.row).innerHTML = description;
             document.getElementsByClassName('expandingDivImg').item(projectDiv.dataset.row).src = imageSource;
+            document.getElementsByClassName('expandingDivLink').item(projectDiv.dataset.row).innerHTML = linkText;
+            document.getElementsByClassName('expandingDivLink').item(projectDiv.dataset.row).href = link;
+            projectDiv.scrollIntoView(true);
         };
 
         let titleElem = document.createElement('p');
@@ -129,8 +137,8 @@ class ProjectHolder {
 $(document).ready(function() {
     let projectHolder = new ProjectHolder();
 
-    console.log(projectsJSON);
     for (let i = 0; i < projectsJSON.length; i++) {
-        projectHolder.makeProject(projectsJSON[i].Title, projectsJSON[i].Description, projectsJSON[i].Images[0]);
+        projectHolder.makeProject(projectsJSON[i].Title, projectsJSON[i].Description, projectsJSON[i].Images[0],
+            projectsJSON[i].Link.Text, projectsJSON[i].Link.URL);
     }
 });

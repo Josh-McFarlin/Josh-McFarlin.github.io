@@ -27,6 +27,7 @@ html, body {
     flex-direction: column;
     height: 100%;
     margin-left: 1vw;
+    overflow-y: auto;
 }
 
 #imageName {
