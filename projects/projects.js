@@ -78,7 +78,7 @@ let projectsJSON = [
         ],
         "Link": {
             "Text": "View Source on GitHub",
-            "URL": "https://github.com/Josh-McFarlin/Geometry-Code-App"
+            "URL": "https://github.com/Josh-McFarlin/Geometry-Code"
         }
     },
     {
