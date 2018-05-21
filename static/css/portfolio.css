@@ -39,7 +39,6 @@ html, body {
     cursor: pointer;
     position: relative;
     border-radius: 0.5vw;
-    max-width: 25%;
 }
 
 .projectRowProjects .project:before {
