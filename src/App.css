@@ -1,0 +1,12 @@
+html {
+    height: 100vh;
+    overflow: hidden !important;
+}
+
+body {
+    margin: 0;
+}
+
+img {
+    margin: 0 !important;
+}
