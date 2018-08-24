@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,KACI,aACA,yBAA4B,CAGhC,KACI,QAAU,CAGd,IACI,kBAAqB","file":"static/css/main.c30f41d4.css","sourcesContent":["html {\n    height: 100vh;\n    overflow: hidden !important;\n}\n\nbody {\n    margin: 0;\n}\n\nimg {\n    margin: 0 !important;\n}\n\n\n// WEBPACK FOOTER //\n// ./src/App.css"],"sourceRoot":""}
