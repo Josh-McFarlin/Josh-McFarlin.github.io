@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Josh McFarlin <jmcfarlin6@gatech.edu>",
   "private": true,
-  "homepage": "https://github.com/Josh-McFarlin/Josh-McFarlin.github.io",
+  "homepage": "https://josh-mcfarlin.github.io/",
   "dependencies": {
     "@material-ui/core": "^1.5.1",
     "@material-ui/icons": "^2.0.3",
@@ -20,7 +20,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "node gh-pages.js"
   },
   "devDependencies": {
     "gh-pages": "^1.2.0"
