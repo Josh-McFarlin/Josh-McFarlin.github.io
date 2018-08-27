@@ -8,6 +8,13 @@ import List from '@material-ui/core/List';
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Slide from '@material-ui/core/Slide';
+import Hidden from '@material-ui/core/Hidden';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+
+import CloseIcon from '@material-ui/icons/Close';
 
 
 const styles = {
@@ -22,6 +29,12 @@ const styles = {
     button: {
         padding: '10px 20px',
         margin: 15
+    },
+    appBar: {
+        position: 'relative',
+    },
+    flex: {
+        flex: 1,
     }
 };
 
@@ -31,46 +44,86 @@ function Transition(props) {
 
 class ContactDialog extends React.Component {
     render() {
-        const { classes } = this.props;
+        const { classes, open, handleClose, contact } = this.props;
 
         return (
-            <Dialog
-                open={this.props.open}
-                TransitionComponent={Transition}
-                keepMounted
-                onClose={this.props.handleClose}
-                fullWidth
-            >
-                <DialogTitle>Contact Me</DialogTitle>
-                <div>
-                    <List>
-                        {
-                            this.props.contact.map((item) =>
-                                <ListItem
-                                    button
-                                    key={item.type}
-                                    component="a"
-                                    href={item.link}
-                                >
-                                    <ListItemText
-                                        primary={item.type}
-                                        secondary={item.info}
-                                    />
-                                </ListItem>
-                            )
-                        }
-                    </List>
+            <div>
+                <Hidden only={['sm', 'md', 'lg', 'xl']}>
+                    <Dialog
+                        fullScreen
+                        open={open}
+                        onClose={handleClose}
+                        TransitionComponent={Transition}
+                    >
+                        <AppBar
+                            className={classes.appBar}
+                        >
+                            <Toolbar>
+                                <Typography variant="title" color="inherit" className={classes.flex}>Contact Me</Typography>
+                                <IconButton color="inherit" onClick={handleClose} aria-label="Close">
+                                    <CloseIcon />
+                                </IconButton>
+                            </Toolbar>
+                        </AppBar>
+                        <List>
+                            {
+                                contact.map((item) =>
+                                    <ListItem
+                                        button
+                                        key={item.type}
+                                        component="a"
+                                        href={item.link}
+                                    >
+                                        <ListItemText
+                                            primary={item.type}
+                                            secondary={item.info}
+                                        />
+                                    </ListItem>
+                                )
+                            }
+                        </List>
+                    </Dialog>
+                </Hidden>
+                <Hidden only={['xs']}>
+                    <Dialog
+                        open={open}
+                        TransitionComponent={Transition}
+                        keepMounted
+                        onClose={handleClose}
+                        fullWidth
+                    >
+                        <DialogTitle>Contact Me</DialogTitle>
+                        <div>
+                            <List>
+                                {
+                                    contact.map((item) =>
+                                        <ListItem
+                                            button
+                                            key={item.type}
+                                            component="a"
+                                            href={item.link}
+                                        >
+                                            <ListItemText
+                                                primary={item.type}
+                                                secondary={item.info}
+                                            />
+                                        </ListItem>
+                                    )
+                                }
+                            </List>
 
-                    <div className={classes.buttonHolder}>
-                        <Button
-                            size="small"
-                            color="primary"
-                            onClick={this.props.handleClose}
-                            className={classes.button}
-                        >Close</Button>
-                    </div>
-                </div>
-            </Dialog>
+                            <div className={classes.buttonHolder}>
+                                <Button
+                                    size="small"
+                                    color="primary"
+                                    onClick={handleClose}
+                                    className={classes.button}
+                                >Close</Button>
+                            </div>
+                        </div>
+                    </Dialog>
+                </Hidden>
+            </div>
         );
     }
 }

@@ -1,48 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import { School, Computer } from '@material-ui/icons';
 
 import ColoredCard from '../components/ColoredCard';
+import Skill from '../components/Skill';
+
+import { education, skills } from '../data';
 
 
-const education = [
-    {
-        name: "Georgia Institute of Technology",
-        info: "Currently pursuing a Bachelor's Degree in Computer Science with a focus in Intelligence and Information Internetworks.",
-        startDate: "2017",
-        endDate: "2021"
-    },
-    {
-        name: "Creekview High School",
-        info: "Graduated with a High School Diploma.",
-        startDate: "2013",
-        endDate: "2017"
+const styles = theme => ({
+    container: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap'
     }
-];
+});
 
-const skills = [
-    {
-        type: "Languages",
-        skills: ["Java", "Python", "JavaScript (ES6)", "JSX", "HTML", "CSS", "Swift"]
-    },
-    {
-        type: "Libraries and Frameworks",
-        skills: ["Node.js", "ReactJS", "Ionic", "jQuery", "Django", "Flask"]
-    },
-    {
-        type: "DevOps",
-        skills: ["GitHub", "Docker", "Firebase", "Google Cloud", "Amazon AWS", "npm", "Intellij IDEA", "PyCharm", "WebStorm"]
-    }
-];
-
-export default class IndexPage extends React.Component {
+class IndexPage extends React.Component {
     render() {
+        const { classes } = this.props;
+
         return (
             <Grid container spacing={24}>
                 <Grid item xs={12}>
-                    <ColoredCard icon={<School/>} title="Education">
+                    <ColoredCard
+                        color="primary"
+                        icon={<School/>}
+                        title="Education"
+                        padding
+                    >
                         {
                             education.map((item, index) =>
                                 <div
@@ -59,7 +50,12 @@ export default class IndexPage extends React.Component {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <ColoredCard icon={<Computer/>} title="Skills">
+                    <ColoredCard
+                        color="primary"
+                        icon={<Computer/>}
+                        title="Skills"
+                        padding
+                    >
                         {
                             skills.map((item, index) =>
                                 <div
@@ -67,13 +63,13 @@ export default class IndexPage extends React.Component {
                                     style={{ marginBottom: index === education.length - 1 ? 0 : 30 }}
                                 >
                                     <Typography variant="title" gutterBottom>{item.type}</Typography>
-                                    <ul>
+                                    <div className={classes.container}>
                                         {
                                             item.skills.map((item) =>
-                                                <li key={item}><Typography variant="subheading">{item}</Typography></li>
+                                                <Skill color="primary" title={item} key={item} />
                                             )
                                         }
-                                    </ul>
+                                    </div>
                                 </div>
                             )
                         }
@@ -83,3 +79,9 @@ export default class IndexPage extends React.Component {
         );
     }
 }
+
+IndexPage.propTypes = {
+    classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles, { withTheme: true })(IndexPage);

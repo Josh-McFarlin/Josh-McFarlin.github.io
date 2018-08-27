@@ -16,6 +16,7 @@ import { Link, withRouter } from "react-router-dom";
 
 import ContactDialog from '../components/ContactDialog';
 
+
 const drawerWidth = 350;
 
 const styles = theme => ({
@@ -73,10 +74,14 @@ const styles = theme => ({
     item: {
         textAlign: 'center'
     },
+    info: {
+        textAlign: 'center',
+        marginBottom: 20
+    },
     imageHolder: {
         width: '100%',
         height: 0,
-        maxHeight: '30%',
+        maxHeight: drawerWidth,
         flex: 1,
         display: 'flex',
         flexDirection: 'column',
@@ -128,53 +133,64 @@ class Sidebar extends React.Component {
     };
 
     render() {
-        const { classes, theme } = this.props;
+        const { classes, theme, links, image, name, occupation, contact, children } = this.props;
 
         const drawer = (
             <List disablePadding className={classes.sidebar}>
                 {
-                    this.props.image ? (
+                    image &&
                         <div
                             className={classes.imageHolder}
                             style={{
-                                backgroundImage: "url('" + this.props.image + "')"
+                                backgroundImage: "url('" + image + "')"
                             }}
-                        >
-                            <div className={ classes.imageText }>
-                                <Typography variant="headline" className={classes.whiteText}>{this.props.name}</Typography>
-                                <Typography variant="subheading" className={classes.whiteText}>{this.props.occupation}</Typography>
-                            </div>
-                        </div>
-                    ) : (
-                        <div>
-                            <Typography variant="headline" className={classes.whiteText}>{this.props.name}</Typography>
-                            <Typography variant="subheading" className={classes.whiteText}>{this.props.occupation}</Typography>
-                        </div>
-                    )
+                        />
 
                 }
+                <div className={classes.info}>
+                    <Typography variant="headline" className={classes.whiteText}>{name}</Typography>
+                    <Typography variant="subheading" className={classes.whiteText}>{occupation}</Typography>
+                </div>
+
                 <div>
                 {
-                    this.props.links.map((item) =>
-                        <Link
-                            to={item.link}
-                            key={item.title}
-                            onClick={this.handleDrawerToggle}
-                            className={classes.link}
-                        >
-                            <ListItem button className={classes.item}>
-                                <ListItemText
-                                    primary={item.title}
-                                    primaryTypographyProps={{
-                                        style: {color: 'white'}
-                                    }}
-                                />
-                            </ListItem>
-                        </Link>
+                    links.map((item) =>
+                        item.link.startsWith("http") ?
+                            (
+                                <ListItem
+                                    button
+                                    className={classes.item}
+                                    component="a" href={item.link}
+                                    key={item.title}
+                                >
+                                    <ListItemText
+                                        primary={item.title}
+                                        primaryTypographyProps={{
+                                            style: {color: 'white'}
+                                        }}
+                                    />
+                                </ListItem>
+                            ) : (
+                                <Link
+                                    to={item.link}
+                                    onClick={this.handleDrawerToggle}
+                                    className={classes.link}
+                                    key={item.title}
+                                >
+                                    <ListItem button className={classes.item}>
+                                        <ListItemText
+                                            primary={item.title}
+                                            primaryTypographyProps={{
+                                                style: {color: 'white'}
+                                            }}
+                                        />
+                                    </ListItem>
+                                </Link>
+                            )
                     )
                 }
                 {
-                    this.props.contact &&
+                    contact &&
                         <ListItem
                             button
                             onClick={this.handleContactOpen}
@@ -191,8 +207,8 @@ class Sidebar extends React.Component {
                 }
                 </div>
                 {
-                    this.props.contact &&
-                        <ContactDialog open={this.state.contactOpen} contact={this.props.contact} handleClose={this.handleContactClose}/>
+                    contact &&
+                        <ContactDialog open={this.state.contactOpen} contact={contact} handleClose={this.handleContactClose}/>
                 }
             </List>
         );
@@ -261,7 +277,7 @@ class Sidebar extends React.Component {
                     </Drawer>
                 </Hidden>
                 <div className={classes.content}>
-                    { this.props.children }
+                    { children }
                 </div>
             </div>
         );
@@ -275,7 +291,8 @@ Sidebar.propTypes = {
     image: PropTypes.string,
     name: PropTypes.string,
     occupation: PropTypes.string,
-    contact: PropTypes.array
+    contact: PropTypes.array,
+    children: PropTypes.element
 };
 
 export default withStyles(styles, { withTheme: true })(Sidebar);

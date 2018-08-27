@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
+import { capitalize } from "@material-ui/core/utils/helpers";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -23,32 +25,60 @@ const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
         padding: '16px 24px',
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+        background: theme.palette.color
+    },
+    text: {
+        color: 'inherit'
     },
     icon: {
         width: 'auto',
         height: '100%',
         marginRight: 24
-    }
+    },
+    colorPrimary: {
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.primary.contrastText,
+    },
+    colorSecondary: {
+        backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.secondary.contrastText,
+    },
+    colorError: {
+        backgroundColor: theme.palette.error.main,
+        color: theme.palette.error.contrastText,
+    },
 });
 
 class ColoredCard extends React.Component {
     render() {
-        const { classes } = this.props;
+        const { classes, color, padding, icon, title, children, ...other } = this.props;
+
+        const headerClassName = classNames(classes.header, {
+            [classes[`color${capitalize(color)}`]]: color !== 'default',
+        });
 
         return (
-            <Card className={classes.card}>
-                <div className={classes.header}>
+            <Card {...other}>
+                <div className={headerClassName}>
                     {
-                        this.props.icon &&
-                            React.cloneElement(this.props.icon, {className: classes.icon})
+                        icon &&
+                            React.cloneElement(icon, {className: classes.icon})
                     }
-                    <Typography variant="headline">{this.props.title}</Typography>
+                    <Typography variant="headline" className={classes.text}>{title}</Typography>
                 </div>
 
-                <CardContent>
-                    { this.props.children }
-                </CardContent>
+                {
+                    padding ? (
+                        <CardContent>
+                            { children }
+                        </CardContent>
+                    ) : (
+                        <div>
+                            { children }
+                        </div>
+                    )
+                }
+
             </Card>
         );
     }
@@ -56,6 +86,8 @@ class ColoredCard extends React.Component {
 
 ColoredCard.propTypes = {
     classes: PropTypes.object.isRequired,
+    color: PropTypes.oneOf(['default', 'primary', 'secondary', 'error']).isRequired,
+    padding: PropTypes.bool,
     icon: PropTypes.element,
     title: PropTypes.string.isRequired,
     children: PropTypes.any.isRequired
