@@ -5,7 +5,8 @@ import { Person, Folder, Assignment } from '@material-ui/icons';
 export const personal = {
     name: "Josh McFarlin",
     occupation: "Software Engineer",
-    image: "/static/images/Me.jpg"
+    image: "/static/images/Me.jpg",
+    about: "I am currently a second-year at the Georgia Institute of Technology, pursuing a bachelor's in Computer Science. I began programming at a young age, and I love creating programs and websites to simplify user experience. I have experience with full-stack programming, and efficiency and design are very important principles to me."
 };
 
 export const links = [
@@ -27,11 +28,6 @@ export const links = [
 ];
 
 export const contact = [
-    {
-        type: "Phone",
-        info: "770-265-2664",
-        link: "tel:+1-770-265-2664"
-    },
     {
         type: "Email",
         info: "jmcfarlin6@gatech.edu",
@@ -62,7 +58,7 @@ export const education = [
 export const skills = [
     {
         type: "Languages",
-        skills: ["Java", "Python", "JavaScript (ES6)", "JSX", "HTML", "CSS", "Swift"]
+        skills: ["Java", "Python", "JavaScript (ES6)", "HTML", "CSS", "Swift"]
     },
     {
         type: "Libraries and Frameworks",
@@ -74,9 +70,12 @@ export const skills = [
     }
 ];
 
-export const projects = [
+export const projectTags = ["All", "ReactJS", "Java", "Python", "HTML", "JavaScript", "CSS", "Swift", "Flask", "JavaFX", "jQuery", "Firebase"];
+
+export const projectsJSON = [
     {
         "title": "AskBuzz",
+        "tags": ["Python", "Flask"],
         "description": "AskBuzz is an Alexa skill for use by Georgia Tech students. This app was written by Josh McFarlin, Ryan Miles, and Dylan Nektalov during HackGT 2017. This skill offers information about Georgia Tech history, dining options, bus availability, campus news and events, Georgia Tech social media posts, WREK radio, and more.",
         "images": [
             'Dot.jpg'
@@ -88,6 +87,7 @@ export const projects = [
     },
     {
         "title": "AstroIDE",
+        "tags": ["Java", "JavaFX"],
         "description": "AstroIDE is an IDE with syntax highlighting support for over 110 languages. Written in Java utilizing JavaFX and Ace.js for syntax highlighting. This is an ongoing project which began in December 2017 that started as a way to develop my skills in Java, JavaFX, and JavaScript simultaneously.",
         "images": [
             'AstroIDEMain.jpg',
@@ -100,6 +100,7 @@ export const projects = [
     },
     {
         "title": "CryptoCompareAPI",
+        "tags": ["Java"],
         "description": "A Java implementation of the CryptoCompare API service, which provides access to cryptocurrency information about coins, exchanges, historic data, market data, mining equipment and contracts, news, and social networks.",
         "images": [
             'CryptoCompare.jpg'
@@ -111,6 +112,7 @@ export const projects = [
     },
     {
         "title": "GraffitiMap",
+        "tags": ["HTML", "JavaScript", "CSS", "jQuery", "Firebase"],
         "description": "GraffitiMap is a website that allows users to view a map of locations where doing graffiti is legal, and submit their own graffiti spots for others to find. The website is written in JavaScript and JQuery, and utilizes Google's Firebase for location storage and login. This website was created for a group project for English 1101.",
         "images": [
             'GraffitiMapMain.jpg',
@@ -124,7 +126,8 @@ export const projects = [
     },
     {
         "title": "ParkHere",
-        "description": "ParkHere is a Android and web app that creates simple a cloud-based parking system. Similar to Airbnb, ParkHere allows people to create their own parking lots which users can pay for a timed spot. ParkHere was created by Ryan Miles and Josh McFarlin for a hackathon.",
+        "tags": ["HTML", "JavaScript", "CSS", "jQuery", "Firebase", "Java", "Flask"],
+        "description": "ParkHere is an Android and web app that creates simple a cloud-based parking system. Similar to Airbnb, ParkHere allows people to create their own parking lots which users can pay for a timed spot. ParkHere was created by Ryan Miles and Josh McFarlin for a hackathon.",
         "images": [
             'ParkHere.jpg'
         ],
@@ -135,6 +138,7 @@ export const projects = [
     },
     {
         "title": "PyWeatherService",
+        "tags": ["Python"],
         "description": "PyWeatherService is a proof of concept SMS weather information system written in Python 3. Transmitting over SMS instead of data enables access to weather information during moments in which cell networks are strained such as dangerous weather events.",
         "images": [
             'Weather.jpg'
@@ -146,6 +150,7 @@ export const projects = [
     },
     {
         "title": "Geometry Code",
+        "tags": ["Swift"],
         "description": "Geometry Code is an iOS app that uses programming-like syntax to create 3D models from different geometric shapes. Geometry Code has support for seven different 3D geometries along with position and rotation modifiers.",
         "images": [
             'ProgrammingAppViewer.jpg',
@@ -159,6 +164,7 @@ export const projects = [
     },
     {
         "title": "This Website",
+        "tags": ["ReactJS", "HTML", "JavaScript", "CSS"],
         "description": "This website has gone through three major revisions; you are currently looking at the third version of this website, but the previous two can be viewed on my GitHub. The first and second version of this website were created entirely by myself in HTML, CSS, JavaScript, and JQuery. The current version was written in ReactJS and is hosted on Github Pages.",
         "images": [
             'WebStorm.jpg',
@@ -171,6 +177,7 @@ export const projects = [
     },
     {
         "title": "3D Scanning of Brains",
+        "tags": [],
         "description": "Conducted at the Evolutionary Neuroscience Laboratory at George Washington University. Developed a procedure for creating 3D models of brains and soft tissue using photogrammetry. Documented findings in a research paper now used by graduate and post-graduate students to aid in the preservation of specimen and research.",
         "images": [
             'Brain1.jpg',

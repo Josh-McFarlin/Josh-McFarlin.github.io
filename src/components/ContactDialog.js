@@ -67,8 +67,8 @@ class ContactDialog extends React.Component {
                                 contact.map((item) =>
                                     <ListItem
                                         button
+                                        component="a" href={item.link} target="_blank"
                                         key={item.type}
-                                        component="a" href={item.link}
                                     >
                                         <ListItemText
                                             primary={item.type}

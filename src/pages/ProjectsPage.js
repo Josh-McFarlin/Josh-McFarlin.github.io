@@ -4,9 +4,12 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 import Project from '../components/Project';
-import { projects } from '../data';
+import SkillTag from '../components/SkillTag';
+import { projectTags, projectsJSON } from '../data';
 
 
 const styles = theme => ({
@@ -14,11 +17,47 @@ const styles = theme => ({
         width: '100%',
         margin: 0,
         alignContent: 'flex-start'
+    },
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: 12
+    },
+    tags: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap'
     }
 });
 
 class ProjectsPage extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.projects = projectsJSON.map((item) =>
+            <Project
+                title={item.title}
+                image={item.images[0]}
+                description={item.description}
+                url={item.link.url}
+                urlText={item.link.text}
+                tags={item.tags}
+            />
+        );
+
+        this.state = {
+            tags: [],
+            matchingProjects: this.projects
+        };
+
+        this.tagClickHandler = this.tagClickHandler.bind(this);
+    }
+
     createProjects(numCols) {
+        let projects = this.state.matchingProjects;
+
         let splitProjects = [];
         for (let i = 0; i < numCols; i++) {
             splitProjects.push([]);
@@ -33,13 +72,7 @@ class ProjectsPage extends React.Component {
                     zeroMinWidth
                     key={"Project" + i}
                 >
-                    <Project
-                        title={projects[i].title}
-                        image={projects[i].images[0]}
-                        description={projects[i].description}
-                        url={projects[i].link.url}
-                        urlText={projects[i].link.text}
-                    />
+                    { projects[i] }
                 </Grid>
             );
             index = (index + 1) % numCols;
@@ -67,11 +100,55 @@ class ProjectsPage extends React.Component {
         return projectColumns;
     }
 
+    tagClickHandler(tag, e) {
+        e.preventDefault();
+
+        let tags = this.state.tags;
+
+        let newTags;
+
+        if (tags.includes(tag)) {
+            let index = tags.indexOf(tag);
+            tags.splice(index, 1);
+
+            this.setState({
+                tags: tags,
+                matchingProjects: this.projects.filter((x) => tags.every(i => x.props.tags.includes(i)))
+            });
+        } else {
+            newTags = tag === "All" ? [] : this.state.tags.concat([tag]);
+
+            this.setState({
+                tags: newTags,
+                matchingProjects: this.projects.filter((x) => newTags.every(i => x.props.tags.includes(i)))
+            });
+        }
+    }
+
     render() {
         const { classes } = this.props;
 
         return (
             <div>
+                <Paper>
+                    <div className={classes.container}>
+                        <Typography variant="title" gutterBottom>Filter Projects By Tags</Typography>
+                        <div className={classes.tags}>
+                            {
+                                projectTags.map((item) =>
+                                    <SkillTag
+                                        color="secondary"
+                                        title={item}
+                                        clickHandler={this.tagClickHandler.bind(this, item)}
+                                        selected={this.state.tags.includes(item)}
+                                        key={item}
+                                    />
+                                )
+                            }
+                        </div>
+                    </div>
+                </Paper>
+
                 <Hidden smUp>
                     <Grid container className={classes.grid}>
                         { this.createProjects(1) }

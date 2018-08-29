@@ -18,6 +18,7 @@ import Typography from '@material-ui/core/Typography';
 import ContactMail from '@material-ui/icons/ContactMail';
 
 import ContactDialog from '../components/ContactDialog';
+import ShadeSwitch from '../components/ShadeSwitch';
 
 import { personal, links } from "../data";
 
@@ -81,12 +82,26 @@ const styles = theme => ({
         pointerEvents: 'auto',
         color: 'initial'
     },
+    flexEnd: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'flex-end'
+    },
+    positionBR: {
+        position: 'absolute',
+        bottom: 0,
+        right: 0
+    },
+    allowPointer: {
+        pointerEvents: 'auto'
+    },
     content: {
+        width: '100%',
+        height: '100%',
         backgroundColor: theme.palette.background.default,
         overflowX: 'hidden',
-        overflowY: 'auto',
-        WebkitOverflowScrolling: 'touch',
-        height: '100%'
+        overflowY: 'scroll',
+        WebkitOverflowScrolling: 'touch'
     },
     padding: {
         padding: theme.spacing.unit * 2,
@@ -96,6 +111,9 @@ const styles = theme => ({
     },
     centerText: {
         textAlign: 'center'
+    },
+    flex: {
+        flex: 1
     }
 });
 
@@ -146,7 +164,7 @@ class Sidebar extends React.Component {
     };
 
     render() {
-        const { classes, children } = this.props;
+        const { classes, children, toggleTheme } = this.props;
 
         const list = (
             <List
@@ -187,7 +205,7 @@ class Sidebar extends React.Component {
                         ) : (
                             <ListItem
                                 button
-                                component="a" href={item.link}
+                                component="a" href={item.link} target="_blank"
                                 className={classes.link}
                                 key={item.title}
                             >
@@ -212,6 +230,15 @@ class Sidebar extends React.Component {
                 </ListItem>
 
                 <ContactDialog open={this.state.contactOpen} handleClose={this.handleContactClose} />
+
+                <Hidden smDown>
+                    {
+                        toggleTheme &&
+                            <div className={`${classes.positionBR} ${classes.allowPointer}`}>
+                                <ShadeSwitch toggle={toggleTheme} />
+                            </div>
+                    }
+                </Hidden>
             </List>
         );
 
@@ -230,6 +257,13 @@ class Sidebar extends React.Component {
                             >
                                 <MenuIcon />
                             </IconButton>
+
+                            {
+                                toggleTheme &&
+                                    <div className={classes.flexEnd}>
+                                        <ShadeSwitch toggle={toggleTheme} />
+                                    </div>
+                            }
                         </Toolbar>
                     </AppBar>
                     <SwipeableDrawer
@@ -272,7 +306,8 @@ class Sidebar extends React.Component {
 Sidebar.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
-    children: PropTypes.element.isRequired
+    children: PropTypes.element.isRequired,
+    toggleTheme: PropTypes.func
 };
 
 export default withStyles(styles, { withTheme: true })(Sidebar);

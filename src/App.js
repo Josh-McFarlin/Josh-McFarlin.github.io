@@ -12,19 +12,47 @@ import IndexPage from "./pages/IndexPage";
 import ProjectsPage from "./pages/ProjectsPage";
 
 
-const theme = createMuiTheme({
-    palette: {
-        type: 'dark',
-    }
-});
-
 export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            dark: false
+        };
+
+        this.toggleTheme = this.toggleTheme.bind(this);
+    }
+
+    toggleTheme() {
+        this.setState({
+            dark: !this.state.dark
+        });
+    }
+
     render() {
+        const customTheme = createMuiTheme({
+            palette: {
+                type: this.state.dark ? "dark" : "light",
+                primary: {
+                    // light: will be calculated from palette.primary.main,
+                    main: "#00796b",
+                    // dark: will be calculated from palette.primary.main,
+                    // contrastText: will be calculated to contrast with palette.primary.main
+                },
+                secondary: {
+                    // light: will be calculated from palette.secondary.main,
+                    main: "#607D8B",
+                    // dark: will be calculated from palette.secondary.main,
+                    // contrastText: will be calculated to contrast with palette.secondary.main
+                },
+            }
+        });
+
         return (
-            <MuiThemeProvider theme={theme}>
+            <MuiThemeProvider theme={customTheme}>
                 <CssBaseline />
                 <Router>
-                    <Sidebar>
+                    <Sidebar toggleTheme={this.toggleTheme}>
                         <Switch>
                             <Route exact path="/" component={IndexPage} />
                             <Route path="/portfolio" component={ProjectsPage} />

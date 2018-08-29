@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Hidden from '@material-ui/core/Hidden';
 
-import { School, Computer } from '@material-ui/icons';
+import { Person, School, Computer } from '@material-ui/icons';
 
 import ColoredCard from '../components/ColoredCard';
 import Skill from '../components/Skill';
 
-import { education, skills } from '../data';
+import { personal, education, skills } from '../data';
 
 
 const styles = theme => ({
@@ -39,7 +40,18 @@ class IndexPage extends React.Component {
                 <Grid item xs={12}>
                     <ColoredCard
                         color="primary"
-                        icon={<School/>}
+                        icon={<Person />}
+                        title="About Me"
+                        padding
+                    >
+                        <Typography variant="subheading" paragraph>{personal.about}</Typography>
+                    </ColoredCard>
+                </Grid>
+
+                <Grid item xs={12}>
+                    <ColoredCard
+                        color="primary"
+                        icon={<School />}
                         title="Education"
                         padding
                     >
@@ -49,9 +61,9 @@ class IndexPage extends React.Component {
                                     key={item.name}
                                     style={{ marginBottom: index === education.length - 1 ? 0 : 30 }}
                                 >
-                                    <Typography variant="title" gutterBottom>{item.name}</Typography>
-                                    <Typography variant="subheading">{item.startDate} - {item.endDate}</Typography>
-                                    <Typography variant="subheading" paragraph>{item.info}</Typography>
+                                    <Typography variant="title">{item.name}</Typography>
+                                    <Typography variant="subheading" gutterBottom>{item.startDate} - {item.endDate}</Typography>
+                                    <Typography variant="subheading">{item.info}</Typography>
                                 </div>
                             )
                         }
@@ -61,7 +73,7 @@ class IndexPage extends React.Component {
                 <Grid item xs={12}>
                     <ColoredCard
                         color="primary"
-                        icon={<Computer/>}
+                        icon={<Computer />}
                         title="Skills"
                         padding
                     >
@@ -72,13 +84,30 @@ class IndexPage extends React.Component {
                                     style={{ marginBottom: index === education.length - 1 ? 0 : 30 }}
                                 >
                                     <Typography variant="title" gutterBottom>{item.type}</Typography>
-                                    <div className={classes.container}>
-                                        {
-                                            item.skills.map((item) =>
-                                                <Skill color="primary" title={item} key={item} />
-                                            )
-                                        }
-                                    </div>
+                                    <Hidden mdUp>
+                                        <div className={classes.container}>
+                                            {
+                                                item.skills.map((item) =>
+                                                    <Skill color="primary" title={item} key={item} />
+                                                )
+                                            }
+                                        </div>
+                                    </Hidden>
+                                    <Hidden smDown>
+                                        <Grid
+                                            container
+                                            spacing={24}
+                                            className={classes.grid}
+                                        >
+                                            {
+                                                item.skills.map((item) =>
+                                                    <Grid item xs={4} key={item}>
+                                                        <Skill color="primary" title={item} icon />
+                                                    </Grid>
+                                                )
+                                            }
+                                        </Grid>
+                                    </Hidden>
                                 </div>
                             )
                         }

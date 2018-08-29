@@ -74,7 +74,7 @@ class Project extends React.Component {
                         <div
                             className={classes.media}
                             style={{
-                                backgroundImage: 'url("' + window.location.origin + '/static/images/' + this.props.image + '")'
+                                backgroundImage: 'url("' + window.location.origin + '/static/images/projects/' + this.props.image + '")'
                             }}
                         />
 
@@ -89,7 +89,7 @@ class Project extends React.Component {
                                         <CardActions>
                                             <Button
                                                 size="small"
-                                                color="primary"
+                                                color="secondary"
                                                 variant="contained"
                                                 href={this.props.url}
                                             >{this.props.urlText}</Button>
@@ -109,7 +109,8 @@ Project.propTypes = {
     image: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
-    urlText: PropTypes.string.isRequired
+    urlText: PropTypes.string.isRequired,
+    tags: PropTypes.array
 };
 
 export default withStyles(styles, { withTheme: true })(Project);
