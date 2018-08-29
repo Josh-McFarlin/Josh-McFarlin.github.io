@@ -10,19 +10,31 @@ const styles = theme => ({
     box: {
         borderRadius: 20,
         margin: 5,
-        padding: '5px 10px',
         cursor: 'pointer',
-        width: 120,
-        [theme.breakpoints.up('md')]: {
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
-        }
+        width: 150,
+        height: 40,
+        overflow: 'hidden',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
     text: {
         color: 'inherit',
         textAlign: 'center',
         userSelect: 'none'
+    },
+    titleHolder: {
+        marginLeft: 15
+    },
+    countHolder: {
+        width: '30%',
+        height: '100%',
+        textAlign: 'center',
+        background: theme.palette.primary.main,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderLeft: '1px solid white'
     },
     colorPrimary: {
         background: theme.palette.primary.main,
@@ -44,7 +56,7 @@ const styles = theme => ({
 
 class SkillTag extends React.Component {
     render() {
-        const { classes, color, title, clickHandler, selected } = this.props;
+        const { classes, color, title, clickHandler, selected, count } = this.props;
 
         const boxClassName = classNames(classes.box, {
             [classes[`color${capitalize(color)}`]]: color !== 'default',
@@ -52,7 +64,12 @@ class SkillTag extends React.Component {
 
         return (
             <div className={boxClassName} onClick={clickHandler}>
-                <Typography variant="subheading" className={classes.text}>{title}</Typography>
+                <div className={classes.titleHolder}>
+                    <Typography variant="subheading" className={classes.text}>{title}</Typography>
+                </div>
+                <div className={classes.countHolder}>
+                    <Typography variant="subheading" color="inherit">{count}</Typography>
+                </div>
             </div>
         );
     }
@@ -63,7 +80,8 @@ SkillTag.propTypes = {
     color: PropTypes.oneOf(['default', 'primary', 'secondary']).isRequired,
     title: PropTypes.string.isRequired,
     clickHandler: PropTypes.func.isRequired,
-    selected: PropTypes.bool.isRequired
+    selected: PropTypes.bool.isRequired,
+    count: PropTypes.number
 };
 
 export default withStyles(styles, { withTheme: true })(SkillTag);

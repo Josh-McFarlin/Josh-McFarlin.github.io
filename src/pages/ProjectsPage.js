@@ -4,15 +4,23 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
+import MenuItem from '@material-ui/core/MenuItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Checkbox from '@material-ui/core/Checkbox';
+import Avatar from '@material-ui/core/Avatar';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 import Project from '../components/Project';
-import SkillTag from '../components/SkillTag';
+import TagSelector from '../components/TagSelector';
 import { projectTags, projectsJSON } from '../data';
 
 
 const styles = theme => ({
+    avatar: {
+        margin: 10,
+        color: theme.palette.primary.contrastText,
+        backgroundColor: theme.palette.primary.main
+    },
     grid: {
         width: '100%',
         margin: 0,
@@ -39,7 +47,7 @@ class ProjectsPage extends React.Component {
         this.projects = projectsJSON.map((item) =>
             <Project
                 title={item.title}
-                image={item.images[0]}
+                images={item.images}
                 description={item.description}
                 url={item.link.url}
                 urlText={item.link.text}
@@ -52,7 +60,7 @@ class ProjectsPage extends React.Component {
             matchingProjects: this.projects
         };
 
-        this.tagClickHandler = this.tagClickHandler.bind(this);
+        this.tagSelectHandler = this.tagSelectHandler.bind(this);
     }
 
     createProjects(numCols) {
@@ -100,54 +108,37 @@ class ProjectsPage extends React.Component {
         return projectColumns;
     }
 
-    tagClickHandler(tag, e) {
+    tagSelectHandler(e) {
         e.preventDefault();
 
-        let tags = this.state.tags;
+        let tags = e.target.value;
 
-        let newTags;
-
-        if (tags.includes(tag)) {
-            let index = tags.indexOf(tag);
-            tags.splice(index, 1);
-
-            this.setState({
-                tags: tags,
-                matchingProjects: this.projects.filter((x) => tags.every(i => x.props.tags.includes(i)))
-            });
-        } else {
-            newTags = tag === "All" ? [] : this.state.tags.concat([tag]);
-
-            this.setState({
-                tags: newTags,
-                matchingProjects: this.projects.filter((x) => newTags.every(i => x.props.tags.includes(i)))
-            });
-        }
-    }
+        this.setState({
+            tags,
+            matchingProjects: this.projects.filter((x) => tags.every(i => x.props.tags.includes(i)))
+        });
+    };
 
     render() {
         const { classes } = this.props;
 
         return (
             <div>
-                <Paper>
-                    <div className={classes.container}>
-                        <Typography variant="title" gutterBottom>Filter Projects By Tags</Typography>
-                        <div className={classes.tags}>
-                            {
-                                projectTags.map((item) =>
-                                    <SkillTag
-                                        color="secondary"
-                                        title={item}
-                                        clickHandler={this.tagClickHandler.bind(this, item)}
-                                        selected={this.state.tags.includes(item)}
-                                        key={item}
-                                    />
-                                )
-                            }
-                        </div>
-                    </div>
-                </Paper>
+                <TagSelector selected={this.state.tags} handler={this.tagSelectHandler}>
+                    {
+                        projectTags.map(name => (
+                            <MenuItem key={name} value={name}>
+                                <Avatar className={classes.avatar}>
+                                    { this.state.matchingProjects.filter((x) => x.props.tags.includes(name)).length }
+                                </Avatar>
+                                <ListItemText primary={name} />
+                                <ListItemSecondaryAction>
+                                    <Checkbox checked={this.state.tags.indexOf(name) > -1} />
+                                </ListItemSecondaryAction>
+                            </MenuItem>
+                        ))
+                    }
+                </TagSelector>
 
                 <Hidden smUp>
                     <Grid container className={classes.grid}>

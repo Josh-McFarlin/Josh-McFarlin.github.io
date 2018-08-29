@@ -24,6 +24,9 @@ const styles = theme => ({
         width: '100%',
         margin: 0,
         alignContent: 'flex-start'
+    },
+    extraMargin: {
+        margin: '0 50px'
     }
 });
 
@@ -44,7 +47,7 @@ class IndexPage extends React.Component {
                         title="About Me"
                         padding
                     >
-                        <Typography variant="subheading" paragraph>{personal.about}</Typography>
+                        <Typography variant="subheading">{personal.about}</Typography>
                     </ColoredCard>
                 </Grid>
 
@@ -81,32 +84,34 @@ class IndexPage extends React.Component {
                             skills.map((item, index) =>
                                 <div
                                     key={item.type}
-                                    style={{ marginBottom: index === education.length - 1 ? 0 : 30 }}
+                                    style={{ marginBottom: index === skills.length - 1 ? 0 : 30 }}
                                 >
-                                    <Typography variant="title" gutterBottom>{item.type}</Typography>
+                                    <Typography variant="title" align="center" gutterBottom>{item.type}</Typography>
                                     <Hidden mdUp>
                                         <div className={classes.container}>
                                             {
                                                 item.skills.map((item) =>
-                                                    <Skill color="primary" title={item} key={item} />
+                                                    <Skill color="secondary" title={item} key={item} />
                                                 )
                                             }
                                         </div>
                                     </Hidden>
                                     <Hidden smDown>
-                                        <Grid
-                                            container
-                                            spacing={24}
-                                            className={classes.grid}
-                                        >
-                                            {
-                                                item.skills.map((item) =>
-                                                    <Grid item xs={4} key={item}>
-                                                        <Skill color="primary" title={item} icon />
-                                                    </Grid>
-                                                )
-                                            }
-                                        </Grid>
+                                        <div className={classes.extraMargin}>
+                                            <Grid
+                                                container
+                                                spacing={24}
+                                                className={classes.grid}
+                                            >
+                                                {
+                                                    item.skills.map((item) =>
+                                                        <Grid item xs={4} key={item}>
+                                                            <Skill color="secondary" title={item} icon />
+                                                        </Grid>
+                                                    )
+                                                }
+                                            </Grid>
+                                        </div>
                                     </Hidden>
                                 </div>
                             )

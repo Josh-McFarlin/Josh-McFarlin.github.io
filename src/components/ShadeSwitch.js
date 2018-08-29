@@ -4,15 +4,16 @@ import { withStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
+import Hidden from '@material-ui/core/Hidden';
 
-import { Brightness2, Brightness5 } from '@material-ui/icons';
+import { Brightness2, Brightness7 } from '@material-ui/icons';
 
 
 const styles = theme => ({
     colorSwitchBase: {
         color: '#ffc729',
         '&$colorChecked': {
-            color: '#3c789b',
+            color: '#153f57',
             '& + $colorBar': {
                 backgroundColor: '#ebebeb',
             }
@@ -33,42 +34,38 @@ class ShadeSwitch extends React.Component {
         super(props);
 
         this.state = {
-            dark: false,
             anchorEl: null
         };
 
-        this.handleChange = this.handleChange.bind(this);
+        this.handlePopoverOpen = this.handlePopoverOpen.bind(this);
+        this.handlePopoverClose = this.handlePopoverClose.bind(this);
     }
 
-    handleChange() {
+    handlePopoverOpen(e) {
         this.setState({
-            dark: !this.state.dark
+            anchorEl: e.currentTarget
         });
-
-        this.props.toggle();
     };
 
-    handlePopoverOpen = event => {
-        this.setState({ anchorEl: event.currentTarget });
-    };
-
-    handlePopoverClose = () => {
-        this.setState({ anchorEl: null });
+    handlePopoverClose() {
+        this.setState({
+            anchorEl: null
+        });
     };
 
     render() {
-        const { classes } = this.props;
+        const { classes, state, toggle } = this.props;
         const { anchorEl } = this.state;
         const open = Boolean(anchorEl);
 
         return (
             <div>
                 <Switch
-                    checked={this.state.dark}
-                    onChange={this.handleChange}
+                    checked={state}
+                    onChange={toggle}
                     onMouseEnter={this.handlePopoverOpen}
                     onMouseLeave={this.handlePopoverClose}
-                    icon={<Brightness5 />}
+                    icon={<Brightness7 />}
                     checkedIcon={<Brightness2 />}
                     value="dark"
                     classes={{
@@ -77,27 +74,29 @@ class ShadeSwitch extends React.Component {
                         bar: classes.colorBar
                     }}
                 />
-                <Popover
-                    id="mouse-over-popover"
-                    className={classes.popover}
-                    classes={{
-                        paper: classes.paper,
-                    }}
-                    open={open}
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'center'
-                    }}
-                    transformOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'center'
-                    }}
-                    onClose={this.handlePopoverClose}
-                    disableRestoreFocus
-                >
-                    <Typography>Change theme to {this.state.dark ? 'light' : 'dark'}.</Typography>
-                </Popover>
+                <Hidden smDown>
+                    <Popover
+                        id="mouse-over-popover"
+                        className={classes.popover}
+                        classes={{
+                            paper: classes.paper,
+                        }}
+                        open={open}
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'center'
+                        }}
+                        transformOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center'
+                        }}
+                        onClose={this.handlePopoverClose}
+                        disableRestoreFocus
+                    >
+                        <Typography>Change theme to {state ? 'light' : 'dark'}.</Typography>
+                    </Popover>
+                </Hidden>
             </div>
         );
     }
@@ -105,6 +104,7 @@ class ShadeSwitch extends React.Component {
 
 ShadeSwitch.propTypes = {
     classes: PropTypes.object.isRequired,
+    state: PropTypes.bool.isRequired,
     toggle: PropTypes.func.isRequired
 };
 

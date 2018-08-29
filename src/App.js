@@ -44,7 +44,7 @@ export default class App extends React.Component {
                     main: "#607D8B",
                     // dark: will be calculated from palette.secondary.main,
                     // contrastText: will be calculated to contrast with palette.secondary.main
-                },
+                }
             }
         });
 
@@ -52,7 +52,7 @@ export default class App extends React.Component {
             <MuiThemeProvider theme={customTheme}>
                 <CssBaseline />
                 <Router>
-                    <Sidebar toggleTheme={this.toggleTheme}>
+                    <Sidebar dark={this.state.dark} toggleTheme={this.toggleTheme}>
                         <Switch>
                             <Route exact path="/" component={IndexPage} />
                             <Route path="/portfolio" component={ProjectsPage} />

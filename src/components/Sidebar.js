@@ -53,13 +53,14 @@ const styles = theme => ({
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        background: theme.palette.background.paper,
+        background: theme.palette.secondary.main,
         [theme.breakpoints.down('sm')]: {
             maxWidth: '80vw'
         }
     },
     appBar: {
-        height: appBarHeight
+        height: appBarHeight,
+        position: 'relative'
     },
     imageHolder: {
         width: '100%',
@@ -77,10 +78,13 @@ const styles = theme => ({
         marginTop: 10,
         marginBottom: 20
     },
-    link: {
+    text: {
         textDecoration: 'none',
         pointerEvents: 'auto',
-        color: 'initial'
+        color: theme.palette.secondary.contrastText
+    },
+    inheritColor: {
+        color: 'inherit'
     },
     flexEnd: {
         width: '100%',
@@ -90,7 +94,8 @@ const styles = theme => ({
     positionBR: {
         position: 'absolute',
         bottom: 0,
-        right: 0
+        right: 0,
+        pointerEvents: 'auto'
     },
     allowPointer: {
         pointerEvents: 'auto'
@@ -164,7 +169,7 @@ class Sidebar extends React.Component {
     };
 
     render() {
-        const { classes, children, toggleTheme } = this.props;
+        const { classes, children, dark, toggleTheme } = this.props;
 
         const list = (
             <List
@@ -179,8 +184,8 @@ class Sidebar extends React.Component {
                 />
 
                 <div className={classes.info}>
-                    <Typography variant="headline" className={classes.centerText}>{personal.name}</Typography>
-                    <Typography variant="subheading" className={classes.centerText}>{personal.occupation}</Typography>
+                    <Typography variant="headline" className={classes.text}>{personal.name}</Typography>
+                    <Typography variant="subheading" className={classes.text}>{personal.occupation}</Typography>
                 </div>
 
                 {
@@ -189,30 +194,42 @@ class Sidebar extends React.Component {
                             <Link
                                 to={item.link}
                                 onClick={this.handleDrawerClose}
-                                className={classes.link}
+                                className={classes.text}
                                 key={item.title}
                             >
                                 <ListItem
                                     button
                                     key={item.title}
                                 >
-                                    <ListItemIcon>
+                                    <ListItemIcon className={classes.inheritColor}>
                                         {item.icon}
                                     </ListItemIcon>
-                                    <ListItemText primary={item.title} />
+                                    <ListItemText
+                                        primary={item.title}
+                                        classes={{
+                                            primary: classes.inheritColor,
+                                            secondary: classes.inheritColor
+                                        }}
+                                    />
                                 </ListItem>
                             </Link>
                         ) : (
                             <ListItem
                                 button
                                 component="a" href={item.link} target="_blank"
-                                className={classes.link}
+                                className={classes.text}
                                 key={item.title}
                             >
-                                <ListItemIcon>
+                                <ListItemIcon className={classes.inheritColor}>
                                     {item.icon}
                                 </ListItemIcon>
-                                <ListItemText primary={item.title} />
+                                <ListItemText
+                                    primary={item.title}
+                                    classes={{
+                                        primary: classes.inheritColor,
+                                        secondary: classes.inheritColor
+                                    }}
+                                />
                             </ListItem>
                         )
                     )
@@ -221,23 +238,26 @@ class Sidebar extends React.Component {
                 <ListItem
                     button
                     onClick={this.handleContactOpen}
-                    className={classes.link}
+                    className={classes.text}
                 >
-                    <ListItemIcon>
+                    <ListItemIcon className={classes.inheritColor}>
                         <ContactMail />
                     </ListItemIcon>
-                    <ListItemText primary="Contact Me" />
+                    <ListItemText
+                        primary="Contact Me"
+                        classes={{
+                            primary: classes.inheritColor,
+                            secondary: classes.inheritColor
+                        }}
+                    />
                 </ListItem>
 
                 <ContactDialog open={this.state.contactOpen} handleClose={this.handleContactClose} />
 
                 <Hidden smDown>
-                    {
-                        toggleTheme &&
-                            <div className={`${classes.positionBR} ${classes.allowPointer}`}>
-                                <ShadeSwitch toggle={toggleTheme} />
-                            </div>
-                    }
+                    <div className={classes.positionBR}>
+                        <ShadeSwitch state={dark} toggle={toggleTheme} />
+                    </div>
                 </Hidden>
             </List>
         );
@@ -247,6 +267,7 @@ class Sidebar extends React.Component {
                 <Hidden mdUp>
                     <AppBar
                         position="static"
+                        color="secondary"
                         className={classes.appBar}
                     >
                         <Toolbar>
@@ -258,12 +279,9 @@ class Sidebar extends React.Component {
                                 <MenuIcon />
                             </IconButton>
 
-                            {
-                                toggleTheme &&
-                                    <div className={classes.flexEnd}>
-                                        <ShadeSwitch toggle={toggleTheme} />
-                                    </div>
-                            }
+                            <div className={classes.flexEnd}>
+                                <ShadeSwitch state={dark} toggle={toggleTheme} />
+                            </div>
                         </Toolbar>
                     </AppBar>
                     <SwipeableDrawer
@@ -307,7 +325,8 @@ Sidebar.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     children: PropTypes.element.isRequired,
-    toggleTheme: PropTypes.func
+    dark: PropTypes.bool.isRequired,
+    toggleTheme: PropTypes.func.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(Sidebar);

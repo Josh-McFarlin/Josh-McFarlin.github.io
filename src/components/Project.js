@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 import ColoredCard from '../components/ColoredCard';
+import ImageScroll from '../components/ImageScroll';
 
 
 const styles = theme => ({
@@ -71,12 +72,18 @@ class Project extends React.Component {
                     onClick={this.handleClick}
                 >
                     <div className={classes.content}>
-                        <div
-                            className={classes.media}
-                            style={{
-                                backgroundImage: 'url("' + window.location.origin + '/static/images/projects/' + this.props.image + '")'
-                            }}
-                        />
+                        {
+                            this.state.expanded && this.props.images.length > 1 ? (
+                                <ImageScroll images={this.props.images} />
+                            ) : (
+                                <div
+                                    className={classes.media}
+                                    style={{
+                                        backgroundImage: 'url("' + window.location.origin + '/static/images/projects/' + this.props.images[0] + '")'
+                                    }}
+                                />
+                            )
+                        }
 
                         {
                             this.state.expanded &&
@@ -105,8 +112,9 @@ class Project extends React.Component {
 }
 
 Project.propTypes = {
+    classes: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    images: PropTypes.array.isRequired,
     description: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     urlText: PropTypes.string.isRequired,

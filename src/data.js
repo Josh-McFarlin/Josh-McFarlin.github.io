@@ -70,7 +70,7 @@ export const skills = [
     }
 ];
 
-export const projectTags = ["All", "ReactJS", "Java", "Python", "HTML", "JavaScript", "CSS", "Swift", "Flask", "JavaFX", "jQuery", "Firebase"];
+export const projectTags = ["ReactJS", "Java", "Python", "HTML", "JavaScript", "CSS", "Swift", "Flask", "JavaFX", "jQuery", "Firebase"];
 
 export const projectsJSON = [
     {
