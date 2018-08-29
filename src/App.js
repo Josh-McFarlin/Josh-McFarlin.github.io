@@ -51,7 +51,7 @@ export default class App extends React.Component {
         return (
             <MuiThemeProvider theme={customTheme}>
                 <CssBaseline />
-                <Router>
+                <Router basename={process.env.PUBLIC_URL}>
                     <Sidebar dark={this.state.dark} toggleTheme={this.toggleTheme}>
                         <Switch>
                             <Route exact path="/" component={IndexPage} />

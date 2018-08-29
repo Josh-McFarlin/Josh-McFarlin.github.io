@@ -79,7 +79,7 @@ class Project extends React.Component {
                                 <div
                                     className={classes.media}
                                     style={{
-                                        backgroundImage: 'url("' + window.location.origin + '/static/images/projects/' + this.props.images[0] + '")'
+                                        backgroundImage: 'url("' + process.env.PUBLIC_URL + '/static/images/projects/' + this.props.images[0] + '")'
                                     }}
                                 />
                             )

@@ -134,7 +134,7 @@ class ImageScroll extends React.Component {
                             <div
                                 className={classes.imageDiv}
                                 style={{
-                                    backgroundImage: 'url("' + window.location.origin + '/static/images/projects/' + image + '")'
+                                    backgroundImage: 'url("' + process.env.PUBLIC_URL + '/static/images/projects/' + image + '")'
                                 }}
                                 key={image}
                             />

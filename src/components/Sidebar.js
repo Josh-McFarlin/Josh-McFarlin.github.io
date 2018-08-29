@@ -179,7 +179,7 @@ class Sidebar extends React.Component {
                 <div
                     className={classes.imageHolder}
                     style={{
-                        backgroundImage: "url('" + window.location.origin + personal.image + "')"
+                        backgroundImage: "url('" + process.env.PUBLIC_URL + personal.image + "')"
                     }}
                 />
 
@@ -192,7 +192,7 @@ class Sidebar extends React.Component {
                     links.map((item) =>
                         item.link.startsWith("/") ? (
                             <Link
-                                to={item.link}
+                                to={process.env.PUBLIC_URL + item.link}
                                 onClick={this.handleDrawerClose}
                                 className={classes.text}
                                 key={item.title}
