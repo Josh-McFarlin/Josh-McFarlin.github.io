@@ -1,19 +1,28 @@
+import React from 'react';
+import { Person, Folder, Assignment } from '@material-ui/icons';
+
+
+export const personal = {
+    name: "Josh McFarlin",
+    occupation: "Software Engineer",
+    image: "/static/images/Me.jpg"
+};
+
 export const links = [
     {
-        title: "Home",
-        link: "/"
-    },
-    {
         title: "About Me",
-        link: "/aboutme/"
+        link: "/",
+        icon: <Person />
     },
     {
         title: "Portfolio",
-        link: "/portfolio/"
+        link: "/portfolio/",
+        icon: <Folder />
     },
     {
         title: "Resume",
-        link: "https://www.dropbox.com/s/8ppqhfdfvedmx8d/JoshuaMcFarlin_Resume.pdf?dl=0/"
+        link: "https://www.dropbox.com/s/8ppqhfdfvedmx8d/JoshuaMcFarlin_Resume.pdf?dl=0/",
+        icon: <Assignment />
     }
 ];
 
@@ -30,7 +39,7 @@ export const contact = [
     },
     {
         type: "LinkedIn",
-        info: "linkedin.com/in/joshmcfarlin/",
+        info: "https://linkedin.com/in/joshmcfarlin/",
         link: "https://linkedin.com/in/joshmcfarlin/"
     },
 ];

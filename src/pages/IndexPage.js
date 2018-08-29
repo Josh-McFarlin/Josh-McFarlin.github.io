@@ -18,6 +18,11 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'center',
         flexWrap: 'wrap'
+    },
+    grid: {
+        width: '100%',
+        margin: 0,
+        alignContent: 'flex-start'
     }
 });
 
@@ -26,7 +31,11 @@ class IndexPage extends React.Component {
         const { classes } = this.props;
 
         return (
-            <Grid container spacing={24}>
+            <Grid
+                container
+                spacing={24}
+                className={classes.grid}
+            >
                 <Grid item xs={12}>
                     <ColoredCard
                         color="primary"

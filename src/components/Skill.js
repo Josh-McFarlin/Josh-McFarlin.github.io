@@ -8,47 +8,40 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
     box: {
-        borderStyle: 'solid',
-        borderWidth: 1.5,
-        borderColor: theme.palette.color,
         borderRadius: 20,
         margin: 5,
-        padding: '5px 10px',
-        background: theme.palette.color,
-        '&:hover': {
-            borderWidth: 2
-        }
+        padding: '5px 10px'
     },
     text: {
         color: 'inherit'
     },
     colorPrimary: {
-        background: theme.palette.primary.contrastText,
+        background: theme.palette.primary.main,
         borderColor: theme.palette.primary.main,
-        color: theme.palette.primary.main,
+        color: theme.palette.primary.contrastText,
     },
     colorSecondary: {
-        background: theme.palette.secondary.contrastText,
+        background: theme.palette.secondary.main,
         borderColor: theme.palette.secondary.main,
-        color: theme.palette.secondary.main,
+        color: theme.palette.secondary.contrastText,
     },
     colorError: {
-        background: theme.palette.error.contrastText,
+        background: theme.palette.error.main,
         borderColor: theme.palette.error.main,
-        color: theme.palette.error.main,
+        color: theme.palette.error.contrastText,
     }
 });
 
 class Skill extends React.Component {
     render() {
-        const { classes, color, title, ...other } = this.props;
+        const { classes, color, title } = this.props;
 
         const boxClassName = classNames(classes.box, {
             [classes[`color${capitalize(color)}`]]: color !== 'default',
         });
 
         return (
-            <div className={boxClassName} {...other}>
+            <div className={boxClassName}>
                 <Typography variant="subheading" className={classes.text}>{title}</Typography>
             </div>
         );

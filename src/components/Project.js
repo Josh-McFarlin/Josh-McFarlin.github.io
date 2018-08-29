@@ -78,22 +78,25 @@ class Project extends React.Component {
                             }}
                         />
 
-                        <div
-                            className={classes.info}
-                            style={{
-                                display: this.state.expanded ? 'block' : 'none'
-                            }}
-                        >
-                            <CardContent>
-                                <Typography variant="subheading" paragraph>{this.props.description}</Typography>
-                            </CardContent>
+                        {
+                            this.state.expanded &&
+                                <div className={classes.info}>
+                                    <CardContent>
+                                        <Typography variant="subheading" paragraph>{this.props.description}</Typography>
+                                    </CardContent>
 
-                            <div className={classes.actions}>
-                                <CardActions>
-                                    <Button size="small" color="primary" href={this.props.url}>{this.props.urlText}</Button>
-                                </CardActions>
-                            </div>
-                        </div>
+                                    <div className={classes.actions}>
+                                        <CardActions>
+                                            <Button
+                                                size="small"
+                                                color="primary"
+                                                variant="contained"
+                                                href={this.props.url}
+                                            >{this.props.urlText}</Button>
+                                        </CardActions>
+                                    </div>
+                                </div>
+                        }
                     </div>
                 </ColoredCard>
             </ClickAwayListener>

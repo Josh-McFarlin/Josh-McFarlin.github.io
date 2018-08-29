@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,94 +11,91 @@ import Hidden from '@material-ui/core/Hidden';
 import MenuIcon from '@material-ui/icons/Menu';
 import List from '@material-ui/core/List';
 import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from '@material-ui/core/Typography';
 
-import { Link, withRouter } from "react-router-dom";
+import ContactMail from '@material-ui/icons/ContactMail';
 
 import ContactDialog from '../components/ContactDialog';
 
+import { personal, links } from "../data";
+
 
 const drawerWidth = 350;
+const appBarHeight = 56;
 
 const styles = theme => ({
     root: {
         width: '100%',
-        height: '100vh',
-        overflowY: 'scroll',
+        height: '100%',
+        overflow: 'hidden',
         [theme.breakpoints.up('md')]: {
-            flexGrow: 1,
-            zIndex: 1,
-            overflow: 'hidden',
             position: 'relative',
             display: 'flex'
         }
     },
-    appBar: {
-        position: 'static',
-        [theme.breakpoints.up('md')]: {
-            width: `calc(100% - ${drawerWidth}px)`,
-        }
-    },
-    flex: {
-        flexGrow: 1,
-    },
-    navIconHide: {
-        [theme.breakpoints.up('md')]: {
-            display: 'none',
-        }
-    },
     drawerPaper: {
+        position: 'relative',
+        background: 'none',
+        pointerEvents: 'none',
+        height: '100vh',
         width: drawerWidth,
-        backgroundColor: '#1b1b1b',
-        border: 'none',
-        maxWidth: '80%',
-        [theme.breakpoints.up('md')]: {
-            position: 'relative',
-            maxWidth: 'none'
+        overflow: 'hidden',
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '80vw'
         }
     },
     sidebar: {
-        height: '100vh',
-        overflow: 'hidden',
+        width: drawerWidth,
+        height: '100%',
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        overflow: 'hidden',
+        background: theme.palette.background.paper,
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '80vw'
+        }
     },
-    content: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.background.default,
-        padding: theme.spacing.unit * 3,
-        overflowY: 'scroll'
-    },
-    link: {
-        textDecoration: 'none'
-    },
-    item: {
-        textAlign: 'center'
-    },
-    info: {
-        textAlign: 'center',
-        marginBottom: 20
+    appBar: {
+        height: appBarHeight
     },
     imageHolder: {
         width: '100%',
         height: 0,
         maxHeight: drawerWidth,
         flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
+        [theme.breakpoints.down('sm')]: {
+            maxHeight: '80vw'
+        }
     },
-    imageText: {
-        width: "100%",
-        color: "white",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+    info: {
+        textAlign: 'center',
+        marginTop: 10,
+        marginBottom: 20
+    },
+    link: {
+        textDecoration: 'none',
+        pointerEvents: 'auto',
+        color: 'initial'
+    },
+    content: {
+        backgroundColor: theme.palette.background.default,
+        overflowX: 'hidden',
+        overflowY: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        height: '100%'
+    },
+    padding: {
+        padding: theme.spacing.unit * 2,
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: appBarHeight
+        }
+    },
+    centerText: {
         textAlign: 'center'
-    },
-    whiteText: {
-        color: 'white'
     }
 });
 
@@ -110,6 +109,8 @@ class Sidebar extends React.Component {
         };
 
         this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
+        this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
+        this.handleDrawerClose = this.handleDrawerClose.bind(this);
         this.handleContactOpen = this.handleContactOpen.bind(this);
         this.handleContactClose = this.handleContactClose.bind(this);
     }
@@ -117,6 +118,18 @@ class Sidebar extends React.Component {
     handleDrawerToggle() {
         this.setState({
             mobileOpen: !this.state.mobileOpen
+        });
+    };
+
+    handleDrawerOpen() {
+        this.setState({
+            mobileOpen: true
+        });
+    };
+
+    handleDrawerClose() {
+        this.setState({
+            mobileOpen: false
         });
     };
 
@@ -133,127 +146,97 @@ class Sidebar extends React.Component {
     };
 
     render() {
-        const { classes, theme, links, image, name, occupation, contact, children } = this.props;
+        const { classes, children } = this.props;
 
-        const drawer = (
-            <List disablePadding className={classes.sidebar}>
-                {
-                    image &&
-                        <div
-                            className={classes.imageHolder}
-                            style={{
-                                backgroundImage: "url('" + image + "')"
-                            }}
-                        />
+        const list = (
+            <List
+                disablePadding
+                className={classes.sidebar}
+            >
+                <div
+                    className={classes.imageHolder}
+                    style={{
+                        backgroundImage: "url('" + window.location.origin + personal.image + "')"
+                    }}
+                />
 
-                }
                 <div className={classes.info}>
-                    <Typography variant="headline" className={classes.whiteText}>{name}</Typography>
-                    <Typography variant="subheading" className={classes.whiteText}>{occupation}</Typography>
+                    <Typography variant="headline" className={classes.centerText}>{personal.name}</Typography>
+                    <Typography variant="subheading" className={classes.centerText}>{personal.occupation}</Typography>
                 </div>
 
-                <div>
                 {
                     links.map((item) =>
-                        item.link.startsWith("http") ?
-                            (
+                        item.link.startsWith("/") ? (
+                            <Link
+                                to={item.link}
+                                onClick={this.handleDrawerClose}
+                                className={classes.link}
+                                key={item.title}
+                            >
                                 <ListItem
                                     button
-                                    className={classes.item}
-                                    component="a" href={item.link}
                                     key={item.title}
                                 >
-                                    <ListItemText
-                                        primary={item.title}
-                                        primaryTypographyProps={{
-                                            style: {color: 'white'}
-                                        }}
-                                    />
+                                    <ListItemIcon>
+                                        {item.icon}
+                                    </ListItemIcon>
+                                    <ListItemText primary={item.title} />
                                 </ListItem>
-                            ) : (
-                                <Link
-                                    to={item.link}
-                                    onClick={this.handleDrawerToggle}
-                                    className={classes.link}
-                                    key={item.title}
-                                >
-                                    <ListItem button className={classes.item}>
-                                        <ListItemText
-                                            primary={item.title}
-                                            primaryTypographyProps={{
-                                                style: {color: 'white'}
-                                            }}
-                                        />
-                                    </ListItem>
-                                </Link>
-                            )
+                            </Link>
+                        ) : (
+                            <ListItem
+                                button
+                                component="a" href={item.link}
+                                className={classes.link}
+                                key={item.title}
+                            >
+                                <ListItemIcon>
+                                    {item.icon}
+                                </ListItemIcon>
+                                <ListItemText primary={item.title} />
+                            </ListItem>
+                        )
                     )
                 }
-                {
-                    contact &&
-                        <ListItem
-                            button
-                            onClick={this.handleContactOpen}
-                            className={classes.item}
-                        >
-                            <ListItemText
-                                primary="Contact Me"
-                                primaryTypographyProps={{
-                                    style: {color: 'white'}
-                                }}
-                            />
-                        </ListItem>
 
-                }
-                </div>
-                {
-                    contact &&
-                        <ContactDialog open={this.state.contactOpen} contact={contact} handleClose={this.handleContactClose}/>
-                }
+                <ListItem
+                    button
+                    onClick={this.handleContactOpen}
+                    className={classes.link}
+                >
+                    <ListItemIcon>
+                        <ContactMail />
+                    </ListItemIcon>
+                    <ListItemText primary="Contact Me" />
+                </ListItem>
+
+                <ContactDialog open={this.state.contactOpen} handleClose={this.handleContactClose} />
             </List>
         );
-
-        const PageText = withRouter(props => {
-            let currentPage = "Home";
-            if (props.location.pathname === "/") {
-                currentPage = "Home";
-            } else if (props.location.pathname === "/aboutme/") {
-                currentPage = "About Me";
-            } else if (props.location.pathname === "/portfolio/") {
-                currentPage = "Portfolio";
-            }
-
-            return(
-                <Typography
-                    variant="title"
-                    color="inherit"
-                    className={classes.flex}
-                >
-                    {currentPage}
-                </Typography>
-            );
-        });
 
         return (
             <div className={classes.root}>
                 <Hidden mdUp>
-                    <AppBar className={classes.appBar}>
+                    <AppBar
+                        position="static"
+                        className={classes.appBar}
+                    >
                         <Toolbar>
                             <IconButton
                                 color="inherit"
                                 aria-label="Open drawer"
                                 onClick={this.handleDrawerToggle}
-                                className={classes.navIconHide}
                             >
                                 <MenuIcon />
                             </IconButton>
-                            <PageText/>
                         </Toolbar>
                     </AppBar>
-                    <Drawer
+                    <SwipeableDrawer
+                        disableDiscovery
                         variant="temporary"
-                        anchor={theme.direction === 'rtl' ? 'right' : 'left'}
                         open={this.state.mobileOpen}
+                        onOpen={this.handleDrawerOpen}
                         onClose={this.handleDrawerToggle}
                         classes={{
                             paper: classes.drawerPaper
@@ -262,22 +245,24 @@ class Sidebar extends React.Component {
                             keepMounted: true
                         }}
                     >
-                        {drawer}
-                    </Drawer>
+                        { list }
+                    </SwipeableDrawer>
                 </Hidden>
-                <Hidden smDown implementation="css">
+                <Hidden smDown>
                     <Drawer
                         variant="permanent"
                         open
                         classes={{
-                            paper: classes.drawerPaper,
+                            paper: classes.drawerPaper
                         }}
                     >
-                        {drawer}
+                        { list }
                     </Drawer>
                 </Hidden>
                 <div className={classes.content}>
-                    { children }
+                    <div className={classes.padding}>
+                        { children }
+                    </div>
                 </div>
             </div>
         );
@@ -287,12 +272,7 @@ class Sidebar extends React.Component {
 Sidebar.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
-    links: PropTypes.array.isRequired,
-    image: PropTypes.string,
-    name: PropTypes.string,
-    occupation: PropTypes.string,
-    contact: PropTypes.array,
-    children: PropTypes.element
+    children: PropTypes.element.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(Sidebar);

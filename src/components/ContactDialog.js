@@ -16,11 +16,10 @@ import Typography from '@material-ui/core/Typography';
 
 import CloseIcon from '@material-ui/icons/Close';
 
+import { contact } from "../data";
+
 
 const styles = {
-    card: {
-        width: '100%'
-    },
     buttonHolder: {
         width: '100%',
         display: 'flex',
@@ -30,11 +29,11 @@ const styles = {
         padding: '10px 20px',
         margin: 15
     },
-    appBar: {
-        position: 'relative',
-    },
     flex: {
         flex: 1,
+    },
+    listItem: {
+        pointerEvents: 'auto'
     }
 };
 
@@ -44,23 +43,21 @@ function Transition(props) {
 
 class ContactDialog extends React.Component {
     render() {
-        const { classes, open, handleClose, contact } = this.props;
+        const { classes } = this.props;
 
         return (
             <div>
-                <Hidden only={['sm', 'md', 'lg', 'xl']}>
+                <Hidden smUp>
                     <Dialog
                         fullScreen
-                        open={open}
-                        onClose={handleClose}
+                        open={this.props.open}
+                        onClose={this.props.handleClose}
                         TransitionComponent={Transition}
                     >
-                        <AppBar
-                            className={classes.appBar}
-                        >
+                        <AppBar position="static">
                             <Toolbar>
                                 <Typography variant="title" color="inherit" className={classes.flex}>Contact Me</Typography>
-                                <IconButton color="inherit" onClick={handleClose} aria-label="Close">
+                                <IconButton color="inherit" onClick={this.props.handleClose} aria-label="Close">
                                     <CloseIcon />
                                 </IconButton>
                             </Toolbar>
@@ -71,8 +68,7 @@ class ContactDialog extends React.Component {
                                     <ListItem
                                         button
                                         key={item.type}
-                                        component="a"
-                                        href={item.link}
+                                        component="a" href={item.link}
                                     >
                                         <ListItemText
                                             primary={item.type}
@@ -84,12 +80,12 @@ class ContactDialog extends React.Component {
                         </List>
                     </Dialog>
                 </Hidden>
-                <Hidden only={['xs']}>
+                <Hidden xsDown>
                     <Dialog
-                        open={open}
+                        open={this.props.open}
                         TransitionComponent={Transition}
                         keepMounted
-                        onClose={handleClose}
+                        onClose={this.props.handleClose}
                         fullWidth
                     >
                         <DialogTitle>Contact Me</DialogTitle>
@@ -116,7 +112,8 @@ class ContactDialog extends React.Component {
                                 <Button
                                     size="small"
                                     color="primary"
-                                    onClick={handleClose}
+                                    variant="contained"
+                                    onClick={this.props.handleClose}
                                     className={classes.button}
                                 >Close</Button>
                             </div>
@@ -131,8 +128,7 @@ class ContactDialog extends React.Component {
 ContactDialog.propTypes = {
     classes: PropTypes.object.isRequired,
     open: PropTypes.bool.isRequired,
-    handleClose: PropTypes.any,
-    contact: PropTypes.array.isRequired
+    handleClose: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(ContactDialog);

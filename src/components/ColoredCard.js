@@ -20,7 +20,7 @@ const styles = theme => ({
         }
     },
     header: {
-        height: 50,
+        height: 75,
         width: '100%',
         display: 'flex',
         alignItems: 'center',
@@ -46,7 +46,7 @@ const styles = theme => ({
     colorError: {
         backgroundColor: theme.palette.error.main,
         color: theme.palette.error.contrastText,
-    },
+    }
 });
 
 class ColoredCard extends React.Component {
