@@ -6,9 +6,11 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Hidden from '@material-ui/core/Hidden';
 
 import ColoredCard from '../components/ColoredCard';
 import ImageScroll from '../components/ImageScroll';
+import ImageScrollSnap from '../components/ImageScrollSnap';
 
 
 const styles = theme => ({
@@ -25,7 +27,7 @@ const styles = theme => ({
         width: '100%',
         height: 350,
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'top'
     },
     info: {
         width: '100%'
@@ -74,7 +76,21 @@ class Project extends React.Component {
                     <div className={classes.content}>
                         {
                             this.state.expanded && this.props.images.length > 1 ? (
-                                <ImageScroll images={this.props.images} />
+                                <div>
+                                    <Hidden smDown>
+                                        <ImageScroll images={this.props.images} />
+                                    </Hidden>
+
+                                    <Hidden mdUp>
+                                        {
+                                            CSS.supports('scroll-snap-align: start') || CSS.supports('scroll-snap-coordinate: left') ? (
+                                                <ImageScrollSnap images={this.props.images}/>
+                                            ) : (
+                                                <ImageScroll images={this.props.images}/>
+                                            )
+                                        }
+                                    </Hidden>
+                                </div>
                             ) : (
                                 <div
                                     className={classes.media}

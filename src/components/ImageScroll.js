@@ -44,13 +44,11 @@ const styles = theme => ({
         right: 0
     },
     circlesHolder: {
-        position: 'absolute',
         width: '100%',
-        height: '10%',
+        height: '30px',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
-        bottom: 0
+        alignItems: 'center'
     },
     circle: {
         width: 10,
@@ -97,49 +95,51 @@ class ImageScroll extends React.Component {
         const { classes, images } = this.props;
 
         return (
-            <div className={classes.container}>
-                <div className={`${classes.arrowHolder} ${classes.alignLeft}`}>
-                    <Button
-                        variant="fab"
-                        color="secondary"
-                        aria-label="Go Left"
-                        onClick={this.goLeft}
-                        className={classes.button}
-                    >
-                        <ChevronLeft/>
-                    </Button>
-                </div>
+            <div>
+                <div className={classes.container}>
+                    <div className={`${classes.arrowHolder} ${classes.alignLeft}`}>
+                        <Button
+                            variant="fab"
+                            color="secondary"
+                            aria-label="Go Left"
+                            onClick={this.goLeft}
+                            className={classes.button}
+                        >
+                            <ChevronLeft/>
+                        </Button>
+                    </div>
 
-                <div className={`${classes.arrowHolder} ${classes.alignRight}`}>
-                    <Button
-                        variant="fab"
-                        color="secondary"
-                        aria-label="Go Right"
-                        onClick={this.goRight}
-                        className={classes.button}
-                    >
-                        <ChevronRight/>
-                    </Button>
-                </div>
+                    <div className={`${classes.arrowHolder} ${classes.alignRight}`}>
+                        <Button
+                            variant="fab"
+                            color="secondary"
+                            aria-label="Go Right"
+                            onClick={this.goRight}
+                            className={classes.button}
+                        >
+                            <ChevronRight/>
+                        </Button>
+                    </div>
 
-                <div
-                    className={classes.allImages}
-                    style={{
-                        width: `${100 * images.length}%`,
-                        transform: `translate(${-100 * this.state.current / images.length}%)`
-                    }}
-                >
-                    {
-                        images.map((image) =>
-                            <div
-                                className={classes.imageDiv}
-                                style={{
-                                    backgroundImage: 'url("' + process.env.PUBLIC_URL + '/static/images/projects/' + image + '")'
-                                }}
-                                key={image}
-                            />
-                        )
-                    }
+                    <div
+                        className={classes.allImages}
+                        style={{
+                            width: `${100 * images.length}%`,
+                            transform: `translate(${-100 * this.state.current / images.length}%)`
+                        }}
+                    >
+                        {
+                            images.map((image) =>
+                                <div
+                                    className={classes.imageDiv}
+                                    style={{
+                                        backgroundImage: 'url("' + process.env.PUBLIC_URL + '/static/images/projects/' + image + '")'
+                                    }}
+                                    key={image}
+                                />
+                            )
+                        }
+                    </div>
                 </div>
 
                 <div className={classes.circlesHolder}>

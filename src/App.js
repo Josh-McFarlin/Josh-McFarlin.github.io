@@ -10,6 +10,7 @@ import Sidebar from "./components/Sidebar";
 
 import IndexPage from "./pages/IndexPage";
 import ProjectsPage from "./pages/ProjectsPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 
 export default class App extends React.Component {
@@ -34,16 +35,10 @@ export default class App extends React.Component {
             palette: {
                 type: this.state.dark ? "dark" : "light",
                 primary: {
-                    // light: will be calculated from palette.primary.main,
-                    main: "#00796b",
-                    // dark: will be calculated from palette.primary.main,
-                    // contrastText: will be calculated to contrast with palette.primary.main
+                    main: "#00796b"
                 },
                 secondary: {
-                    // light: will be calculated from palette.secondary.main,
-                    main: "#607D8B",
-                    // dark: will be calculated from palette.secondary.main,
-                    // contrastText: will be calculated to contrast with palette.secondary.main
+                    main: "#607D8B"
                 }
             }
         });
@@ -56,7 +51,7 @@ export default class App extends React.Component {
                         <Switch>
                             <Route exact path="/" component={IndexPage} />
                             <Route path="/portfolio" component={ProjectsPage} />
-                            <Route component={IndexPage} />
+                            <Route component={NotFoundPage} />
                         </Switch>
                     </Sidebar>
                 </Router>

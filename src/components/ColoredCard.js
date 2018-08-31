@@ -51,7 +51,7 @@ const styles = theme => ({
 
 class ColoredCard extends React.Component {
     render() {
-        const { classes, color, padding, icon, title, children, ...other } = this.props;
+        const { classes, color, padding, icon, title, subheader, children, ...other } = this.props;
 
         const headerClassName = classNames(classes.header, {
             [classes[`color${capitalize(color)}`]]: color !== 'default',
@@ -64,7 +64,13 @@ class ColoredCard extends React.Component {
                         icon &&
                             React.cloneElement(icon, {className: classes.icon})
                     }
-                    <Typography variant="headline" className={classes.text}>{title}</Typography>
+                    <div>
+                        <Typography variant="headline" className={classes.text}>{title}</Typography>
+                        {
+                            subheader &&
+                                <Typography variant="body1" color="textSecondary" className={classes.text}>{subheader}</Typography>
+                        }
+                    </div>
                 </div>
 
                 {
@@ -90,6 +96,7 @@ ColoredCard.propTypes = {
     padding: PropTypes.bool,
     icon: PropTypes.element,
     title: PropTypes.string.isRequired,
+    subheader: PropTypes.string,
     children: PropTypes.any.isRequired
 };
 

@@ -189,40 +189,25 @@ class Sidebar extends React.Component {
                 </div>
 
                 {
-                    links.map((item) =>
-                        item.link.startsWith("/") ? (
-                            <Link
-                                to={process.env.PUBLIC_URL + item.link}
-                                onClick={this.handleDrawerClose}
-                                className={classes.text}
-                                key={item.title}
-                            >
-                                <ListItem
-                                    button
-                                    key={item.title}
-                                >
-                                    <ListItemIcon className={classes.inheritColor}>
-                                        {item.icon}
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primary={item.title}
-                                        classes={{
-                                            primary: classes.inheritColor,
-                                            secondary: classes.inheritColor
-                                        }}
-                                    />
-                                </ListItem>
-                            </Link>
-                        ) : (
+                    links.map((item) => {
+                        let extraProps = item.link.startsWith("/") ? ({
+                            component: Link,
+                            to: process.env.PUBLIC_URL + item.link,
+                            onClick: this.handleDrawerClose
+                        }) : ({
+                            component:"a",
+                            href: item.link,
+                            target: "_blank"
+                        });
+
+                        return (
                             <ListItem
                                 button
-                                component="a" href={item.link} target="_blank"
+                                { ...extraProps }
                                 className={classes.text}
                                 key={item.title}
                             >
-                                <ListItemIcon className={classes.inheritColor}>
-                                    {item.icon}
-                                </ListItemIcon>
+                                <ListItemIcon className={classes.inheritColor}>{item.icon}</ListItemIcon>
                                 <ListItemText
                                     primary={item.title}
                                     classes={{
@@ -231,8 +216,8 @@ class Sidebar extends React.Component {
                                     }}
                                 />
                             </ListItem>
-                        )
-                    )
+                        );
+                    })
                 }
 
                 <ListItem
