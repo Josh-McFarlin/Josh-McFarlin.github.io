@@ -115,6 +115,7 @@ class Project extends React.Component {
                                                 color="secondary"
                                                 variant="contained"
                                                 href={this.props.url}
+                                                target="_blank"
                                             >{this.props.urlText}</Button>
                                         </CardActions>
                                     </div>

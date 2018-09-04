@@ -8,7 +8,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Avatar from '@material-ui/core/Avatar';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 import Project from '../components/Project';
 import TagSelector from '../components/TagSelector';
@@ -132,9 +131,7 @@ class ProjectsPage extends React.Component {
                                     { this.state.matchingProjects.filter((x) => x.props.tags.includes(name)).length }
                                 </Avatar>
                                 <ListItemText primary={name} />
-                                <ListItemSecondaryAction>
-                                    <Checkbox checked={this.state.tags.indexOf(name) > -1} />
-                                </ListItemSecondaryAction>
+                                <Checkbox checked={this.state.tags.indexOf(name) > -1} />
                             </MenuItem>
                         ))
                     }
