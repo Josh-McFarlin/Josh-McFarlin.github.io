@@ -8,6 +8,9 @@ import { ChevronLeft, ChevronRight } from '@material-ui/icons';
 
 const size = 350;
 const styles = theme => ({
+    root: {
+        cursor: 'pointer'
+    },
     container: {
         position: 'relative',
         width: '100%',
@@ -48,7 +51,8 @@ const styles = theme => ({
         height: '30px',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        cursor: 'default'
     },
     circle: {
         width: 10,
@@ -56,7 +60,8 @@ const styles = theme => ({
         margin: 5,
         borderRadius: '50%',
         border: '2px solid black',
-        background: 'white'
+        background: 'white',
+        cursor: 'pointer'
     }
 });
 
@@ -70,6 +75,7 @@ class ImageScroll extends React.Component {
 
         this.goLeft = this.goLeft.bind(this);
         this.goRight = this.goRight.bind(this);
+        this.goTo = this.goTo.bind(this);
     }
 
     goLeft(e) {
@@ -91,11 +97,19 @@ class ImageScroll extends React.Component {
         });
     }
 
+    goTo(index, e) {
+        e.stopPropagation();
+
+        this.setState({
+            current: index
+        });
+    }
+
     render() {
-        const { classes, images } = this.props;
+        const { classes, images, ...other } = this.props;
 
         return (
-            <div>
+            <div className={classes.root} {...other}>
                 <div className={classes.container}>
                     <div className={`${classes.arrowHolder} ${classes.alignLeft}`}>
                         <Button
@@ -151,6 +165,7 @@ class ImageScroll extends React.Component {
                                 style={{
                                     backgroundColor: index === this.state.current ? 'black' : 'white'
                                 }}
+                                onClick={this.goTo.bind(this, index)}
                             />
                         )
                     }

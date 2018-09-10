@@ -10,17 +10,25 @@ import Hidden from '@material-ui/core/Hidden';
 const styles = theme => ({
     box: {
         borderRadius: 20,
-        margin: 5,
-        padding: '5px 10px',
+        [theme.breakpoints.down('sm')]: {
+            margin: 5,
+            padding: '5px 10px',
+        },
         [theme.breakpoints.up('md')]: {
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
+            width: '100%',
+            height: 150,
+            justifyContent: 'center'
         }
     },
     text: {
         color: 'inherit',
-        textAlign: 'center'
+        textAlign: 'center',
+        [theme.breakpoints.up('md')]: {
+            marginTop: 5
+        }
     },
     image: {
         width: 50,
@@ -58,27 +66,23 @@ class Skill extends React.Component {
         });
 
         return (
-            <div>
-                <Hidden mdUp>
-                    <div className={boxClassName}>
-                        <Typography variant="subheading" className={classes.text}>{title}</Typography>
-                    </div>
+            <div className={boxClassName}>
+                <Hidden smDown>
+                    {
+                        icon &&
+                        <div className={classes.imageHolder}>
+                            <img
+                                src={window.location.origin + '/static/images/skills/' + title.split(' ')[0].toLowerCase() + '.png'}
+                                alt={title}
+                                className={classes.image}
+                            />
+                        </div>
+                    }
+                    <Typography variant="title" className={classes.text}>{title}</Typography>
                 </Hidden>
 
-                <Hidden smDown>
-                    <div className={boxClassName}>
-                        {
-                            icon &&
-                                <div className={classes.imageHolder}>
-                                    <img
-                                        src={window.location.origin + '/static/images/skills/' + title.split(' ')[0].toLowerCase() + '.png'}
-                                        alt={title}
-                                        className={classes.image}
-                                    />
-                                </div>
-                        }
-                        <Typography variant="title" className={classes.text}>{title}</Typography>
-                    </div>
+                <Hidden mdUp>
+                    <Typography variant="subheading" className={classes.text}>{title}</Typography>
                 </Hidden>
             </div>
         );

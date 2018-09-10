@@ -16,8 +16,7 @@ import ImageScrollSnap from '../components/ImageScrollSnap';
 const styles = theme => ({
     card: {
         width: '100%',
-        position: 'relative',
-        cursor: 'pointer'
+        position: 'relative'
     },
     content: {
         display: 'flex',
@@ -27,7 +26,8 @@ const styles = theme => ({
         width: '100%',
         height: 350,
         backgroundSize: 'cover',
-        backgroundPosition: 'top'
+        backgroundPosition: 'top',
+        cursor: 'pointer'
     },
     info: {
         width: '100%'
@@ -63,30 +63,29 @@ class Project extends React.Component {
     };
 
     render() {
-        const { classes } = this.props;
+        const { classes, info } = this.props;
 
         return (
             <ClickAwayListener onClickAway={this.handleClickAway}>
                 <ColoredCard
-                    title={this.props.title}
+                    title={info.title}
                     className={classes.card}
                     color="primary"
-                    onClick={this.handleClick}
                 >
                     <div className={classes.content}>
                         {
-                            this.state.expanded && this.props.images.length > 1 ? (
+                            this.state.expanded && info.images.length > 1 ? (
                                 <div>
                                     <Hidden smDown>
-                                        <ImageScroll images={this.props.images} />
+                                        <ImageScroll images={info.images} onClick={this.handleClick} />
                                     </Hidden>
 
                                     <Hidden mdUp>
                                         {
                                             CSS.supports('scroll-snap-align: start') || CSS.supports('scroll-snap-coordinate: left') ? (
-                                                <ImageScrollSnap images={this.props.images}/>
+                                                <ImageScrollSnap images={info.images} onClick={this.handleClick} />
                                             ) : (
-                                                <ImageScroll images={this.props.images}/>
+                                                <ImageScroll images={info.images} onClick={this.handleClick} />
                                             )
                                         }
                                     </Hidden>
@@ -95,8 +94,9 @@ class Project extends React.Component {
                                 <div
                                     className={classes.media}
                                     style={{
-                                        backgroundImage: 'url("' + process.env.PUBLIC_URL + '/static/images/projects/' + this.props.images[0] + '")'
+                                        backgroundImage: 'url("' + process.env.PUBLIC_URL + '/static/images/projects/' + info.images[0] + '")'
                                     }}
+                                    onClick={this.handleClick}
                                 />
                             )
                         }
@@ -105,20 +105,23 @@ class Project extends React.Component {
                             this.state.expanded &&
                                 <div className={classes.info}>
                                     <CardContent>
-                                        <Typography variant="subheading" paragraph>{this.props.description}</Typography>
+                                        <Typography variant="subheading" paragraph>{info.description}</Typography>
                                     </CardContent>
 
-                                    <div className={classes.actions}>
-                                        <CardActions>
-                                            <Button
-                                                size="small"
-                                                color="secondary"
-                                                variant="contained"
-                                                href={this.props.url}
-                                                target="_blank"
-                                            >{this.props.urlText}</Button>
-                                        </CardActions>
-                                    </div>
+                                    {
+                                        (info.link && info.link.url) &&
+                                            <div className={classes.actions}>
+                                                <CardActions>
+                                                    <Button
+                                                        size="small"
+                                                        color="secondary"
+                                                        variant="contained"
+                                                        href={info.link.url}
+                                                        target="_blank"
+                                                    >{info.link.text}</Button>
+                                                </CardActions>
+                                            </div>
+                                    }
                                 </div>
                         }
                     </div>
@@ -130,12 +133,7 @@ class Project extends React.Component {
 
 Project.propTypes = {
     classes: PropTypes.object.isRequired,
-    title: PropTypes.string.isRequired,
-    images: PropTypes.array.isRequired,
-    description: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    urlText: PropTypes.string.isRequired,
-    tags: PropTypes.array
+    info: PropTypes.object.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(Project);

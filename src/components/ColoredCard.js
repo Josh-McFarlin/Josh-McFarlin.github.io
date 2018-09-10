@@ -35,6 +35,11 @@ const styles = theme => ({
         height: '100%',
         marginRight: 24
     },
+    aTag: {
+        width: 'auto',
+        height: '100%',
+        color: 'unset'
+    },
     colorPrimary: {
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
@@ -62,10 +67,12 @@ class ColoredCard extends React.Component {
                 <div className={headerClassName}>
                     {
                         icon &&
-                            React.cloneElement(icon, {className: classes.icon})
+                            <a href={`#${title}`} className={classes.aTag}>
+                                { React.cloneElement(icon, {className: classes.icon}) }
+                            </a>
                     }
                     <div>
-                        <Typography variant="headline" className={classes.text}>{title}</Typography>
+                        <Typography variant="headline" className={classes.text} id={title}>{title}</Typography>
                         {
                             subheader &&
                                 <Typography variant="body1" color="textSecondary" className={classes.text}>{subheader}</Typography>
@@ -84,7 +91,6 @@ class ColoredCard extends React.Component {
                         </div>
                     )
                 }
-
             </Card>
         );
     }

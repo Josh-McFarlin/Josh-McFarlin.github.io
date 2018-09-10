@@ -6,7 +6,7 @@ export const personal = {
     name: "Josh McFarlin",
     occupation: "Software Engineer",
     image: "/static/images/Me.jpg",
-    about: "I am currently a second-year at the Georgia Institute of Technology, pursuing a bachelor's in Computer Science. I began programming at a young age, and I love creating programs and websites to simplify user experience. I have experience with full-stack programming, and efficiency and design are very important principles to me."
+    about: "I am currently a second-year at the Georgia Institute of Technology, pursuing a bachelor's degree in Computer Science. I began programming at a young age by teaching myself Python through documentation. I have experience with full-stack programming, and I have worked on many projects focusing on desktop, mobile, and web platforms. Efficiency and design are very important principles to me, and I love creating programs and websites that simplify user experience."
 };
 
 export const links = [
@@ -45,7 +45,15 @@ export const education = [
         name: "Georgia Institute of Technology",
         info: "Currently pursuing a Bachelor's Degree in Computer Science with a focus in Intelligence and Information Internetworks.",
         startDate: "2017",
-        endDate: "2021"
+        endDate: "2021",
+        completedCourses: [
+            "CS 1332 - Data Structures and Algorithms",
+            "CS 1331 - Intro to Object Oriented Programming"
+        ],
+        currentCourses: [
+            "CS 2110 - Computer Organization and Programming",
+            "CS 2340 - Objects and Design"
+        ]
     },
     {
         name: "Creekview High School",
@@ -58,21 +66,31 @@ export const education = [
 export const skills = [
     {
         type: "Languages",
-        skills: ["Java", "Python", "JavaScript (ES6)", "HTML", "CSS", "Swift"]
+        skills: ["Java", "Python", "JavaScript", "HTML", "CSS", "Swift"]
     },
     {
         type: "Libraries and Frameworks",
-        skills: ["Node.js", "ReactJS", "Ionic", "jQuery", "Django", "Flask"]
+        skills: ["Node.js", "React", "Ionic", "jQuery", "Django", "Flask"]
+    },
+    {
+        type: "Databases and Content Delivery",
+        skills: ["MongoDB", "SQLite", "MySQL", "Cloudflare", "Fastly", "Cloudinary"]
     },
     {
         type: "DevOps",
-        skills: ["GitHub", "Docker", "Firebase", "Google Cloud", "Amazon AWS", "npm", "Intellij IDEA", "PyCharm", "WebStorm"]
+        skills: ["GitHub", "Docker", "Firebase", "Google Cloud", "Amazon AWS", "npm"]
     }
 ];
 
-export const projectTags = ["ReactJS", "Java", "Python", "HTML", "JavaScript", "CSS", "Swift", "Flask", "JavaFX", "jQuery", "Firebase"];
-
 export const projectsJSON = [
+    {
+        "title": "WebCache",
+        "tags": ["React", "MongoDB", "Firebase", "HTML", "JavaScript", "CSS", "Node.js"],
+        "description": "WebCache is a service for automatically taking screenshots of any website at any time. Written in HTML, CSS, and JavaScript using React for the front-end, while using Express and MongoDB for the back-end. This is an ongoing project which began in July 2018 as a way to improve my React and Express skills.",
+        "images": [
+            'WebCache.jpg'
+        ]
+    },
     {
         "title": "AskBuzz",
         "tags": ["Python", "Flask"],
@@ -88,7 +106,7 @@ export const projectsJSON = [
     {
         "title": "AstroIDE",
         "tags": ["Java", "JavaFX"],
-        "description": "AstroIDE is an IDE with syntax highlighting support for over 110 languages. Written in Java utilizing JavaFX and Ace.js for syntax highlighting. This is an ongoing project which began in December 2017 that started as a way to develop my skills in Java, JavaFX, and JavaScript simultaneously.",
+        "description": "AstroIDE is an IDE with syntax highlighting support for over 110 languages. Written in Java utilizing JavaFX and Ace.js for syntax highlighting. This is an ongoing project which began in December 2017 that started as a way to improve my skills in Java, JavaFX, and JavaScript simultaneously.",
         "images": [
             'AstroIDEMain.jpg',
             'AstroIDESearch.jpg'
@@ -164,8 +182,8 @@ export const projectsJSON = [
     },
     {
         "title": "This Website",
-        "tags": ["ReactJS", "HTML", "JavaScript", "CSS"],
-        "description": "This website has gone through three major revisions; you are currently looking at the third version of this website, but the previous two can be viewed on my GitHub. The first and second version of this website were created entirely by myself in HTML, CSS, JavaScript, and JQuery. The current version was written in ReactJS and is hosted on Github Pages.",
+        "tags": ["React", "HTML", "JavaScript", "CSS"],
+        "description": "This website has gone through three major revisions; you are currently looking at the third version of this website, but the previous two can be viewed on my GitHub. The first and second version of this website were created entirely by myself in HTML, CSS, JavaScript, and JQuery. The current version was written in React and is hosted on Github Pages.",
         "images": [
             'WebStorm.jpg',
             'HomeProgramming.jpg'

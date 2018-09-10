@@ -11,7 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 
 import Project from '../components/Project';
 import TagSelector from '../components/TagSelector';
-import { projectTags, projectsJSON } from '../data';
+import { projectsJSON } from '../data';
 
 
 const styles = theme => ({
@@ -43,23 +43,16 @@ class ProjectsPage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.projects = projectsJSON.map((item) =>
-            <Project
-                title={item.title}
-                images={item.images}
-                description={item.description}
-                url={item.link.url}
-                urlText={item.link.text}
-                tags={item.tags}
-            />
-        );
+        this.projects = projectsJSON.map((item) => <Project info={item} />);
 
         this.state = {
             tags: [],
             matchingProjects: this.projects
         };
 
+        this.clearSelectHandler = this.clearSelectHandler.bind(this);
         this.tagSelectHandler = this.tagSelectHandler.bind(this);
+        this.compareTags = this.compareTags.bind(this);
     }
 
     createProjects(numCols) {
@@ -107,6 +100,15 @@ class ProjectsPage extends React.Component {
         return projectColumns;
     }
 
+    clearSelectHandler(e) {
+        e.preventDefault();
+
+        this.setState({
+            tags: [],
+            matchingProjects: this.projects
+        });
+    };
+
     tagSelectHandler(e) {
         e.preventDefault();
 
@@ -114,27 +116,59 @@ class ProjectsPage extends React.Component {
 
         this.setState({
             tags,
-            matchingProjects: this.projects.filter((x) => tags.every(i => x.props.tags.includes(i)))
+            matchingProjects: this.projects.filter(x => tags.every(i => x.props.info.tags.includes(i)))
         });
     };
+
+    compareTags(a, b) {
+        let tags = this.state.tags;
+        let matching = this.state.matchingProjects;
+
+        if (tags.indexOf(a.props.value) < tags.indexOf(b.props.value)) {
+            return 1;
+        }
+
+        if (tags.indexOf(a.props.value) > tags.indexOf(b.props.value)) {
+            return -1;
+        }
+
+        let aMatch = matching.filter((x) => x.props.info.tags.includes(a.props.value)).length;
+        let bMatch = matching.filter((x) => x.props.info.tags.includes(b.props.value)).length;
+
+        if (aMatch < bMatch) {
+            return 1;
+        }
+
+        if (bMatch > aMatch) {
+            return -1;
+        }
+
+        return 0;
+    }
 
     render() {
         const { classes } = this.props;
 
+        let tags = projectsJSON.reduce((a, b) => a.concat(b.tags), []);
+        let duplicates = [...new Set(tags.filter((el, index) => tags.indexOf(el, index + 1) > 0))];
+        let menuItems = duplicates.map(name =>
+            <MenuItem key={name} value={name}>
+                <Avatar className={classes.avatar}>
+                    { this.state.matchingProjects.filter((x) => x.props.info.tags.includes(name)).length }
+                </Avatar>
+                <ListItemText primary={name} />
+                <Checkbox checked={this.state.tags.indexOf(name) > -1} />
+            </MenuItem>
+        );
+
         return (
             <div>
-                <TagSelector selected={this.state.tags} handler={this.tagSelectHandler}>
-                    {
-                        projectTags.map(name => (
-                            <MenuItem key={name} value={name}>
-                                <Avatar className={classes.avatar}>
-                                    { this.state.matchingProjects.filter((x) => x.props.tags.includes(name)).length }
-                                </Avatar>
-                                <ListItemText primary={name} />
-                                <Checkbox checked={this.state.tags.indexOf(name) > -1} />
-                            </MenuItem>
-                        ))
-                    }
+                <TagSelector
+                    selected={this.state.tags}
+                    selectHandler={this.tagSelectHandler}
+                    clearHandler={this.clearSelectHandler}
+                >
+                    { menuItems.sort(this.compareTags) }
                 </TagSelector>
 
                 <Hidden smUp>

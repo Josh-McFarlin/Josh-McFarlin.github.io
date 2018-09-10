@@ -5,8 +5,9 @@ import { withStyles } from '@material-ui/core/styles';
 
 const size = 350;
 const styles = theme => ({
-    relative: {
-        position: 'relative'
+    root: {
+        position: 'relative',
+        cursor: 'pointer'
     },
     container: {
         position: 'relative',
@@ -50,9 +51,7 @@ const styles = theme => ({
         width: 50,
         height: 50,
         opacity: 1,
-        padding: 10,
-        animation: 'fadeOut 2s 3s linear forwards',
-        background: '#777'
+        animation: 'fadeOut 2s 3s linear forwards'
     },
     "@keyframes fadeOut": {
         to: {
@@ -63,11 +62,11 @@ const styles = theme => ({
 
 class ImageScrollSnap extends React.Component {
     render() {
-        const { classes, images } = this.props;
+        const { classes, images, ...other } = this.props;
 
         return (
-            <div className={classes.relative}>
-                <img src={process.env.PUBLIC_URL + '/static/images/swipe.png'} className={classes.icon} alt="" />
+            <div className={classes.root} {...other}>
+                <img src={process.env.PUBLIC_URL + '/static/images/swipe.svg'} className={classes.icon} alt="" />
                 <div className={classes.container}>
                     <div
                         className={classes.allImages}

@@ -6,6 +6,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 
 const styles = theme => ({
@@ -13,11 +14,12 @@ const styles = theme => ({
         display: 'flex',
         flexWrap: 'wrap',
     },
-    formControl: {
-        width: '100%'
-    },
     paper: {
-        padding: theme.spacing.unit * 2
+        padding: theme.spacing.unit * 2,
+        display: 'flex'
+    },
+    clear: {
+        marginLeft: 20
     }
 });
 
@@ -33,16 +35,16 @@ const MenuProps = {
 
 class TagSelector extends React.Component {
     render() {
-        const { classes, selected, handler, children } = this.props;
+        const { classes, selected, selectHandler, clearHandler, children } = this.props;
 
         return (
             <Paper className={classes.paper}>
-                <FormControl className={classes.formControl}>
+                <FormControl fullWidth>
                     <InputLabel htmlFor="select-multiple-checkbox">Filter Projects By Tags</InputLabel>
                     <Select
                         multiple
                         value={selected}
-                        onChange={handler}
+                        onChange={selectHandler}
                         input={<Input id="select-multiple-checkbox" />}
                         renderValue={selected => selected.join(', ')}
                         MenuProps={MenuProps}
@@ -50,6 +52,13 @@ class TagSelector extends React.Component {
                         { children }
                     </Select>
                 </FormControl>
+                <Button
+                    size="small"
+                    color="secondary"
+                    variant="contained"
+                    onClick={clearHandler}
+                    className={classes.clear}
+                >Clear</Button>
             </Paper>
         );
     }
@@ -58,7 +67,8 @@ class TagSelector extends React.Component {
 TagSelector.propTypes = {
     classes: PropTypes.object.isRequired,
     selected: PropTypes.array.isRequired,
-    handler: PropTypes.func.isRequired,
+    selectHandler: PropTypes.func.isRequired,
+    clearHandler: PropTypes.func.isRequired,
     children: PropTypes.any.isRequired
 };
 
