@@ -46,7 +46,7 @@ class ContactDialog extends React.Component {
         const { classes } = this.props;
 
         return (
-            <div>
+            <React.Fragment>
                 <Hidden smUp>
                     <Dialog
                         fullScreen
@@ -120,7 +120,7 @@ class ContactDialog extends React.Component {
                         </div>
                     </Dialog>
                 </Hidden>
-            </div>
+            </React.Fragment>
         );
     }
 }

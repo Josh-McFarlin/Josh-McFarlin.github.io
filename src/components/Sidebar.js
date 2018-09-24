@@ -43,6 +43,7 @@ const styles = theme => ({
         height: '100vh',
         width: drawerWidth,
         overflow: 'hidden',
+        border: 'none',
         [theme.breakpoints.down('sm')]: {
             maxWidth: '80vw'
         }
@@ -169,7 +170,7 @@ class Sidebar extends React.Component {
     };
 
     render() {
-        const { classes, children, dark, toggleTheme } = this.props;
+        const { classes, children } = this.props;
 
         const list = (
             <List
@@ -241,7 +242,7 @@ class Sidebar extends React.Component {
 
                 <Hidden smDown>
                     <div className={classes.positionBR}>
-                        <ShadeSwitch state={dark} toggle={toggleTheme} />
+                        <ShadeSwitch />
                     </div>
                 </Hidden>
             </List>
@@ -265,7 +266,7 @@ class Sidebar extends React.Component {
                             </IconButton>
 
                             <div className={classes.flexEnd}>
-                                <ShadeSwitch state={dark} toggle={toggleTheme} />
+                                <ShadeSwitch />
                             </div>
                         </Toolbar>
                     </AppBar>
@@ -309,9 +310,7 @@ class Sidebar extends React.Component {
 Sidebar.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
-    children: PropTypes.element.isRequired,
-    dark: PropTypes.bool.isRequired,
-    toggleTheme: PropTypes.func.isRequired
+    children: PropTypes.element.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(Sidebar);

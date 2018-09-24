@@ -8,6 +8,8 @@ import Hidden from '@material-ui/core/Hidden';
 
 import { Brightness2, Brightness7 } from '@material-ui/icons';
 
+import ThemeContext from "../ThemeContext";
+
 
 const styles = theme => ({
     colorSwitchBase: {
@@ -34,7 +36,8 @@ class ShadeSwitch extends React.Component {
         super(props);
 
         this.state = {
-            anchorEl: null
+            anchorEl: null,
+            display: false
         };
 
         this.handlePopoverOpen = this.handlePopoverOpen.bind(this);
@@ -43,69 +46,72 @@ class ShadeSwitch extends React.Component {
 
     handlePopoverOpen(e) {
         this.setState({
-            anchorEl: e.currentTarget
+            anchorEl: e.currentTarget,
+            display: true
         });
     };
 
     handlePopoverClose() {
         this.setState({
-            anchorEl: null
+            anchorEl: null,
+            display: false
         });
     };
 
     render() {
-        const { classes, state, toggle } = this.props;
+        const { classes, state } = this.props;
         const { anchorEl } = this.state;
         const open = Boolean(anchorEl);
 
         return (
-            <div>
-                <Switch
-                    checked={state}
-                    onChange={toggle}
-                    onMouseEnter={this.handlePopoverOpen}
-                    onMouseLeave={this.handlePopoverClose}
-                    icon={<Brightness7 />}
-                    checkedIcon={<Brightness2 />}
-                    value="dark"
-                    classes={{
-                        switchBase: classes.colorSwitchBase,
-                        checked: classes.colorChecked,
-                        bar: classes.colorBar
-                    }}
-                />
-                <Hidden smDown>
-                    <Popover
-                        id="mouse-over-popover"
-                        className={classes.popover}
-                        classes={{
-                            paper: classes.paper,
-                        }}
-                        open={open}
-                        anchorEl={anchorEl}
-                        anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'center'
-                        }}
-                        transformOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'center'
-                        }}
-                        onClose={this.handlePopoverClose}
-                        disableRestoreFocus
-                    >
-                        <Typography>Change theme to {state ? 'light' : 'dark'}.</Typography>
-                    </Popover>
-                </Hidden>
-            </div>
+            <ThemeContext.Consumer>
+                {({theme, toggleTheme}) =>
+                    <React.Fragment>
+                        <Switch
+                            checked={state}
+                            onChange={toggleTheme}
+                            onMouseEnter={this.handlePopoverOpen}
+                            onMouseLeave={this.handlePopoverClose}
+                            icon={<Brightness7/>}
+                            checkedIcon={<Brightness2/>}
+                            value="dark"
+                            classes={{
+                                switchBase: classes.colorSwitchBase,
+                                checked: classes.colorChecked,
+                                bar: classes.colorBar
+                            }}
+                        />
+                        <Hidden smDown>
+                            <Popover
+                                id="mouse-over-popover"
+                                className={classes.popover}
+                                classes={{
+                                    paper: classes.paper,
+                                }}
+                                open={open}
+                                anchorEl={anchorEl}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'center'
+                                }}
+                                transformOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'center'
+                                }}
+                                onClose={this.handlePopoverClose}
+                            >
+                                <Typography>Change to {theme === 'light' ? 'dark' : 'light'} theme</Typography>
+                            </Popover>
+                        </Hidden>
+                    </React.Fragment>
+                }
+            </ThemeContext.Consumer>
         );
     }
 }
 
 ShadeSwitch.propTypes = {
-    classes: PropTypes.object.isRequired,
-    state: PropTypes.bool.isRequired,
-    toggle: PropTypes.func.isRequired
+    classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ShadeSwitch);
