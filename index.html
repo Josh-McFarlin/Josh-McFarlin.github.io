@@ -1,1 +1,914 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name="theme-color" content="#000000"><link rel="manifest" href="/manifest.json"><title>Josh McFarlin</title><link href="/static/css/main.ba212d96.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script type="text/javascript" src="/static/js/main.c0839fb7.js"></script></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name="theme-color" content="#000000"><link rel="manifest" href="/manifest.json"><title>Josh McFarlin</title><link href="/static/css/main.ba212d96.css" rel="stylesheet"><style data-jss="" data-meta="MuiPaper">
+.jss127 {
+  background-color: #fff;
+}
+.jss128 {
+  border-radius: 4px;
+}
+.jss129 {
+  box-shadow: none;
+}
+.jss130 {
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),0px 1px 1px 0px rgba(0, 0, 0, 0.14),0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+.jss131 {
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),0px 2px 2px 0px rgba(0, 0, 0, 0.14),0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+.jss132 {
+  box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2),0px 3px 4px 0px rgba(0, 0, 0, 0.14),0px 3px 3px -2px rgba(0, 0, 0, 0.12);
+}
+.jss133 {
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),0px 4px 5px 0px rgba(0, 0, 0, 0.14),0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+.jss134 {
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),0px 5px 8px 0px rgba(0, 0, 0, 0.14),0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+}
+.jss135 {
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),0px 6px 10px 0px rgba(0, 0, 0, 0.14),0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+}
+.jss136 {
+  box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.2),0px 7px 10px 1px rgba(0, 0, 0, 0.14),0px 2px 16px 1px rgba(0, 0, 0, 0.12);
+}
+.jss137 {
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),0px 8px 10px 1px rgba(0, 0, 0, 0.14),0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+.jss138 {
+  box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2),0px 9px 12px 1px rgba(0, 0, 0, 0.14),0px 3px 16px 2px rgba(0, 0, 0, 0.12);
+}
+.jss139 {
+  box-shadow: 0px 6px 6px -3px rgba(0, 0, 0, 0.2),0px 10px 14px 1px rgba(0, 0, 0, 0.14),0px 4px 18px 3px rgba(0, 0, 0, 0.12);
+}
+.jss140 {
+  box-shadow: 0px 6px 7px -4px rgba(0, 0, 0, 0.2),0px 11px 15px 1px rgba(0, 0, 0, 0.14),0px 4px 20px 3px rgba(0, 0, 0, 0.12);
+}
+.jss141 {
+  box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2),0px 12px 17px 2px rgba(0, 0, 0, 0.14),0px 5px 22px 4px rgba(0, 0, 0, 0.12);
+}
+.jss142 {
+  box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2),0px 13px 19px 2px rgba(0, 0, 0, 0.14),0px 5px 24px 4px rgba(0, 0, 0, 0.12);
+}
+.jss143 {
+  box-shadow: 0px 7px 9px -4px rgba(0, 0, 0, 0.2),0px 14px 21px 2px rgba(0, 0, 0, 0.14),0px 5px 26px 4px rgba(0, 0, 0, 0.12);
+}
+.jss144 {
+  box-shadow: 0px 8px 9px -5px rgba(0, 0, 0, 0.2),0px 15px 22px 2px rgba(0, 0, 0, 0.14),0px 6px 28px 5px rgba(0, 0, 0, 0.12);
+}
+.jss145 {
+  box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2),0px 16px 24px 2px rgba(0, 0, 0, 0.14),0px 6px 30px 5px rgba(0, 0, 0, 0.12);
+}
+.jss146 {
+  box-shadow: 0px 8px 11px -5px rgba(0, 0, 0, 0.2),0px 17px 26px 2px rgba(0, 0, 0, 0.14),0px 6px 32px 5px rgba(0, 0, 0, 0.12);
+}
+.jss147 {
+  box-shadow: 0px 9px 11px -5px rgba(0, 0, 0, 0.2),0px 18px 28px 2px rgba(0, 0, 0, 0.14),0px 7px 34px 6px rgba(0, 0, 0, 0.12);
+}
+.jss148 {
+  box-shadow: 0px 9px 12px -6px rgba(0, 0, 0, 0.2),0px 19px 29px 2px rgba(0, 0, 0, 0.14),0px 7px 36px 6px rgba(0, 0, 0, 0.12);
+}
+.jss149 {
+  box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.2),0px 20px 31px 3px rgba(0, 0, 0, 0.14),0px 8px 38px 7px rgba(0, 0, 0, 0.12);
+}
+.jss150 {
+  box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.2),0px 21px 33px 3px rgba(0, 0, 0, 0.14),0px 8px 40px 7px rgba(0, 0, 0, 0.12);
+}
+.jss151 {
+  box-shadow: 0px 10px 14px -6px rgba(0, 0, 0, 0.2),0px 22px 35px 3px rgba(0, 0, 0, 0.14),0px 8px 42px 7px rgba(0, 0, 0, 0.12);
+}
+.jss152 {
+  box-shadow: 0px 11px 14px -7px rgba(0, 0, 0, 0.2),0px 23px 36px 3px rgba(0, 0, 0, 0.14),0px 9px 44px 8px rgba(0, 0, 0, 0.12);
+}
+.jss153 {
+  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),0px 24px 38px 3px rgba(0, 0, 0, 0.14),0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+}
+</style><style data-jss="" data-meta="MuiCard">
+.jss126 {
+  overflow: hidden;
+}
+</style><style data-jss="" data-meta="MuiCardContent">
+.jss186 {
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+}
+.jss186:last-child {
+  padding-bottom: 24px;
+}
+@media (min-width:600px) {
+  .jss186 {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+</style><style data-jss="" data-meta="MuiTypography">
+.jss161 {
+  margin: 0;
+  display: block;
+}
+.jss162 {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 7rem;
+  font-weight: 300;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.14286em;
+  margin-left: -.04em;
+  letter-spacing: -.04em;
+}
+.jss163 {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 3.5rem;
+  font-weight: 400;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.30357em;
+  margin-left: -.02em;
+  letter-spacing: -.02em;
+}
+.jss164 {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 2.8125rem;
+  font-weight: 400;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.13333em;
+  margin-left: -.02em;
+}
+.jss165 {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 2.125rem;
+  font-weight: 400;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.20588em;
+}
+.jss166 {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.35417em;
+}
+.jss167 {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 1.3125rem;
+  font-weight: 500;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.16667em;
+}
+.jss168 {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.5em;
+}
+.jss169 {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.71429em;
+}
+.jss170 {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.46429em;
+}
+.jss171 {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.375em;
+}
+.jss172 {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  text-transform: uppercase;
+}
+.jss173 {
+  text-align: left;
+}
+.jss174 {
+  text-align: center;
+}
+.jss175 {
+  text-align: right;
+}
+.jss176 {
+  text-align: justify;
+}
+.jss177 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.jss178 {
+  margin-bottom: 0.35em;
+}
+.jss179 {
+  margin-bottom: 16px;
+}
+.jss180 {
+  color: inherit;
+}
+.jss181 {
+  color: #00796b;
+}
+.jss182 {
+  color: #607D8B;
+}
+.jss183 {
+  color: rgba(0, 0, 0, 0.87);
+}
+.jss184 {
+  color: rgba(0, 0, 0, 0.54);
+}
+.jss185 {
+  color: #f44336;
+}
+</style><style data-jss="" data-meta="MuiSvgIcon">
+.jss154 {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 24px;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  user-select: none;
+  flex-shrink: 0;
+}
+.jss155 {
+  color: #00796b;
+}
+.jss156 {
+  color: #607D8B;
+}
+.jss157 {
+  color: rgba(0, 0, 0, 0.54);
+}
+.jss158 {
+  color: #f44336;
+}
+.jss159 {
+  color: rgba(0, 0, 0, 0.26);
+}
+.jss160 {
+  font-size: inherit;
+}
+</style><style data-jss="" data-meta="MuiCssBaseline">
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  background-color: #fafafa;
+}
+@media print {
+  body {
+    background-color: #fff;
+  }
+}
+</style><style data-jss="" data-meta="MuiGrid">
+.jss21 {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+.jss22 {
+  margin: 0;
+  box-sizing: border-box;
+}
+.jss23 {
+  min-width: 0;
+}
+.jss24 {
+  flex-direction: column;
+}
+.jss25 {
+  flex-direction: column-reverse;
+}
+.jss26 {
+  flex-direction: row-reverse;
+}
+.jss27 {
+  flex-wrap: nowrap;
+}
+.jss28 {
+  flex-wrap: wrap-reverse;
+}
+.jss29 {
+  align-items: center;
+}
+.jss30 {
+  align-items: flex-start;
+}
+.jss31 {
+  align-items: flex-end;
+}
+.jss32 {
+  align-items: baseline;
+}
+.jss33 {
+  align-content: center;
+}
+.jss34 {
+  align-content: flex-start;
+}
+.jss35 {
+  align-content: flex-end;
+}
+.jss36 {
+  align-content: space-between;
+}
+.jss37 {
+  align-content: space-around;
+}
+.jss38 {
+  justify-content: center;
+}
+.jss39 {
+  justify-content: flex-end;
+}
+.jss40 {
+  justify-content: space-between;
+}
+.jss41 {
+  justify-content: space-around;
+}
+.jss42 {
+  justify-content: space-evenly;
+}
+.jss43 {
+  width: calc(100% + 8px);
+  margin: -4px;
+}
+.jss43 > .jss22 {
+  padding: 4px;
+}
+.jss44 {
+  width: calc(100% + 16px);
+  margin: -8px;
+}
+.jss44 > .jss22 {
+  padding: 8px;
+}
+.jss45 {
+  width: calc(100% + 24px);
+  margin: -12px;
+}
+.jss45 > .jss22 {
+  padding: 12px;
+}
+.jss46 {
+  width: calc(100% + 32px);
+  margin: -16px;
+}
+.jss46 > .jss22 {
+  padding: 16px;
+}
+.jss47 {
+  width: calc(100% + 40px);
+  margin: -20px;
+}
+.jss47 > .jss22 {
+  padding: 20px;
+}
+.jss48 {
+  flex-grow: 0;
+  max-width: none;
+  flex-basis: auto;
+}
+.jss49 {
+  flex-grow: 1;
+  max-width: 100%;
+  flex-basis: 0;
+}
+.jss50 {
+  flex-grow: 0;
+  max-width: 8.33333%;
+  flex-basis: 8.33333%;
+}
+.jss51 {
+  flex-grow: 0;
+  max-width: 16.66667%;
+  flex-basis: 16.66667%;
+}
+.jss52 {
+  flex-grow: 0;
+  max-width: 25%;
+  flex-basis: 25%;
+}
+.jss53 {
+  flex-grow: 0;
+  max-width: 33.33333%;
+  flex-basis: 33.33333%;
+}
+.jss54 {
+  flex-grow: 0;
+  max-width: 41.66667%;
+  flex-basis: 41.66667%;
+}
+.jss55 {
+  flex-grow: 0;
+  max-width: 50%;
+  flex-basis: 50%;
+}
+.jss56 {
+  flex-grow: 0;
+  max-width: 58.33333%;
+  flex-basis: 58.33333%;
+}
+.jss57 {
+  flex-grow: 0;
+  max-width: 66.66667%;
+  flex-basis: 66.66667%;
+}
+.jss58 {
+  flex-grow: 0;
+  max-width: 75%;
+  flex-basis: 75%;
+}
+.jss59 {
+  flex-grow: 0;
+  max-width: 83.33333%;
+  flex-basis: 83.33333%;
+}
+.jss60 {
+  flex-grow: 0;
+  max-width: 91.66667%;
+  flex-basis: 91.66667%;
+}
+.jss61 {
+  flex-grow: 0;
+  max-width: 100%;
+  flex-basis: 100%;
+}
+@media (min-width:600px) {
+  .jss62 {
+    flex-grow: 0;
+    max-width: none;
+    flex-basis: auto;
+  }
+  .jss63 {
+    flex-grow: 1;
+    max-width: 100%;
+    flex-basis: 0;
+  }
+  .jss64 {
+    flex-grow: 0;
+    max-width: 8.33333%;
+    flex-basis: 8.33333%;
+  }
+  .jss65 {
+    flex-grow: 0;
+    max-width: 16.66667%;
+    flex-basis: 16.66667%;
+  }
+  .jss66 {
+    flex-grow: 0;
+    max-width: 25%;
+    flex-basis: 25%;
+  }
+  .jss67 {
+    flex-grow: 0;
+    max-width: 33.33333%;
+    flex-basis: 33.33333%;
+  }
+  .jss68 {
+    flex-grow: 0;
+    max-width: 41.66667%;
+    flex-basis: 41.66667%;
+  }
+  .jss69 {
+    flex-grow: 0;
+    max-width: 50%;
+    flex-basis: 50%;
+  }
+  .jss70 {
+    flex-grow: 0;
+    max-width: 58.33333%;
+    flex-basis: 58.33333%;
+  }
+  .jss71 {
+    flex-grow: 0;
+    max-width: 66.66667%;
+    flex-basis: 66.66667%;
+  }
+  .jss72 {
+    flex-grow: 0;
+    max-width: 75%;
+    flex-basis: 75%;
+  }
+  .jss73 {
+    flex-grow: 0;
+    max-width: 83.33333%;
+    flex-basis: 83.33333%;
+  }
+  .jss74 {
+    flex-grow: 0;
+    max-width: 91.66667%;
+    flex-basis: 91.66667%;
+  }
+  .jss75 {
+    flex-grow: 0;
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+}
+@media (min-width:960px) {
+  .jss76 {
+    flex-grow: 0;
+    max-width: none;
+    flex-basis: auto;
+  }
+  .jss77 {
+    flex-grow: 1;
+    max-width: 100%;
+    flex-basis: 0;
+  }
+  .jss78 {
+    flex-grow: 0;
+    max-width: 8.33333%;
+    flex-basis: 8.33333%;
+  }
+  .jss79 {
+    flex-grow: 0;
+    max-width: 16.66667%;
+    flex-basis: 16.66667%;
+  }
+  .jss80 {
+    flex-grow: 0;
+    max-width: 25%;
+    flex-basis: 25%;
+  }
+  .jss81 {
+    flex-grow: 0;
+    max-width: 33.33333%;
+    flex-basis: 33.33333%;
+  }
+  .jss82 {
+    flex-grow: 0;
+    max-width: 41.66667%;
+    flex-basis: 41.66667%;
+  }
+  .jss83 {
+    flex-grow: 0;
+    max-width: 50%;
+    flex-basis: 50%;
+  }
+  .jss84 {
+    flex-grow: 0;
+    max-width: 58.33333%;
+    flex-basis: 58.33333%;
+  }
+  .jss85 {
+    flex-grow: 0;
+    max-width: 66.66667%;
+    flex-basis: 66.66667%;
+  }
+  .jss86 {
+    flex-grow: 0;
+    max-width: 75%;
+    flex-basis: 75%;
+  }
+  .jss87 {
+    flex-grow: 0;
+    max-width: 83.33333%;
+    flex-basis: 83.33333%;
+  }
+  .jss88 {
+    flex-grow: 0;
+    max-width: 91.66667%;
+    flex-basis: 91.66667%;
+  }
+  .jss89 {
+    flex-grow: 0;
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+}
+@media (min-width:1280px) {
+  .jss90 {
+    flex-grow: 0;
+    max-width: none;
+    flex-basis: auto;
+  }
+  .jss91 {
+    flex-grow: 1;
+    max-width: 100%;
+    flex-basis: 0;
+  }
+  .jss92 {
+    flex-grow: 0;
+    max-width: 8.33333%;
+    flex-basis: 8.33333%;
+  }
+  .jss93 {
+    flex-grow: 0;
+    max-width: 16.66667%;
+    flex-basis: 16.66667%;
+  }
+  .jss94 {
+    flex-grow: 0;
+    max-width: 25%;
+    flex-basis: 25%;
+  }
+  .jss95 {
+    flex-grow: 0;
+    max-width: 33.33333%;
+    flex-basis: 33.33333%;
+  }
+  .jss96 {
+    flex-grow: 0;
+    max-width: 41.66667%;
+    flex-basis: 41.66667%;
+  }
+  .jss97 {
+    flex-grow: 0;
+    max-width: 50%;
+    flex-basis: 50%;
+  }
+  .jss98 {
+    flex-grow: 0;
+    max-width: 58.33333%;
+    flex-basis: 58.33333%;
+  }
+  .jss99 {
+    flex-grow: 0;
+    max-width: 66.66667%;
+    flex-basis: 66.66667%;
+  }
+  .jss100 {
+    flex-grow: 0;
+    max-width: 75%;
+    flex-basis: 75%;
+  }
+  .jss101 {
+    flex-grow: 0;
+    max-width: 83.33333%;
+    flex-basis: 83.33333%;
+  }
+  .jss102 {
+    flex-grow: 0;
+    max-width: 91.66667%;
+    flex-basis: 91.66667%;
+  }
+  .jss103 {
+    flex-grow: 0;
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+}
+@media (min-width:1920px) {
+  .jss104 {
+    flex-grow: 0;
+    max-width: none;
+    flex-basis: auto;
+  }
+  .jss105 {
+    flex-grow: 1;
+    max-width: 100%;
+    flex-basis: 0;
+  }
+  .jss106 {
+    flex-grow: 0;
+    max-width: 8.33333%;
+    flex-basis: 8.33333%;
+  }
+  .jss107 {
+    flex-grow: 0;
+    max-width: 16.66667%;
+    flex-basis: 16.66667%;
+  }
+  .jss108 {
+    flex-grow: 0;
+    max-width: 25%;
+    flex-basis: 25%;
+  }
+  .jss109 {
+    flex-grow: 0;
+    max-width: 33.33333%;
+    flex-basis: 33.33333%;
+  }
+  .jss110 {
+    flex-grow: 0;
+    max-width: 41.66667%;
+    flex-basis: 41.66667%;
+  }
+  .jss111 {
+    flex-grow: 0;
+    max-width: 50%;
+    flex-basis: 50%;
+  }
+  .jss112 {
+    flex-grow: 0;
+    max-width: 58.33333%;
+    flex-basis: 58.33333%;
+  }
+  .jss113 {
+    flex-grow: 0;
+    max-width: 66.66667%;
+    flex-basis: 66.66667%;
+  }
+  .jss114 {
+    flex-grow: 0;
+    max-width: 75%;
+    flex-basis: 75%;
+  }
+  .jss115 {
+    flex-grow: 0;
+    max-width: 83.33333%;
+    flex-basis: 83.33333%;
+  }
+  .jss116 {
+    flex-grow: 0;
+    max-width: 91.66667%;
+    flex-basis: 91.66667%;
+  }
+  .jss117 {
+    flex-grow: 0;
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+}
+</style><style data-jss="">
+.jss1 {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+@media (min-width:960px) {
+  .jss1 {
+    display: flex;
+    position: relative;
+  }
+}
+.jss2 {
+  width: 350px;
+  height: 100vh;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  background: none;
+  pointer-events: none;
+}
+@media (max-width:959.95px) {
+  .jss2 {
+    max-width: 80vw;
+  }
+}
+.jss3 {
+  width: 350px;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  background: #607D8B;
+  flex-direction: column;
+}
+@media (max-width:959.95px) {
+  .jss3 {
+    max-width: 80vw;
+  }
+}
+.jss4 {
+  height: 56px;
+  position: relative;
+}
+.jss5 {
+  flex: 1;
+  width: 100%;
+  height: 0;
+  max-height: 350px;
+  background-size: cover;
+  background-position: center;
+}
+@media (max-width:959.95px) {
+  .jss5 {
+    max-height: 80vw;
+  }
+}
+.jss6 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.jss7 {
+  color: #fff;
+  pointer-events: auto;
+  text-decoration: none;
+}
+.jss8 {
+  color: inherit;
+}
+.jss9 {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.jss10 {
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  pointer-events: auto;
+}
+.jss11 {
+  pointer-events: auto;
+}
+.jss12 {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: #fafafa;
+  -webkit-overflow-scrolling: touch;
+}
+.jss13 {
+  padding: 16px;
+}
+@media (max-width:959.95px) {
+  .jss13 {
+    margin-bottom: 56px;
+  }
+}
+.jss14 {
+  text-align: center;
+}
+.jss15 {
+  flex: 1;
+}
+</style><style data-jss="">
+.jss118 {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+}
+@media (min-width:960px) {
+  .jss118 {
+    width: 70px;
+    height: 70px;
+    margin: 50px;
+  }
+}
+.jss119 {
+  width: 100%;
+  height: 75px;
+  display: flex;
+  padding: 16px 24px;
+  align-items: center;
+}
+.jss120 {
+  color: inherit;
+}
+.jss121 {
+  width: auto;
+  height: 100%;
+  margin-right: 24px;
+}
+.jss122 {
+  width: auto;
+  color: unset;
+  height: 100%;
+}
+.jss123 {
+  color: #fff;
+  background-color: #00796b;
+}
+.jss124 {
+  color: #fff;
+  background-color: #607D8B;
+}
+.jss125 {
+  color: #fff;
+  background-color: #f44336;
+}
+</style><style data-jss="">
+.jss16 {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.jss17 {
+  width: 100%;
+  margin: 0;
+  align-content: flex-start;
+  justify-content: center;
+}
+.jss18 {
+  margin: 0 50px;
+}
+.jss19 {
+  margin-top: 15px;
+}
+.jss20 {
+  margin: 0;
+}
+</style></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"><div class="jss1"><div class="jss12"><div class="jss13"><div class="jss21 jss45 jss17"><div class="jss22 jss61"><div class="jss127 jss130 jss128 jss126" theme="[object Object]"><div class="jss119 jss123"><a href="#About Me" class="jss122"><svg class="jss154 jss121" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path><path fill="none" d="M0 0h24v24H0z"></path></svg></a><div><h1 class="jss161 jss166 jss120" id="About Me">About Me</h1></div></div><div class="jss186"><h3 class="jss161 jss168">I am currently a second-year at the Georgia Institute of Technology, pursuing a bachelor's degree in Computer Science. I began programming at a young age by teaching myself Python through documentation. I have experience with full-stack programming, and I have worked on many projects focusing on desktop, mobile, and web platforms. Efficiency and design are very important principles to me, and I love creating programs and websites that simplify user experience.</h3></div></div></div><div class="jss22 jss61"><div class="jss127 jss130 jss128 jss126" theme="[object Object]"><div class="jss119 jss123"><a href="#Education" class="jss122"><svg class="jss154 jss121" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" d="M0 0h24v24H0z"></path><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"></path></svg></a><div><h1 class="jss161 jss166 jss120" id="Education">Education</h1></div></div><div class="jss186"><div style="margin-bottom:30px"><h2 class="jss161 jss167">Georgia Institute of Technology</h2><h3 class="jss161 jss168 jss178">2017<!-- --> - <!-- -->2021</h3><h3 class="jss161 jss168">Currently pursuing a Bachelor's Degree in Computer Science with a focus in Intelligence and Information Internetworks.</h3><div class="jss19"><h3 class="jss161 jss168">Completed Courses</h3><ul class="jss20"><li><h3 class="jss161 jss168">CS 1332 - Data Structures and Algorithms</h3></li><li><h3 class="jss161 jss168">CS 1331 - Intro to Object Oriented Programming</h3></li></ul></div><div class="jss19"><h3 class="jss161 jss168">Current Courses</h3><ul class="jss20"><li><h3 class="jss161 jss168">CS 2110 - Computer Organization and Programming</h3></li><li><h3 class="jss161 jss168">CS 2340 - Objects and Design</h3></li></ul></div></div><div style="margin-bottom:0"><h2 class="jss161 jss167">Creekview High School</h2><h3 class="jss161 jss168 jss178">2013<!-- --> - <!-- -->2017</h3><h3 class="jss161 jss168">Graduated with a High School Diploma.</h3></div></div></div></div><div class="jss22 jss61"><div class="jss127 jss130 jss128 jss126" theme="[object Object]"><div class="jss119 jss123"><a href="#Skills" class="jss122"><svg class="jss154 jss121" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" d="M0 0h24v24H0z"></path><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"></path></svg></a><div><h1 class="jss161 jss166 jss120" id="Skills">Skills</h1></div></div><div class="jss186"><div class="jss21"><div class="jss22 jss61 jss97"><div style="margin-bottom:30px"><h2 class="jss161 jss167 jss178 jss174">Languages</h2></div></div><div class="jss22 jss61 jss97"><div style="margin-bottom:30px"><h2 class="jss161 jss167 jss178 jss174">Libraries and Frameworks</h2></div></div><div class="jss22 jss61 jss97"><div style="margin-bottom:30px"><h2 class="jss161 jss167 jss178 jss174">Databases and Content Delivery</h2></div></div><div class="jss22 jss61 jss97"><div style="margin-bottom:0"><h2 class="jss161 jss167 jss178 jss174">DevOps</h2></div></div></div></div></div></div></div></div></div></div></div><script type="text/javascript" src="/static/js/main.d586b317.js"></script></body></html>
