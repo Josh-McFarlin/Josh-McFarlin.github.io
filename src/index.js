@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
-import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
 import ThemeContext from "./ThemeContext";
 import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
-import {HashRouter as Router, Route, Switch} from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
+import createHistory from "history/createBrowserHistory";
 import Sidebar from "./components/Sidebar";
 import IndexPage from "./pages/IndexPage";
 import ProjectsPage from "./pages/ProjectsPage";
-import NotFoundPage from "./pages/NotFoundPage";
 
 import './index.css';
 
@@ -42,7 +42,10 @@ class App extends React.Component {
             <ThemeContext.Provider value={this.state}>
                 <MuiThemeProvider theme={customTheme}>
                     <CssBaseline />
-                    <Router basename={process.env.PUBLIC_URL}>
+                    <Router
+                        basename={process.env.PUBLIC_URL}
+                        history={createHistory({ basename: process.env.PUBLIC_URL })}
+                    >
                         <Sidebar>
                             <Switch>
                                 <Route exact path="/" component={IndexPage} />
@@ -56,5 +59,5 @@ class App extends React.Component {
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('joshmcfarlinme'));
 registerServiceWorker();
