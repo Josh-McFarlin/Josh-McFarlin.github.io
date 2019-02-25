@@ -1,0 +1,29 @@
+{
+  "name": "Josh-McFarlin.github.io",
+  "description": "My personal portfolio website",
+  "version": "1.4.0",
+  "author": "Josh McFarlin <jmcfarlin6@gatech.edu>",
+  "private": true,
+  "homepage": "https://josh-mcfarlin.github.io/",
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "classnames": "^2.2.6",
+    "jss": "^9.8.7",
+    "next": "^8.0.3",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-jss": "^8.6.1"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "npm run build && next export",
+    "deploy": "node gh-pages.js"
+  },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
+}
