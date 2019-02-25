@@ -23,7 +23,7 @@ export const links = [
 export const personal = {
     name: "Josh McFarlin",
     occupation: "Software Engineer",
-    image: "/static/images/Me.jpg",
+    image: "Me.jpg",
     about: "I am currently a second-year at the Georgia Institute of Technology, pursuing a bachelor's degree in Computer Science. I began programming at a young age by teaching myself Python through documentation. I have experience with full-stack programming, and I have worked on many projects focusing on desktop, mobile, and web platforms. Efficiency and design are very important principles to me, and I love creating programs and websites that simplify user experience."
 };
 
@@ -47,12 +47,12 @@ export const education = [
         startDate: "2017",
         endDate: "2021",
         completedCourses: [
+            "CS 2340 - Objects and Design",
+            "CS 2110 - Computer Organization and Programming",
             "CS 1332 - Data Structures and Algorithms",
             "CS 1331 - Intro to Object Oriented Programming"
         ],
         currentCourses: [
-            "CS 2110 - Computer Organization and Programming",
-            "CS 2340 - Objects and Design"
         ]
     },
     {

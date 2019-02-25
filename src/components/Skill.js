@@ -68,16 +68,15 @@ class Skill extends React.Component {
         return (
             <div className={boxClassName}>
                 <Hidden smDown>
-                    {
-                        icon &&
+                    {(icon) && (
                         <div className={classes.imageHolder}>
                             <img
-                                src={window.location.origin + '/static/images/skills/' + title.split(' ')[0].toLowerCase() + '.png'}
+                                src={'/static/images/skills/' + title.split(' ')[0].toLowerCase() + '.png'}
                                 alt={title}
                                 className={classes.image}
                             />
                         </div>
-                    }
+                    )}
                     <Typography variant="h6" className={classes.text}>{title}</Typography>
                 </Hidden>
 

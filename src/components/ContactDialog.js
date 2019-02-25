@@ -63,20 +63,20 @@ class ContactDialog extends React.Component {
                             </Toolbar>
                         </AppBar>
                         <List>
-                            {
-                                contact.map((item) =>
-                                    <ListItem
-                                        button
-                                        component="a" href={item.link} target="_blank"
-                                        key={item.type}
-                                    >
-                                        <ListItemText
-                                            primary={item.type}
-                                            secondary={item.info}
-                                        />
-                                    </ListItem>
-                                )
-                            }
+                            {contact.map((item) => (
+                                <ListItem
+                                    button
+                                    component="a"
+                                    href={item.link}
+                                    target="_blank"
+                                    key={item.type}
+                                >
+                                    <ListItemText
+                                        primary={item.type}
+                                        secondary={item.info}
+                                    />
+                                </ListItem>
+                            ))}
                         </List>
                     </Dialog>
                 </Hidden>
@@ -91,21 +91,19 @@ class ContactDialog extends React.Component {
                         <DialogTitle>Contact Me</DialogTitle>
                         <div>
                             <List>
-                                {
-                                    contact.map((item) =>
-                                        <ListItem
-                                            button
-                                            key={item.type}
-                                            component="a"
-                                            href={item.link}
-                                        >
-                                            <ListItemText
-                                                primary={item.type}
-                                                secondary={item.info}
-                                            />
-                                        </ListItem>
-                                    )
-                                }
+                                {contact.map((item) => (
+                                    <ListItem
+                                        button
+                                        key={item.type}
+                                        component="a"
+                                        href={item.link}
+                                    >
+                                        <ListItemText
+                                            primary={item.type}
+                                            secondary={item.info}
+                                        />
+                                    </ListItem>
+                                ))}
                             </List>
 
                             <div className={classes.buttonHolder}>

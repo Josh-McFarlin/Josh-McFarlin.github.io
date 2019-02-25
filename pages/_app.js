@@ -1,7 +1,7 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 import Head from 'next/head';
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
+import { MuiThemeProvider } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
 import JssProvider from 'react-jss/lib/JssProvider';
 import getPageContext from '../src/getPageContext';
@@ -34,21 +34,6 @@ export default class MyApp extends App {
         const { Component, pageProps } = this.props;
         const { useLight } = this.state;
 
-        const customTheme = createMuiTheme({
-            typography: {
-                useNextVariants: true,
-            },
-            palette: {
-                type: useLight ? 'light' : 'dark',
-                primary: {
-                    main: '#00796b'
-                },
-                secondary: {
-                    main: '#607D8B'
-                }
-            }
-        });
-
         return (
             <Container>
                 <Head>
@@ -60,7 +45,7 @@ export default class MyApp extends App {
                 >
                     <ThemeContext.Provider value={this.state}>
                         <MuiThemeProvider
-                            theme={customTheme}
+                            theme={useLight ? this.pageContext.lightTheme : this.pageContext.darkTheme}
                             sheetsManager={this.pageContext.sheetsManager}
                         >
                             <CssBaseline />

@@ -65,32 +65,28 @@ class ColoredCard extends React.Component {
         return (
             <Card {...other}>
                 <div className={headerClassName}>
-                    {
-                        icon &&
-                            <a href={`#${title}`} className={classes.aTag}>
-                                { React.cloneElement(icon, {className: classes.icon}) }
-                            </a>
-                    }
+                    {(icon) && (
+                        <a href={`#${title}`} className={classes.aTag}>
+                            { React.cloneElement(icon, {className: classes.icon}) }
+                        </a>
+                    )}
                     <div>
                         <Typography variant="h5" className={classes.text} id={title}>{title}</Typography>
-                        {
-                            subheader &&
-                                <Typography variant="body2" color="textSecondary" className={classes.text}>{subheader}</Typography>
-                        }
+                        {(subheader) && (
+                            <Typography variant="body2" color="textSecondary" className={classes.text}>{subheader}</Typography>
+                        )}
                     </div>
                 </div>
 
-                {
-                    padding ? (
-                        <CardContent>
-                            { children }
-                        </CardContent>
-                    ) : (
-                        <div>
-                            { children }
-                        </div>
-                    )
-                }
+                {(padding) ? (
+                    <CardContent>
+                        { children }
+                    </CardContent>
+                ) : (
+                    <div>
+                        { children }
+                    </div>
+                )}
             </Card>
         );
     }

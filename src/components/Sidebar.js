@@ -172,7 +172,7 @@ class Sidebar extends React.Component {
                 <div
                     className={classes.imageHolder}
                     style={{
-                        backgroundImage: `url("${personal.image}")`
+                        backgroundImage: `url("/static/images/${personal.image}")`
                     }}
                 />
 

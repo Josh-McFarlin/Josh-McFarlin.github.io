@@ -16,18 +16,16 @@ const styles = theme => ({
         '&$colorChecked': {
             color: '#153f57',
             '& + $colorBar': {
-                backgroundColor: '#ebebeb',
+                backgroundColor: '#ebebeb'
             }
         }
     },
-    colorChecked: {},
-    colorBar: {},
     popover: {
-        pointerEvents: 'none',
+        pointerEvents: 'none'
     },
     paper: {
         padding: theme.spacing.unit
-    },
+    }
 });
 
 class ShadeSwitch extends React.Component {
@@ -38,19 +36,16 @@ class ShadeSwitch extends React.Component {
             anchorEl: null,
             display: false
         };
-
-        this.handlePopoverOpen = this.handlePopoverOpen.bind(this);
-        this.handlePopoverClose = this.handlePopoverClose.bind(this);
     }
 
-    handlePopoverOpen(e) {
+    handlePopoverOpen = (e) => {
         this.setState({
             anchorEl: e.currentTarget,
             display: true
         });
     };
 
-    handlePopoverClose() {
+    handlePopoverClose = () => {
         this.setState({
             anchorEl: null,
             display: false
@@ -64,20 +59,18 @@ class ShadeSwitch extends React.Component {
 
         return (
             <ThemeContext.Consumer>
-                {({useLight, toggleTheme}) =>
+                {({useLight, toggleTheme}) => (
                     <React.Fragment>
                         <Switch
                             checked={state}
                             onChange={toggleTheme}
                             onMouseEnter={this.handlePopoverOpen}
                             onMouseLeave={this.handlePopoverClose}
-                            icon={<Brightness7/>}
-                            checkedIcon={<Brightness2/>}
+                            icon={<Brightness7 />}
+                            checkedIcon={<Brightness2 />}
                             value="dark"
                             classes={{
-                                switchBase: classes.colorSwitchBase,
-                                checked: classes.colorChecked,
-                                bar: classes.colorBar
+                                switchBase: classes.colorSwitchBase
                             }}
                         />
                         <Hidden smDown>
@@ -103,7 +96,7 @@ class ShadeSwitch extends React.Component {
                             </Popover>
                         </Hidden>
                     </React.Fragment>
-                }
+                )}
             </ThemeContext.Consumer>
         );
     }
