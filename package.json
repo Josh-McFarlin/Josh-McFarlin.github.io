@@ -19,7 +19,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 8000",
     "export": "npm run build && next export",
     "deploy": "node gh-pages.js"
   },
