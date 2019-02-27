@@ -1,8 +1,8 @@
 {
   "version": 2,
   "builds": [
-    { "src": "package.json", "use": "@now/next" },
     { "src": "static/css/*.css", "use": "@now/html-minifier" },
-    { "src": "static/images/skills/*.png", "use": "@now/optipng" }
+    { "src": "static/images/skills/*.png", "use": "@now/optipng" },
+    { "src": "package.json", "use": "@now/next" }
   ]
 }

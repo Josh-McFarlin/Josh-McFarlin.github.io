@@ -243,7 +243,7 @@ class Sidebar extends React.Component {
 
                 <ContactDialog open={this.state.contactOpen} handleClose={this.handleContactClose} />
 
-                <Hidden smDown implementation="css">
+                <Hidden smDown>
                     <div className={classes.positionBR}>
                         <ShadeSwitch />
                     </div>
@@ -253,7 +253,7 @@ class Sidebar extends React.Component {
 
         return (
             <div className={classes.root}>
-                <Hidden mdUp implementation="css">
+                <Hidden mdUp>
                     <AppBar
                         position="static"
                         color="secondary"
@@ -289,7 +289,7 @@ class Sidebar extends React.Component {
                         { list }
                     </SwipeableDrawer>
                 </Hidden>
-                <Hidden smDown implementation="css">
+                <Hidden smDown>
                     <Drawer
                         variant="permanent"
                         open

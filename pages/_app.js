@@ -43,17 +43,17 @@ export default class MyApp extends App {
                     registry={this.pageContext.sheetsRegistry}
                     generateClassName={this.pageContext.generateClassName}
                 >
-                    <ThemeContext.Provider value={this.state}>
-                        <MuiThemeProvider
-                            theme={useLight ? this.pageContext.lightTheme : this.pageContext.darkTheme}
-                            sheetsManager={this.pageContext.sheetsManager}
-                        >
-                            <CssBaseline />
+                    <MuiThemeProvider
+                        theme={useLight ? this.pageContext.lightTheme : this.pageContext.darkTheme}
+                        sheetsManager={this.pageContext.sheetsManager}
+                    >
+                        <CssBaseline />
+                        <ThemeContext.Provider value={this.state}>
                             <Sidebar>
                                 <Component pageContext={this.pageContext} {...pageProps} />
                             </Sidebar>
-                        </MuiThemeProvider>
-                    </ThemeContext.Provider>
+                        </ThemeContext.Provider>
+                    </MuiThemeProvider>
                 </JssProvider>
             </Container>
         );

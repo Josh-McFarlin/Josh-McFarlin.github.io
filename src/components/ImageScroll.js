@@ -64,7 +64,7 @@ const styles = {
     }
 };
 
-class ImageScroll extends React.Component {
+class ImageScroll extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -106,10 +106,10 @@ class ImageScroll extends React.Component {
     }
 
     render() {
-        const { classes, images, ...rest } = this.props;
+        const { classes, images, onClick } = this.props;
 
         return (
-            <div className={classes.root} {...rest}>
+            <div className={classes.root} onClick={onClick}>
                 <div className={classes.container}>
                     <div className={`${classes.arrowHolder} ${classes.alignLeft}`}>
                         <Fab

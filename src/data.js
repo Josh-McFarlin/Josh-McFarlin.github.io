@@ -40,6 +40,21 @@ export const contact = [
     },
 ];
 
+export const work = [
+    {
+        company: "Bettercloud",
+        position: "Software Engineering Intern",
+        location: "Atlanta",
+        startDate: "January 2019",
+        endDate: null,
+        description: [
+            "Software engineering intern for Bettercloud's AAA team responsible for creating end-user functionality and services.",
+            "Everyday tasks include programming automated workflows which interface with SaaS APIs, using Java and JavaScript to interface microservices with APIs for front-end use.",
+            "Also involved with improving several internal resources in React and Redux."
+        ]
+    }
+];
+
 export const education = [
     {
         name: "Georgia Institute of Technology",
@@ -52,8 +67,7 @@ export const education = [
             "CS 1332 - Data Structures and Algorithms",
             "CS 1331 - Intro to Object Oriented Programming"
         ],
-        currentCourses: [
-        ]
+        currentCourses: []
     },
     {
         name: "Creekview High School",

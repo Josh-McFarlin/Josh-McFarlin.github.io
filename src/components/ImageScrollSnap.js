@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from "@material-ui/core/Typography/Typography";
 
 
 const size = 350;
@@ -43,15 +44,23 @@ const styles = theme => ({
             }
         }
     },
-    icon: {
+    hintHolder: {
         position: 'absolute',
-        top: 0,
+        width: "50%",
+        bottom: 10,
+        left: 0,
         right: 0,
+        margin: 'auto',
+        borderRadius: 10,
         zIndex: 3,
-        width: 50,
-        height: 50,
-        opacity: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.75)',
         animation: 'fadeOut 2s 3s linear forwards'
+    },
+    hint: {
+        opacity: 1,
+        textAlign: 'center',
+        color: theme.palette.primary.contrastText,
+        fontWeight: 300
     },
     "@keyframes fadeOut": {
         to: {
@@ -60,13 +69,15 @@ const styles = theme => ({
     }
 });
 
-class ImageScrollSnap extends React.Component {
+class ImageScrollSnap extends React.PureComponent {
     render() {
-        const { classes, images, ...rest } = this.props;
+        const { classes, images, onClick } = this.props;
 
         return (
-            <div className={classes.root} {...rest}>
-                <img src='/static/images/swipe.svg' className={classes.icon} alt="" />
+            <div className={classes.root} onClick={onClick}>
+                <div className={classes.hintHolder}>
+                    <Typography variant="h6" className={classes.hint}>🡐 Swipe 🡒</Typography>
+                </div>
                 <div className={classes.container}>
                     <div
                         className={classes.allImages}

@@ -12,13 +12,17 @@ import ThemeContext from "../ThemeContext";
 
 const styles = theme => ({
     colorSwitchBase: {
-        color: '#ffc729',
         '&$colorChecked': {
-            color: '#153f57',
             '& + $colorBar': {
                 backgroundColor: '#ebebeb'
             }
         }
+    },
+    unchecked: {
+        color: '#ffc729'
+    },
+    checked: {
+        color: '#153f57'
     },
     colorChecked: {},
     colorBar: {},
@@ -69,19 +73,21 @@ class ShadeSwitch extends React.Component {
                             onChange={toggleTheme}
                             onMouseEnter={this.handlePopoverOpen}
                             onMouseLeave={this.handlePopoverClose}
-                            icon={<Brightness7 />}
-                            checkedIcon={<Brightness2 />}
+                            icon={<Brightness7 className={classes.unchecked} />}
+                            checkedIcon={<Brightness2 className={classes.checked} />}
                             value="dark"
                             classes={{
-                                switchBase: classes.colorSwitchBase
+                                switchBase: classes.colorSwitchBase,
+                                checked: classes.colorChecked,
+                                bar: classes.colorBar
                             }}
                         />
-                        <Hidden smDown implementation="css">
+                        <Hidden smDown>
                             <Popover
                                 id="mouse-over-popover"
                                 className={classes.popover}
                                 classes={{
-                                    paper: classes.paper,
+                                    paper: classes.paper
                                 }}
                                 open={open}
                                 anchorEl={anchorEl}

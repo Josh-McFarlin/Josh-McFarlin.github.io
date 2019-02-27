@@ -4,11 +4,11 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Hidden from '@material-ui/core/Hidden';
-import { Person, School, Computer } from '@material-ui/icons';
+import { Person, School, Computer, Work as WorkIcon } from '@material-ui/icons';
 
 import ColoredCard from '../src/components/ColoredCard';
 import Skill from '../src/components/Skill';
-import { personal, education, skills } from '../src/data';
+import { personal, work, education, skills } from '../src/data';
 
 
 const styles = {
@@ -35,7 +35,7 @@ const styles = {
     }
 };
 
-class IndexPage extends React.Component {
+class IndexPage extends React.PureComponent {
     render() {
         const { classes } = this.props;
 
@@ -59,6 +59,37 @@ class IndexPage extends React.Component {
                 <Grid item xs={12}>
                     <ColoredCard
                         color="primary"
+                        icon={<WorkIcon />}
+                        title="Work Experience"
+                        padding
+                    >
+                        {work.map((item, index) => (
+                            <div
+                                key={item.company}
+                                style={{ marginBottom: index === work.length - 1 ? 0 : 30 }}
+                            >
+                                <Typography variant="h6">{item.company}
+                                    <Typography variant="body1" inline> — {item.location}</Typography></Typography>
+                                <Typography variant="h6">{item.position}
+                                    <Typography variant="body1" inline>: {item.startDate} - {item.endDate != null ? item.endDate : 'Present'}</Typography>
+                                </Typography>
+                                {(item.description && item.description.length > 0) && (
+                                    <ul className={classes.list}>
+                                        {item.description.map((info, i) => (
+                                            <li key={`education${index}completed${i}`}>
+                                                <Typography variant="subtitle1">{info}</Typography>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                        ))}
+                    </ColoredCard>
+                </Grid>
+
+                <Grid item xs={12}>
+                    <ColoredCard
+                        color="primary"
                         icon={<School />}
                         title="Education"
                         padding
@@ -75,9 +106,9 @@ class IndexPage extends React.Component {
                                     <div className={classes.courses}>
                                         <Typography variant="subtitle1">Completed Courses</Typography>
                                         <ul className={classes.list}>
-                                            {item.completedCourses.map((item, i) => (
+                                            {item.completedCourses.map((info, i) => (
                                                 <li key={`education${index}completed${i}`}>
-                                                    <Typography variant="subtitle1">{item}</Typography>
+                                                    <Typography variant="subtitle1">{info}</Typography>
                                                 </li>
                                             ))}
                                         </ul>
@@ -87,9 +118,9 @@ class IndexPage extends React.Component {
                                     <div className={classes.courses}>
                                         <Typography variant="subtitle1">Current Courses</Typography>
                                         <ul className={classes.list}>
-                                            {item.currentCourses.map((item, i) => (
+                                            {item.currentCourses.map((info, i) => (
                                                 <li key={`education${index}current${i}`}>
-                                                    <Typography variant="subtitle1">{item}</Typography>
+                                                    <Typography variant="subtitle1">{info}</Typography>
                                                 </li>
                                             ))}
                                         </ul>
@@ -112,14 +143,14 @@ class IndexPage extends React.Component {
                                 <Grid item xs={12} lg={6} key={item.type}>
                                     <div style={{ marginBottom: index === skills.length - 1 ? 0 : 30 }}>
                                         <Typography variant="h6" align="center" gutterBottom>{item.type}</Typography>
-                                        <Hidden mdUp implementation="css">
+                                        <Hidden mdUp>
                                             <div className={classes.container}>
                                                 {item.skills.map((item) => (
                                                     <Skill color="secondary" title={item} key={item} />
                                                 ))}
                                             </div>
                                         </Hidden>
-                                        <Hidden smDown implementation="css">
+                                        <Hidden smDown>
                                             <div className={classes.extraMargin}>
                                                 <Grid
                                                     container

@@ -75,11 +75,11 @@ class Project extends React.Component {
                     <div className={classes.content}>
                         {this.state.expanded && info.images.length > 1 ? (
                             <div>
-                                <Hidden smDown implementation="css">
+                                <Hidden smDown>
                                     <ImageScroll images={info.images} onClick={this.handleClick} />
                                 </Hidden>
 
-                                <Hidden mdUp implementation="css">
+                                <Hidden mdUp>
                                     {CSS.supports('scroll-snap-align: start') || CSS.supports('scroll-snap-coordinate: left') ? (
                                         <ImageScrollSnap images={info.images} onClick={this.handleClick} />
                                     ) : (
@@ -112,6 +112,7 @@ class Project extends React.Component {
                                                 variant="contained"
                                                 href={info.link.url}
                                                 target="_blank"
+                                                rel="noopener"
                                             >{info.link.text}</Button>
                                         </CardActions>
                                     </div>

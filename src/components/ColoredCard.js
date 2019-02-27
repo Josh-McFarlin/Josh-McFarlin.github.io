@@ -16,7 +16,7 @@ const styles = theme => ({
         [theme.breakpoints.up('md')]: {
             width: 70,
             height: 70,
-            margin: 50,
+            margin: 50
         }
     },
     header: {
@@ -42,28 +42,28 @@ const styles = theme => ({
     },
     colorPrimary: {
         backgroundColor: theme.palette.primary.main,
-        color: theme.palette.primary.contrastText,
+        color: theme.palette.primary.contrastText
     },
     colorSecondary: {
         backgroundColor: theme.palette.secondary.main,
-        color: theme.palette.secondary.contrastText,
+        color: theme.palette.secondary.contrastText
     },
     colorError: {
         backgroundColor: theme.palette.error.main,
-        color: theme.palette.error.contrastText,
+        color: theme.palette.error.contrastText
     }
 });
 
-class ColoredCard extends React.Component {
+class ColoredCard extends React.PureComponent {
     render() {
-        const { classes, color, padding, icon, title, subheader, children, ...other } = this.props;
+        const { classes, color, padding, icon, title, subheader, children } = this.props;
 
         const headerClassName = classNames(classes.header, {
             [classes[`color${capitalize(color)}`]]: color !== 'default',
         });
 
         return (
-            <Card {...other}>
+            <Card>
                 <div className={headerClassName}>
                     {(icon) && (
                         <a href={`#${title}`} className={classes.aTag}>

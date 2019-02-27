@@ -47,7 +47,7 @@ class ContactDialog extends React.Component {
 
         return (
             <React.Fragment>
-                <Hidden smUp implementation="css">
+                <Hidden smUp>
                     <Dialog
                         fullScreen
                         open={this.props.open}
@@ -69,6 +69,7 @@ class ContactDialog extends React.Component {
                                     component="a"
                                     href={item.link}
                                     target="_blank"
+                                    rel="noopener"
                                     key={item.type}
                                 >
                                     <ListItemText
@@ -80,7 +81,7 @@ class ContactDialog extends React.Component {
                         </List>
                     </Dialog>
                 </Hidden>
-                <Hidden xsDown implementation="css">
+                <Hidden xsDown>
                     <Dialog
                         open={this.props.open}
                         TransitionComponent={Transition}

@@ -166,19 +166,19 @@ class ProjectsPage extends React.Component {
                     { menuItems.sort(this.compareTags) }
                 </TagSelector>
 
-                <Hidden smUp implementation="css">
+                <Hidden smUp>
                     <Grid container className={classes.grid}>
                         { this.createProjects(1) }
                     </Grid>
                 </Hidden>
 
-                <Hidden only={['xs', 'lg', 'xl']} implementation="css">
+                <Hidden only={['xs', 'lg', 'xl']}>
                     <Grid container className={classes.grid}>
                         { this.createProjects(2) }
                     </Grid>
                 </Hidden>
 
-                <Hidden mdDown implementation="css">
+                <Hidden mdDown>
                     <Grid container className={classes.grid}>
                         { this.createProjects(3) }
                     </Grid>

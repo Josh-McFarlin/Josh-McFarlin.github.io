@@ -12,7 +12,7 @@ const styles = theme => ({
         borderRadius: 20,
         [theme.breakpoints.down('sm')]: {
             margin: 5,
-            padding: '5px 10px',
+            padding: '5px 10px'
         },
         [theme.breakpoints.up('md')]: {
             display: 'flex',
@@ -43,17 +43,17 @@ const styles = theme => ({
     colorPrimary: {
         background: theme.palette.primary.main,
         borderColor: theme.palette.primary.main,
-        color: theme.palette.primary.contrastText,
+        color: theme.palette.primary.contrastText
     },
     colorSecondary: {
         background: theme.palette.secondary.main,
         borderColor: theme.palette.secondary.main,
-        color: theme.palette.secondary.contrastText,
+        color: theme.palette.secondary.contrastText
     },
     colorError: {
         background: theme.palette.error.main,
         borderColor: theme.palette.error.main,
-        color: theme.palette.error.contrastText,
+        color: theme.palette.error.contrastText
     }
 });
 
@@ -66,24 +66,28 @@ class Skill extends React.Component {
         });
 
         return (
-            <div className={boxClassName}>
-                <Hidden smDown implementation="css">
-                    {(icon) && (
-                        <div className={classes.imageHolder}>
-                            <img
-                                src={'/static/images/skills/' + title.split(' ')[0].toLowerCase() + '.png'}
-                                alt={title}
-                                className={classes.image}
-                            />
-                        </div>
-                    )}
-                    <Typography variant="h6" className={classes.text}>{title}</Typography>
+            <React.Fragment>
+                <Hidden smDown>
+                    <div className={boxClassName}>
+                        {(icon) && (
+                            <div className={classes.imageHolder}>
+                                <img
+                                    src={'/static/images/skills/' + title.split(' ')[0].toLowerCase() + '.png'}
+                                    alt={title}
+                                    className={classes.image}
+                                />
+                            </div>
+                        )}
+                        <Typography variant="h6" className={classes.text}>{title}</Typography>
+                    </div>
                 </Hidden>
 
-                <Hidden mdUp implementation="css">
-                    <Typography variant="subtitle1" className={classes.text}>{title}</Typography>
+                <Hidden mdUp>
+                    <div className={boxClassName}>
+                        <Typography variant="subtitle1" className={classes.text}>{title}</Typography>
+                    </div>
                 </Hidden>
-            </div>
+            </React.Fragment>
         );
     }
 }
