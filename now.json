@@ -1,6 +1,9 @@
 {
   "version": 2,
   "builds": [
-    { "src": "package.json", "use": "@now/next" }
+    { "src": "package.json", "use": "@now/next" },
+    { "src": "*.html", "use": "@now/html-minifier" },
+    { "src": "*.css", "use": "@now/html-minifier" },
+    { "src": "*.png", "use": "@now/optipng" }
   ]
 }

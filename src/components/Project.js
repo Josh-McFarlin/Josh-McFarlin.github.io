@@ -75,11 +75,11 @@ class Project extends React.Component {
                     <div className={classes.content}>
                         {this.state.expanded && info.images.length > 1 ? (
                             <div>
-                                <Hidden smDown>
+                                <Hidden smDown implementation="css">
                                     <ImageScroll images={info.images} onClick={this.handleClick} />
                                 </Hidden>
 
-                                <Hidden mdUp>
+                                <Hidden mdUp implementation="css">
                                     {CSS.supports('scroll-snap-align: start') || CSS.supports('scroll-snap-coordinate: left') ? (
                                         <ImageScrollSnap images={info.images} onClick={this.handleClick} />
                                     ) : (

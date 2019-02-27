@@ -67,7 +67,7 @@ class Skill extends React.Component {
 
         return (
             <div className={boxClassName}>
-                <Hidden smDown>
+                <Hidden smDown implementation="css">
                     {(icon) && (
                         <div className={classes.imageHolder}>
                             <img
@@ -80,7 +80,7 @@ class Skill extends React.Component {
                     <Typography variant="h6" className={classes.text}>{title}</Typography>
                 </Hidden>
 
-                <Hidden mdUp>
+                <Hidden mdUp implementation="css">
                     <Typography variant="subtitle1" className={classes.text}>{title}</Typography>
                 </Hidden>
             </div>

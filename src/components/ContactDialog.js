@@ -47,7 +47,7 @@ class ContactDialog extends React.Component {
 
         return (
             <React.Fragment>
-                <Hidden smUp>
+                <Hidden smUp implementation="css">
                     <Dialog
                         fullScreen
                         open={this.props.open}
@@ -80,7 +80,7 @@ class ContactDialog extends React.Component {
                         </List>
                     </Dialog>
                 </Hidden>
-                <Hidden xsDown>
+                <Hidden xsDown implementation="css">
                     <Dialog
                         open={this.props.open}
                         TransitionComponent={Transition}

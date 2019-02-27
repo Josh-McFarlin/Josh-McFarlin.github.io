@@ -20,11 +20,14 @@ const styles = theme => ({
             }
         }
     },
+    colorChecked: {},
+    colorBar: {},
     popover: {
         pointerEvents: 'none'
     },
     paper: {
-        padding: theme.spacing.unit
+        padding: theme.spacing.unit,
+        transition: 'opacity 193ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 129ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 1000ms ease-in-out !important'
     }
 });
 
@@ -73,7 +76,7 @@ class ShadeSwitch extends React.Component {
                                 switchBase: classes.colorSwitchBase
                             }}
                         />
-                        <Hidden smDown>
+                        <Hidden smDown implementation="css">
                             <Popover
                                 id="mouse-over-popover"
                                 className={classes.popover}

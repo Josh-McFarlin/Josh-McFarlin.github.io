@@ -50,7 +50,7 @@ export default class MyApp extends App {
                         >
                             <CssBaseline />
                             <Sidebar>
-                                <Component {...pageProps} />
+                                <Component pageContext={this.pageContext} {...pageProps} />
                             </Sidebar>
                         </MuiThemeProvider>
                     </ThemeContext.Provider>

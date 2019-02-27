@@ -112,14 +112,14 @@ class IndexPage extends React.Component {
                                 <Grid item xs={12} lg={6} key={item.type}>
                                     <div style={{ marginBottom: index === skills.length - 1 ? 0 : 30 }}>
                                         <Typography variant="h6" align="center" gutterBottom>{item.type}</Typography>
-                                        <Hidden mdUp>
+                                        <Hidden mdUp implementation="css">
                                             <div className={classes.container}>
                                                 {item.skills.map((item) => (
                                                     <Skill color="secondary" title={item} key={item} />
                                                 ))}
                                             </div>
                                         </Hidden>
-                                        <Hidden smDown>
+                                        <Hidden smDown implementation="css">
                                             <div className={classes.extraMargin}>
                                                 <Grid
                                                     container

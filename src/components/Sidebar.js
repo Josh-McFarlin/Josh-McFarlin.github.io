@@ -209,6 +209,7 @@ class Sidebar extends React.Component {
                             component='a'
                             href={item.link}
                             target='_blank'
+                            rel="noopener"
                             key={item.title}
                         >
                             <ListItemIcon className={classes.inheritColor}>{item.icon}</ListItemIcon>
@@ -242,7 +243,7 @@ class Sidebar extends React.Component {
 
                 <ContactDialog open={this.state.contactOpen} handleClose={this.handleContactClose} />
 
-                <Hidden smDown>
+                <Hidden smDown implementation="css">
                     <div className={classes.positionBR}>
                         <ShadeSwitch />
                     </div>
@@ -252,7 +253,7 @@ class Sidebar extends React.Component {
 
         return (
             <div className={classes.root}>
-                <Hidden mdUp>
+                <Hidden mdUp implementation="css">
                     <AppBar
                         position="static"
                         color="secondary"
@@ -288,7 +289,7 @@ class Sidebar extends React.Component {
                         { list }
                     </SwipeableDrawer>
                 </Hidden>
-                <Hidden smDown>
+                <Hidden smDown implementation="css">
                     <Drawer
                         variant="permanent"
                         open
