@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import { ChevronLeft, ChevronRight } from '@material-ui/icons';
 
+import DynamicImage from '../components/DynamicImage';
+
 
 const size = 350;
 const styles = {
@@ -21,12 +23,14 @@ const styles = {
         display: 'flex',
         transition: 'transform 1s ease'
     },
+    imageHolder: {
+        width: '100%',
+        height: size
+    },
     imageDiv: {
         width: '100%',
-        height: size,
-        backgroundPosition: 'top',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat'
+        height: '100%',
+        objectFit: 'cover'
     },
     arrowHolder: {
         height: '100%',
@@ -71,13 +75,9 @@ class ImageScroll extends React.PureComponent {
         this.state = {
             current: 0
         };
-
-        this.goLeft = this.goLeft.bind(this);
-        this.goRight = this.goRight.bind(this);
-        this.goTo = this.goTo.bind(this);
     }
 
-    goLeft(e) {
+    goLeft = (e) => {
         e.stopPropagation();
 
         const length = this.props.images.length;
@@ -85,9 +85,9 @@ class ImageScroll extends React.PureComponent {
         this.setState(prevState => ({
             current: (((prevState.current - 1) % length) + length) % length
         }));
-    }
+    };
 
-    goRight(e) {
+    goRight = (e) => {
         e.stopPropagation();
 
         const length = this.props.images.length;
@@ -95,15 +95,15 @@ class ImageScroll extends React.PureComponent {
         this.setState(prevState => ({
             current: (prevState.current + 1) % length
         }));
-    }
+    };
 
-    goTo(index, e) {
+    goTo = (index, e) => {
         e.stopPropagation();
 
         this.setState({
             current: index
         });
-    }
+    };
 
     render() {
         const { classes, images, onClick } = this.props;
@@ -142,12 +142,14 @@ class ImageScroll extends React.PureComponent {
                     >
                         {images.map((image) => (
                             <div
-                                className={classes.imageDiv}
-                                style={{
-                                    backgroundImage: `url("/static/images/projects/${image}")`
-                                }}
-                                key={image}
-                            />
+                                className={classes.imageHolder}
+                                key={image.imgSrc}
+                            >
+                                <DynamicImage
+                                    className={classes.imageDiv}
+                                    info={image}
+                                />
+                            </div>
                         ))}
                     </div>
                 </div>
@@ -160,7 +162,7 @@ class ImageScroll extends React.PureComponent {
                             style={{
                                 backgroundColor: index === this.state.current ? 'black' : 'white'
                             }}
-                            onClick={this.goTo.bind(this, index)}
+                            onClick={(e) => this.goTo(index, e)}
                         />
                     ))}
                 </div>

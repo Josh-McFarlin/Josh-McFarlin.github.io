@@ -13,14 +13,11 @@ class MyDocument extends Document {
                 <Head>
                     <link rel="stylesheet" href="/static/css/index.css" />
                     <meta charSet="utf-8" />
-                    <meta
-                        name="viewport"
-                        content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-                    />
-                    <meta
-                        name="theme-color"
-                        content={pageContext ? pageContext.lightTheme.palette.primary.main : null}
-                    />
+                    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
+                    <meta name="theme-color" content={pageContext ? pageContext.lightTheme.palette.primary.main : null} />
+                    <meta name="author" content="Josh McFarlin" />
+                    <meta name="description" content="Hi, I'm Josh McFarlin, a software engineering student studying at Georgia Tech in Atlanta, Georgia." />
+                    <meta name="keywords" content="Software Engineer,Portfolio,Resume,Java,Web Development,React,JavaScript,HTML,CSS" />
                 </Head>
                 <body>
                     <Main />

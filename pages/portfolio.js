@@ -51,7 +51,7 @@ class ProjectsPage extends React.Component {
     }
 
     createProjects(numCols) {
-        let projects = this.state.matchingProjects;
+        const projects = this.state.matchingProjects;
 
         let splitProjects = [];
         for (let i = 0; i < numCols; i++) {
@@ -111,13 +111,12 @@ class ProjectsPage extends React.Component {
 
         this.setState({
             tags,
-            matchingProjects: this.projects.filter(x => tags.every(i => x.props.info.tags.includes(i)))
+            matchingProjects: this.projects.filter((x) => tags.every(i => x.props.info.tags.includes(i)))
         });
     };
 
     compareTags = (a, b) => {
-        let tags = this.state.tags;
-        let matching = this.state.matchingProjects;
+        const { tags, matchingProjects } = this.state;
 
         if (tags.indexOf(a.props.value) < tags.indexOf(b.props.value)) {
             return 1;
@@ -127,8 +126,8 @@ class ProjectsPage extends React.Component {
             return -1;
         }
 
-        let aMatch = matching.filter((x) => x.props.info.tags.includes(a.props.value)).length;
-        let bMatch = matching.filter((x) => x.props.info.tags.includes(b.props.value)).length;
+        let aMatch = matchingProjects.filter((x) => x.props.info.tags.includes(a.props.value)).length;
+        let bMatch = matchingProjects.filter((x) => x.props.info.tags.includes(b.props.value)).length;
 
         if (aMatch < bMatch) {
             return 1;
@@ -146,7 +145,7 @@ class ProjectsPage extends React.Component {
 
         let tags = projectsJSON.reduce((a, b) => a.concat(b.tags), []);
         let duplicates = [...new Set(tags.filter((el, index) => tags.indexOf(el, index + 1) > 0))];
-        let menuItems = duplicates.map(name =>
+        let menuItems = duplicates.map((name) => (
             <MenuItem key={name} value={name}>
                 <Avatar className={classes.avatar}>
                     { this.state.matchingProjects.filter((x) => x.props.info.tags.includes(name)).length }
@@ -154,7 +153,7 @@ class ProjectsPage extends React.Component {
                 <ListItemText primary={name} />
                 <Checkbox checked={this.state.tags.indexOf(name) > -1} />
             </MenuItem>
-        );
+        ));
 
         return (
             <div>
@@ -166,19 +165,19 @@ class ProjectsPage extends React.Component {
                     { menuItems.sort(this.compareTags) }
                 </TagSelector>
 
-                <Hidden smUp>
+                <Hidden smUp implementation="css">
                     <Grid container className={classes.grid}>
                         { this.createProjects(1) }
                     </Grid>
                 </Hidden>
 
-                <Hidden only={['xs', 'lg', 'xl']}>
+                <Hidden only={['xs', 'lg', 'xl']} implementation="css">
                     <Grid container className={classes.grid}>
                         { this.createProjects(2) }
                     </Grid>
                 </Hidden>
 
-                <Hidden mdDown>
+                <Hidden mdDown implementation="css">
                     <Grid container className={classes.grid}>
                         { this.createProjects(3) }
                     </Grid>

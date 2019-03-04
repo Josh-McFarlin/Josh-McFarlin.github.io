@@ -6,6 +6,8 @@ import { capitalize } from "@material-ui/core/utils/helpers";
 import Typography from '@material-ui/core/Typography';
 import Hidden from '@material-ui/core/Hidden';
 
+import DynamicImage from '../components/DynamicImage';
+
 
 const styles = theme => ({
     box: {
@@ -31,14 +33,17 @@ const styles = theme => ({
         }
     },
     image: {
-        width: 50,
-        height: 50,
-        margin: 10
+        width: '100%'
     },
     imageHolder: {
+        width: 60,
+        height: 60,
         background: 'white',
-        lineHeight: 0,
-        borderRadius: 5
+        borderRadius: 5,
+        display: 'flex;',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 5
     },
     colorPrimary: {
         background: theme.palette.primary.main,
@@ -49,17 +54,12 @@ const styles = theme => ({
         background: theme.palette.secondary.main,
         borderColor: theme.palette.secondary.main,
         color: theme.palette.secondary.contrastText
-    },
-    colorError: {
-        background: theme.palette.error.main,
-        borderColor: theme.palette.error.main,
-        color: theme.palette.error.contrastText
     }
 });
 
 class Skill extends React.Component {
     render() {
-        const { classes, color, title, icon } = this.props;
+        const { classes, color, info, icon } = this.props;
 
         const boxClassName = classNames(classes.box, {
             [classes[`color${capitalize(color)}`]]: color !== 'default',
@@ -67,24 +67,23 @@ class Skill extends React.Component {
 
         return (
             <React.Fragment>
-                <Hidden smDown>
+                <Hidden smDown implementation="css">
                     <div className={boxClassName}>
                         {(icon) && (
                             <div className={classes.imageHolder}>
-                                <img
-                                    src={'/static/images/skills/' + title.split(' ')[0].toLowerCase() + '.png'}
-                                    alt={title}
+                                <DynamicImage
                                     className={classes.image}
+                                    info={info.image}
                                 />
                             </div>
                         )}
-                        <Typography variant="h6" className={classes.text}>{title}</Typography>
+                        <Typography variant="h6" className={classes.text}>{info.name}</Typography>
                     </div>
                 </Hidden>
 
-                <Hidden mdUp>
+                <Hidden mdUp implementation="css">
                     <div className={boxClassName}>
-                        <Typography variant="subtitle1" className={classes.text}>{title}</Typography>
+                        <Typography variant="subtitle1" className={classes.text}>{info.name}</Typography>
                     </div>
                 </Hidden>
             </React.Fragment>
@@ -94,8 +93,11 @@ class Skill extends React.Component {
 
 Skill.propTypes = {
     classes: PropTypes.object.isRequired,
-    color: PropTypes.oneOf(['default', 'primary', 'secondary', 'error']).isRequired,
-    title: PropTypes.string.isRequired,
+    color: PropTypes.oneOf(['default', 'primary', 'secondary']).isRequired,
+    info: PropTypes.shape({
+        name: PropTypes.string,
+        image: PropTypes.object
+    }).isRequired,
     icon: PropTypes.bool
 };
 

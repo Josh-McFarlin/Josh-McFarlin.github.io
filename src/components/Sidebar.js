@@ -18,6 +18,7 @@ import ContactMail from '@material-ui/icons/ContactMail';
 
 import ContactDialog from '../components/ContactDialog';
 import ShadeSwitch from '../components/ShadeSwitch';
+import DynamicImage from '../components/DynamicImage';
 import { personal, links } from "../data";
 
 
@@ -61,16 +62,8 @@ const styles = theme => ({
         height: appBarHeight,
         position: 'relative'
     },
-    imageHolder: {
-        width: '100%',
-        height: 0,
-        maxHeight: drawerWidth,
-        flex: 1,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        [theme.breakpoints.down('sm')]: {
-            maxHeight: '80vw'
-        }
+    myImage: {
+        width: '100%'
     },
     info: {
         textAlign: 'center',
@@ -169,11 +162,9 @@ class Sidebar extends React.Component {
                 disablePadding
                 className={classes.sidebar}
             >
-                <div
-                    className={classes.imageHolder}
-                    style={{
-                        backgroundImage: `url("/static/images/${personal.image}")`
-                    }}
+                <DynamicImage
+                    className={classes.myImage}
+                    info={personal.image}
                 />
 
                 <div className={classes.info}>
@@ -243,7 +234,7 @@ class Sidebar extends React.Component {
 
                 <ContactDialog open={this.state.contactOpen} handleClose={this.handleContactClose} />
 
-                <Hidden smDown>
+                <Hidden smDown implementation="css">
                     <div className={classes.positionBR}>
                         <ShadeSwitch />
                     </div>
@@ -253,7 +244,7 @@ class Sidebar extends React.Component {
 
         return (
             <div className={classes.root}>
-                <Hidden mdUp>
+                <Hidden mdUp implementation="css">
                     <AppBar
                         position="static"
                         color="secondary"
@@ -289,7 +280,7 @@ class Sidebar extends React.Component {
                         { list }
                     </SwipeableDrawer>
                 </Hidden>
-                <Hidden smDown>
+                <Hidden smDown implementation="css">
                     <Drawer
                         variant="permanent"
                         open

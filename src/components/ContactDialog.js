@@ -47,40 +47,6 @@ class ContactDialog extends React.Component {
 
         return (
             <React.Fragment>
-                <Hidden smUp>
-                    <Dialog
-                        fullScreen
-                        open={this.props.open}
-                        onClose={this.props.handleClose}
-                        TransitionComponent={Transition}
-                    >
-                        <AppBar position="static">
-                            <Toolbar>
-                                <Typography variant="h6" color="inherit" className={classes.flex}>Contact Me</Typography>
-                                <IconButton color="inherit" onClick={this.props.handleClose} aria-label="Close">
-                                    <CloseIcon />
-                                </IconButton>
-                            </Toolbar>
-                        </AppBar>
-                        <List>
-                            {contact.map((item) => (
-                                <ListItem
-                                    button
-                                    component="a"
-                                    href={item.link}
-                                    target="_blank"
-                                    rel="noopener"
-                                    key={item.type}
-                                >
-                                    <ListItemText
-                                        primary={item.type}
-                                        secondary={item.info}
-                                    />
-                                </ListItem>
-                            ))}
-                        </List>
-                    </Dialog>
-                </Hidden>
                 <Hidden xsDown>
                     <Dialog
                         open={this.props.open}
@@ -117,6 +83,40 @@ class ContactDialog extends React.Component {
                                 >Close</Button>
                             </div>
                         </div>
+                    </Dialog>
+                </Hidden>
+                <Hidden smUp>
+                    <Dialog
+                        fullScreen
+                        open={this.props.open}
+                        onClose={this.props.handleClose}
+                        TransitionComponent={Transition}
+                    >
+                        <AppBar position="static">
+                            <Toolbar>
+                                <Typography variant="h6" color="inherit" className={classes.flex}>Contact Me</Typography>
+                                <IconButton color="inherit" onClick={this.props.handleClose} aria-label="Close">
+                                    <CloseIcon />
+                                </IconButton>
+                            </Toolbar>
+                        </AppBar>
+                        <List>
+                            {contact.map((item) => (
+                                <ListItem
+                                    button
+                                    component="a"
+                                    href={item.link}
+                                    target="_blank"
+                                    rel="noopener"
+                                    key={item.type}
+                                >
+                                    <ListItemText
+                                        primary={item.type}
+                                        secondary={item.info}
+                                    />
+                                </ListItem>
+                            ))}
+                        </List>
                     </Dialog>
                 </Hidden>
             </React.Fragment>

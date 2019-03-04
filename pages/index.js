@@ -68,11 +68,8 @@ class IndexPage extends React.PureComponent {
                                 key={item.company}
                                 style={{ marginBottom: index === work.length - 1 ? 0 : 30 }}
                             >
-                                <Typography variant="h6">{item.company}
-                                    <Typography variant="body1" inline> — {item.location}</Typography></Typography>
-                                <Typography variant="h6">{item.position}
-                                    <Typography variant="body1" inline>: {item.startDate} - {item.endDate != null ? item.endDate : 'Present'}</Typography>
-                                </Typography>
+                                <Typography variant="h6">{item.position} @ {item.company}</Typography>
+                                <Typography variant="body2" gutterBottom>{item.startDate} - {item.endDate} in {item.location}</Typography>
                                 {(item.description && item.description.length > 0) && (
                                     <ul className={classes.list}>
                                         {item.description.map((info, i) => (
@@ -143,23 +140,23 @@ class IndexPage extends React.PureComponent {
                                 <Grid item xs={12} lg={6} key={item.type}>
                                     <div style={{ marginBottom: index === skills.length - 1 ? 0 : 30 }}>
                                         <Typography variant="h6" align="center" gutterBottom>{item.type}</Typography>
-                                        <Hidden mdUp>
+                                        <Hidden mdUp implementation="css">
                                             <div className={classes.container}>
-                                                {item.skills.map((item) => (
-                                                    <Skill color="secondary" title={item} key={item} />
+                                                {item.skills.map((info) => (
+                                                    <Skill color="secondary" info={info} key={info.name} />
                                                 ))}
                                             </div>
                                         </Hidden>
-                                        <Hidden smDown>
+                                        <Hidden smDown implementation="css">
                                             <div className={classes.extraMargin}>
                                                 <Grid
                                                     container
                                                     spacing={24}
                                                     className={classes.grid}
                                                 >
-                                                    {item.skills.map((item) => (
-                                                        <Grid item xs={4} key={item}>
-                                                            <Skill color="secondary" title={item} icon />
+                                                    {item.skills.map((info) => (
+                                                        <Grid item xs={4} key={info.name}>
+                                                            <Skill color="secondary" info={info} icon />
                                                         </Grid>
                                                     ))}
                                                 </Grid>

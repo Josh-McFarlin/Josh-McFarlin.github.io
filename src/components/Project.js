@@ -11,6 +11,7 @@ import Hidden from '@material-ui/core/Hidden';
 import ColoredCard from '../components/ColoredCard';
 import ImageScroll from '../components/ImageScroll';
 import ImageScrollSnap from '../components/ImageScrollSnap';
+import DynamicImage from '../components/DynamicImage';
 
 
 const styles = {
@@ -25,8 +26,7 @@ const styles = {
     media: {
         width: '100%',
         height: 350,
-        backgroundSize: 'cover',
-        backgroundPosition: 'top',
+        objectFit: 'cover',
         cursor: 'pointer'
     },
     info: {
@@ -73,7 +73,7 @@ class Project extends React.Component {
                     color="primary"
                 >
                     <div className={classes.content}>
-                        {this.state.expanded && info.images.length > 1 ? (
+                        {(this.state.expanded && info.images.length > 1) ? (
                             <div>
                                 <Hidden smDown>
                                     <ImageScroll images={info.images} onClick={this.handleClick} />
@@ -88,11 +88,9 @@ class Project extends React.Component {
                                 </Hidden>
                             </div>
                         ) : (
-                            <div
+                            <DynamicImage
                                 className={classes.media}
-                                style={{
-                                    backgroundImage: `url("/static/images/projects/${info.images[0]}")`
-                                }}
+                                info={info.images[0]}
                                 onClick={this.handleClick}
                             />
                         )}

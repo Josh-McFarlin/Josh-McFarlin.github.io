@@ -1,8 +1,23 @@
 {
   "version": 2,
+  "alias": "joshmcfarlin.me",
   "builds": [
     { "src": "static/css/*.css", "use": "@now/html-minifier" },
     { "src": "static/images/skills/*.png", "use": "@now/optipng" },
     { "src": "package.json", "use": "@now/next" }
+  ],
+  "routes": [
+    {
+      "src": "^/p($|/)(?<uid>.*)",
+      "dest": "/page?uid=$uid"
+    },
+    {
+      "src": "^/(?!_next|p).+",
+      "dest": "/404"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
   ]
 }

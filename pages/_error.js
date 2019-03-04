@@ -38,7 +38,7 @@ const styles = theme => ({
     }
 });
 
-class NotFoundPage extends React.Component {
+class NotFoundPage extends React.PureComponent {
     render() {
         const { classes } = this.props;
 
