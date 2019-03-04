@@ -82,7 +82,7 @@ class ShadeSwitch extends React.Component {
                                 bar: classes.colorBar
                             }}
                         />
-                        <Hidden smDown implementation="css">
+                        <Hidden smDown>
                             <Popover
                                 id="mouse-over-popover"
                                 className={classes.popover}
