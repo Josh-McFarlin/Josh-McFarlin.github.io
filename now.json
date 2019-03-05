@@ -2,6 +2,7 @@
   "version": 2,
   "alias": "joshmcfarlin.me",
   "builds": [
+    { "src": "service-worker.js", "use": "@now/node" },
     { "src": "static/css/*.css", "use": "@now/html-minifier" },
     { "src": "package.json", "use": "@now/next" }
   ],
