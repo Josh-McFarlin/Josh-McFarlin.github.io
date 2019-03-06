@@ -26,8 +26,8 @@ const styles = (theme) => ({
     },
     category: {
         padding: '0 !important',
-        "&:not(:last-child)": {
-            paddingBottom: `${theme.spacing.unit}px !important`
+        "&:not(:last-of type)": {
+            paddingBottom: `${theme.spacing.unit * 2}px !important`
         }
     },
     categoryGrid: {
@@ -37,7 +37,7 @@ const styles = (theme) => ({
         margin: '0 50px'
     },
     singleType: {
-        "&:not(:last-child)": {
+        "&:not(:last-of-type)": {
             marginBottom: theme.spacing.unit * 2
         }
     },

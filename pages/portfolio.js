@@ -28,16 +28,24 @@ const styles = (theme) => ({
         alignContent: 'flex-start'
     },
     column: {
-        "&:nth-child(odd):not(:only-of-type)": {
-            paddingRight: theme.spacing.unit / 2
+        "&:nth-child(odd)": {
+            "&:not(:first-of-type)": {
+                paddingLeft: theme.spacing.unit / 2
+            },
+            "&:not(:last-of-type)": {
+                paddingRight: theme.spacing.unit / 2
+            }
         },
         "&:nth-child(even)": {
-            paddingLeft: theme.spacing.unit / 2
+            paddingLeft: theme.spacing.unit / 2,
+            "&:not(:last-of-type)": {
+                paddingRight: theme.spacing.unit / 2
+            }
         }
     },
     row: {
         padding: '0 !important',
-        "&:not(:last-child)": {
+        "&:not(:last-of-type)": {
             paddingBottom: `${theme.spacing.unit}px !important`
         }
     },
