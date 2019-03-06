@@ -13,10 +13,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-
 import CloseIcon from '@material-ui/icons/Close';
 
 import { contact } from "../data";
+import ReactGA from "../analytics";
 
 
 const styles = {
@@ -42,17 +42,31 @@ function Transition(props) {
 }
 
 class ContactDialog extends React.Component {
+    clickedLink = (link) => {
+        const isEmail = link.includes("@");
+
+        ReactGA.outboundLink({
+            label: isEmail ? "My email address" : link
+        }, () => {
+            console.log(isEmail ? "My email address" : `Opening link: ${link}`);
+        });
+    };
+
     render() {
-        const { classes } = this.props;
+        const { classes, open, handleClose } = this.props;
+
+        if (open) {
+            ReactGA.modalview('contact-me');
+        }
 
         return (
             <React.Fragment>
                 <Hidden xsDown>
                     <Dialog
-                        open={this.props.open}
+                        open={open}
                         TransitionComponent={Transition}
                         keepMounted
-                        onClose={this.props.handleClose}
+                        onClose={handleClose}
                         fullWidth
                     >
                         <DialogTitle>Contact Me</DialogTitle>
@@ -64,6 +78,9 @@ class ContactDialog extends React.Component {
                                         key={item.type}
                                         component="a"
                                         href={item.link}
+                                        target='_blank'
+                                        rel="noopener"
+                                        onClick={() => this.clickedLink(item.link)}
                                     >
                                         <ListItemText
                                             primary={item.type}
@@ -78,7 +95,7 @@ class ContactDialog extends React.Component {
                                     size="small"
                                     color="primary"
                                     variant="contained"
-                                    onClick={this.props.handleClose}
+                                    onClick={handleClose}
                                     className={classes.button}
                                 >Close</Button>
                             </div>
@@ -88,14 +105,14 @@ class ContactDialog extends React.Component {
                 <Hidden smUp>
                     <Dialog
                         fullScreen
-                        open={this.props.open}
-                        onClose={this.props.handleClose}
+                        open={open}
+                        onClose={handleClose}
                         TransitionComponent={Transition}
                     >
                         <AppBar position="static">
                             <Toolbar>
                                 <Typography variant="h6" color="inherit" className={classes.flex}>Contact Me</Typography>
-                                <IconButton color="inherit" onClick={this.props.handleClose} aria-label="Close">
+                                <IconButton color="inherit" onClick={handleClose} aria-label="Close">
                                     <CloseIcon />
                                 </IconButton>
                             </Toolbar>
@@ -109,6 +126,7 @@ class ContactDialog extends React.Component {
                                     target="_blank"
                                     rel="noopener"
                                     key={item.type}
+                                    onClick={() => this.clickedLink(item.link)}
                                 >
                                     <ListItemText
                                         primary={item.type}

@@ -12,6 +12,7 @@ import ColoredCard from '../components/ColoredCard';
 import ImageScroll from '../components/ImageScroll';
 import ImageScrollSnap from '../components/ImageScrollSnap';
 import DynamicImage from '../components/DynamicImage';
+import ReactGA from '../analytics';
 
 
 const styles = {
@@ -45,18 +46,15 @@ class Project extends React.Component {
         this.state = {
             expanded: false
         };
-
-        this.handleClick = this.handleClick.bind(this);
-        this.handleClickAway = this.handleClickAway.bind(this);
     }
 
-    handleClick() {
+    handleClick = () => {
         this.setState({
             expanded: !this.state.expanded
         });
     };
 
-    handleClickAway() {
+    handleClickAway = () => {
         this.setState({
             expanded: false
         });
@@ -64,6 +62,15 @@ class Project extends React.Component {
 
     render() {
         const { classes, info } = this.props;
+        const { expanded } = this.state;
+
+        if (expanded) {
+            ReactGA.event({
+                category: 'Navigation',
+                action: 'Clicked Project',
+                label: info.title
+            });
+        }
 
         return (
             <ClickAwayListener onClickAway={this.handleClickAway}>
@@ -73,7 +80,7 @@ class Project extends React.Component {
                     color="primary"
                 >
                     <div className={classes.content}>
-                        {(this.state.expanded && info.images.length > 1) ? (
+                        {(expanded && info.images.length > 1) ? (
                             <div>
                                 <Hidden smDown>
                                     <ImageScroll images={info.images} onClick={this.handleClick} />
@@ -95,7 +102,7 @@ class Project extends React.Component {
                             />
                         )}
 
-                        {this.state.expanded && (
+                        {(expanded) && (
                             <div className={classes.info}>
                                 <CardContent>
                                     <Typography variant="subtitle1" paragraph>{info.description}</Typography>

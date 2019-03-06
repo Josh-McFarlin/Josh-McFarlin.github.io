@@ -11,7 +11,7 @@ import Skill from '../src/components/Skill';
 import { personal, work, education, skills } from '../src/data';
 
 
-const styles = {
+const styles = (theme) => ({
     container: {
         width: '100%',
         display: 'flex',
@@ -24,16 +24,30 @@ const styles = {
         alignContent: 'flex-start',
         justifyContent: 'center'
     },
+    category: {
+        padding: '0 !important',
+        "&:not(:last-child)": {
+            paddingBottom: `${theme.spacing.unit}px !important`
+        }
+    },
+    categoryGrid: {
+        padding: `0 0 ${theme.spacing.unit}px 0 !important`
+    },
     extraMargin: {
         margin: '0 50px'
     },
+    singleType: {
+        "&:not(:last-child)": {
+            marginBottom: theme.spacing.unit * 2
+        }
+    },
     courses: {
-        marginTop: 15
+        marginTop: theme.spacing.unit
     },
     list: {
         margin: 0
     }
-};
+});
 
 class IndexPage extends React.PureComponent {
     render() {
@@ -45,7 +59,7 @@ class IndexPage extends React.PureComponent {
                 spacing={24}
                 className={classes.grid}
             >
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.category}>
                     <ColoredCard
                         color="primary"
                         icon={<Person />}
@@ -56,7 +70,7 @@ class IndexPage extends React.PureComponent {
                     </ColoredCard>
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.category}>
                     <ColoredCard
                         color="primary"
                         icon={<WorkIcon />}
@@ -84,7 +98,7 @@ class IndexPage extends React.PureComponent {
                     </ColoredCard>
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.category}>
                     <ColoredCard
                         color="primary"
                         icon={<School />}
@@ -94,7 +108,7 @@ class IndexPage extends React.PureComponent {
                         {education.map((item, index) => (
                             <div
                                 key={item.name}
-                                style={{ marginBottom: index === education.length - 1 ? 0 : 30 }}
+                                className={classes.singleType}
                             >
                                 <Typography variant="h6">{item.name}</Typography>
                                 <Typography variant="subtitle1" gutterBottom>{item.startDate} - {item.endDate}</Typography>
@@ -128,7 +142,7 @@ class IndexPage extends React.PureComponent {
                     </ColoredCard>
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.category}>
                     <ColoredCard
                         color="primary"
                         icon={<Computer />}
@@ -136,33 +150,31 @@ class IndexPage extends React.PureComponent {
                         padding
                     >
                         <Grid container>
-                            {skills.map((item, index) => (
-                                <Grid item xs={12} lg={6} key={item.type}>
-                                    <div style={{ marginBottom: index === skills.length - 1 ? 0 : 30 }}>
-                                        <Typography variant="h6" align="center" gutterBottom>{item.type}</Typography>
-                                        <Hidden mdUp implementation="css">
-                                            <div className={classes.container}>
+                            {skills.map((item) => (
+                                <Grid item xs={12} lg={6} key={item.type} className={classes.singleType}>
+                                    <Typography variant="h6" align="center" gutterBottom>{item.type}</Typography>
+                                    <Hidden mdUp>
+                                        <div className={classes.container}>
+                                            {item.skills.map((info) => (
+                                                <Skill color="secondary" info={info} key={info.name} />
+                                            ))}
+                                        </div>
+                                    </Hidden>
+                                    <Hidden smDown>
+                                        <div className={classes.extraMargin}>
+                                            <Grid
+                                                container
+                                                spacing={24}
+                                                className={classes.grid}
+                                            >
                                                 {item.skills.map((info) => (
-                                                    <Skill color="secondary" info={info} key={info.name} />
+                                                    <Grid item xs={4} key={info.name}>
+                                                        <Skill color="secondary" info={info} icon />
+                                                    </Grid>
                                                 ))}
-                                            </div>
-                                        </Hidden>
-                                        <Hidden smDown implementation="css">
-                                            <div className={classes.extraMargin}>
-                                                <Grid
-                                                    container
-                                                    spacing={24}
-                                                    className={classes.grid}
-                                                >
-                                                    {item.skills.map((info) => (
-                                                        <Grid item xs={4} key={info.name}>
-                                                            <Skill color="secondary" info={info} icon />
-                                                        </Grid>
-                                                    ))}
-                                                </Grid>
-                                            </div>
-                                        </Hidden>
-                                    </div>
+                                            </Grid>
+                                        </div>
+                                    </Hidden>
                                 </Grid>
                             ))}
                         </Grid>
@@ -177,4 +189,4 @@ IndexPage.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(IndexPage);
+export default withStyles(styles, { withTheme: true })(IndexPage);

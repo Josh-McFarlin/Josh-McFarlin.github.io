@@ -56,9 +56,9 @@ const styles = theme => ({
 
 class ColoredCard extends React.PureComponent {
     render() {
-        const { classes, color, padding, icon, title, subheader, children } = this.props;
+        const { classes, className, color, padding, icon, title, subheader, children } = this.props;
 
-        const headerClassName = classNames(classes.header, {
+        const headerClassName = classNames(className, classes.header, {
             [classes[`color${capitalize(color)}`]]: color !== 'default',
         });
 
@@ -94,6 +94,7 @@ class ColoredCard extends React.PureComponent {
 
 ColoredCard.propTypes = {
     classes: PropTypes.object.isRequired,
+    className: PropTypes.string,
     color: PropTypes.oneOf(['default', 'primary', 'secondary', 'error']).isRequired,
     padding: PropTypes.bool,
     icon: PropTypes.element,

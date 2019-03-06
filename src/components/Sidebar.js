@@ -20,6 +20,7 @@ import ContactDialog from '../components/ContactDialog';
 import ShadeSwitch from '../components/ShadeSwitch';
 import DynamicImage from '../components/DynamicImage';
 import { personal, links } from "../data";
+import ReactGA from "../analytics";
 
 
 const drawerWidth = 350;
@@ -154,6 +155,16 @@ class Sidebar extends React.Component {
         });
     };
 
+    clickedLink = (link) => {
+        const isEmail = link.includes("@");
+
+        ReactGA.outboundLink({
+            label: isEmail ? "My email address" : link
+        }, () => {
+            console.log(isEmail ? "My email address" : `Opening link: ${link}`);
+        });
+    };
+
     render() {
         const { classes, children } = this.props;
 
@@ -202,6 +213,7 @@ class Sidebar extends React.Component {
                             target='_blank'
                             rel="noopener"
                             key={item.title}
+                            onClick={() => this.clickedLink(item.link)}
                         >
                             <ListItemIcon className={classes.inheritColor}>{item.icon}</ListItemIcon>
                             <ListItemText

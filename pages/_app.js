@@ -8,6 +8,7 @@ import getPageContext from '../src/getPageContext';
 
 import ThemeContext from "../src/ThemeContext";
 import Sidebar from "../src/components/Sidebar";
+import ReactGA from "../src/analytics";
 
 
 export default class MyApp extends App {
@@ -16,7 +17,18 @@ export default class MyApp extends App {
 
         this.state = {
             useLight: true,
-            toggleTheme: () => this.setState(prevState => ({ useLight: !prevState.useLight }))
+            lastPath: null,
+            toggleTheme: () => {
+                this.setState(prevState => ({
+                    useLight: !prevState.useLight
+                }), () => {
+                    ReactGA.event({
+                        category: 'Theme',
+                        action: 'Set Brightness',
+                        label: this.state.useLight ? 'Using Light' : 'Using Dark'
+                    });
+                });
+            }
         };
 
         this.pageContext = getPageContext();
@@ -30,9 +42,26 @@ export default class MyApp extends App {
         }
     }
 
+    checkPath = () => {
+        const { router } = this.props;
+        const { lastPath } = this.state;
+
+        const currentPath = router.route;
+
+        if (currentPath !== lastPath) {
+            ReactGA.pageview(currentPath);
+
+            this.setState({
+                lastPath: currentPath
+            });
+        }
+    };
+
     render () {
         const { Component, pageProps } = this.props;
         const { useLight } = this.state;
+
+        this.checkPath();
 
         return (
             <Container>
