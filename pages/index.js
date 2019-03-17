@@ -26,8 +26,8 @@ const styles = (theme) => ({
     },
     category: {
         padding: '0 !important',
-        "&:not(:last-of type)": {
-            paddingBottom: `${theme.spacing.unit * 2}px !important`
+        "&:not(:last-of-type)": {
+            marginBottom: `${theme.spacing.unit * 2}px !important`
         }
     },
     categoryGrid: {
