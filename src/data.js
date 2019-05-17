@@ -28,7 +28,7 @@ export const personal = {
         types: ["webp"],
         defaultType: "jpg"
     },
-    about: "I am currently a second-year at the Georgia Institute of Technology, pursuing a bachelor's degree in Computer Science. I began programming at a young age by teaching myself Python through documentation. I have experience with full-stack programming, and I have worked on many projects focusing on desktop, mobile, and web platforms. Efficiency and design are very important principles to me, and I love creating programs and websites that simplify user experience."
+    about: "I am currently a third-year at the Georgia Institute of Technology, pursuing a bachelor's degree in Computer Science. I began programming at a young age by teaching myself Python through documentation. I have experience with full-stack programming, and I have worked on many projects focusing on desktop, mobile, and web platforms. Efficiency and design are very important principles to me, and I love creating programs and websites that simplify user experience."
 };
 
 export const contact = [
@@ -49,8 +49,8 @@ export const work = [
         company: "BetterCloud",
         position: "Software Engineering Intern",
         location: "Atlanta, GA",
-        startDate: "January 2019",
-        endDate: "Present",
+        startDate: "January",
+        endDate: "May 2019",
         description: [
             "Software engineering intern for BetterCloud's Workflows team responsible for developing end-user functionality.",
             "Developed workflows for the BetterCloud platform which use Java and JavaScript to serve as middleware interfacing microservices with APIs for front-end use.",
@@ -292,16 +292,40 @@ export const skills = [
 
 export const projects = [
     {
-        title: "WebCache",
-        tags: ["React", "MongoDB", "Firebase", "HTML", "JavaScript", "CSS", "Node.js"],
-        description: "WebCache is a service for automatically taking screenshots of any website at any time. Written in HTML, CSS, and JavaScript using React for the front-end, while using Express and MongoDB for the back-end. This is an ongoing project which began in July 2018 as a way to improve my React and Express skills.",
+        title: "CryptoQR",
+        tags: ["React", "Next.js", "Firebase", "HTML", "JavaScript", "CSS", "Node.js", "Express"],
+        description: "Created a tool to generate a single QR code to receive payments or donations in multiple cryptocurrencies while enabling dynamic addresses. Written in React for the front-end, while using Express, Next.js, and Firebase for the back-end.",
         images: [
             {
-                imgSrc: '/static/images/projects/WebCache',
+                imgSrc: '/static/images/projects/CryptoQRPage',
+                types: ["webp"],
+                defaultType: "jpg"
+            },
+            {
+                imgSrc: '/static/images/projects/CryptoQROpen',
+                types: ["webp"],
+                defaultType: "jpg"
+            },
+            {
+                imgSrc: '/static/images/projects/CryptoQRCreate',
+                types: ["webp"],
+                defaultType: "jpg"
+            },
+            {
+                imgSrc: '/static/images/projects/CryptoQRProfile',
+                types: ["webp"],
+                defaultType: "jpg"
+            },
+            {
+                imgSrc: '/static/images/projects/CryptoQRHome',
                 types: ["webp"],
                 defaultType: "jpg"
             }
-        ]
+        ],
+        link: {
+            text: "View Source on GitHub",
+            url: "https://github.com/Josh-McFarlin/crypto-qr"
+        }
     },
     {
         title: "Donation Tracker",
@@ -322,7 +346,7 @@ export const projects = [
     {
         title: "Donation Tracker React",
         tags: ["React", "Firebase", "HTML", "JavaScript", "CSS"],
-        description: "Individually developed an alternative web implementation of my Donation Tracker app in React to enable more devices to use the service.",
+        description: "Individually developed an alternative web implementation of my team's Donation Tracker app in React to enable more devices to use the service.",
         images: [
             {
                 imgSrc: '/static/images/projects/DonationReactHome',
@@ -341,6 +365,18 @@ export const projects = [
         }
     },
     {
+        title: "WebCache",
+        tags: ["React", "MongoDB", "Firebase", "HTML", "JavaScript", "CSS", "Node.js"],
+        description: "WebCache is a service for automatically taking screenshots of any website at any time. Written in HTML, CSS, and JavaScript using React for the front-end, while using Express and MongoDB for the back-end. This is an ongoing project which began in July 2018 as a way to improve my React and Express skills.",
+        images: [
+            {
+                imgSrc: '/static/images/projects/WebCache',
+                types: ["webp"],
+                defaultType: "jpg"
+            }
+        ]
+    },
+    {
         title: "AskBuzz",
         tags: ["Python", "Flask"],
         description: "AskBuzz is an Alexa skill for use by Georgia Tech students. This app was written by Josh McFarlin, Ryan Miles, and Dylan Nektalov during HackGT 2017. This skill offers information about Georgia Tech history, dining options, bus availability, campus news and events, Georgia Tech social media posts, WREK radio, and more.",
@@ -357,9 +393,25 @@ export const projects = [
         }
     },
     {
+        title: "Java CryptoCompareAPI",
+        tags: ["Java"],
+        description: "A Java implementation of the CryptoCompare API service, which provides access to cryptocurrency information about coins, exchanges, historic data, market data, mining equipment and contracts, news, and social networks.",
+        images: [
+            {
+                imgSrc: '/static/images/projects/CryptoCompare',
+                types: ["webp"],
+                defaultType: "jpg"
+            }
+        ],
+        link: {
+            text: "View Source on GitHub",
+            url: "https://github.com/Josh-McFarlin/CryptoCompareAPI"
+        }
+    },
+    {
         title: "AstroIDE",
         tags: ["Java", "JavaFX"],
-        description: "AstroIDE is an IDE with syntax highlighting support for over 110 languages. Written in Java utilizing JavaFX and Ace.js for syntax highlighting. This is an ongoing project which began in December 2017 that started as a way to improve my skills in Java, JavaFX, and JavaScript simultaneously.",
+        description: "AstroIDE is an IDE with syntax highlighting support for over 110 languages. Written in Java utilizing JavaFX and Ace.js for syntax highlighting. This was a simple project that started as a way to improve my skills in Java, JavaFX, and JavaScript simultaneously.",
         images: [
             {
                 imgSrc: '/static/images/projects/AstroIDEMain',
@@ -375,22 +427,6 @@ export const projects = [
         link: {
             text: "View Source on GitHub",
             url: "https://github.com/Josh-McFarlin/AstroIDE"
-        }
-    },
-    {
-        title: "Java CryptoCompareAPI",
-        tags: ["Java"],
-        description: "A Java implementation of the CryptoCompare API service, which provides access to cryptocurrency information about coins, exchanges, historic data, market data, mining equipment and contracts, news, and social networks.",
-        images: [
-            {
-                imgSrc: '/static/images/projects/CryptoCompare',
-                types: ["webp"],
-                defaultType: "jpg"
-            }
-        ],
-        link: {
-            text: "View Source on GitHub",
-            url: "https://github.com/Josh-McFarlin/CryptoCompareAPI"
         }
     },
     {
