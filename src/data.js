@@ -28,7 +28,7 @@ export const personal = {
         types: ["webp"],
         defaultType: "jpg"
     },
-    about: "I am currently a third-year at the Georgia Institute of Technology, pursuing a bachelor's degree in Computer Science. I began programming at a young age by teaching myself Python through documentation. I have experience with full-stack programming, and I have worked on many projects focusing on desktop, mobile, and web platforms. Efficiency and design are very important principles to me, and I love creating programs and websites that simplify user experience."
+    about: "Hi, I'm Josh! I'm a third-year Computer Science major at the Georgia Institute of Technology. I began programming at a young age by teaching myself Python, and I've been hooked ever since. I have experience with full-stack programming, and I have worked on many projects focusing on desktop, mobile, and web platforms. Efficiency and design are very important principles to me, and I love creating websites and apps that simplify user experience."
 };
 
 export const contact = [
@@ -52,9 +52,9 @@ export const work = [
         startDate: "January",
         endDate: "May 2019",
         description: [
-            "Software engineering intern for BetterCloud's Workflows team responsible for developing end-user functionality.",
-            "Developed workflows for the BetterCloud platform which use Java and JavaScript to serve as middleware interfacing microservices with APIs for front-end use.",
-            "Created automated tests to verify expected functionality, improved internal developer resources in React to simplify creating automated workflows, and participated in regular stand-up meetings, reviews, and demos as part of a scrum team."
+            "Intern for BetterCloud's Workflows team responsible for developing end-user functionality.",
+            "Developed automated processes in Java and JavaScript to serve as middleware interfacing microservices with APIs for customer use; created automated tests to verify expected functionality of processes.",
+            "Worked on functionality and UX of BetterCloud’s customer and internal development dashboards using React and Redux interfacing with a Spring back-end."
         ]
     }
 ];
@@ -62,7 +62,7 @@ export const work = [
 export const education = [
     {
         name: "Georgia Institute of Technology",
-        info: "Currently pursuing a Bachelor's Degree in Computer Science with a focus in Intelligence and Information Internetworks.",
+        info: "Currently pursuing a Bachelor's Degree in Computer Science concentrating in Intelligence and Information Internetworks.",
         startDate: "2017",
         endDate: "2021",
         completedCourses: [
@@ -71,7 +71,9 @@ export const education = [
             "CS 1332 - Data Structures and Algorithms",
             "CS 1331 - Intro to Object Oriented Programming"
         ],
-        currentCourses: []
+        currentCourses: [
+            "CS 3600 - Intro to Artificial Intelligence"
+        ]
     }
 ];
 
